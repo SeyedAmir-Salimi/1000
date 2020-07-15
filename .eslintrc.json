@@ -12,6 +12,7 @@
     "prettier/react"
   ],
   "rules": {
+    "no-unused-vars": "warn",
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",

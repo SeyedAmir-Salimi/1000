@@ -1,5 +1,6 @@
 import "./Game.css";
 
+import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import Draggable from "react-draggable";
 import { connect } from "react-redux";
@@ -9,15 +10,16 @@ import { getCards } from "../redux/selectors";
 
 const Game = ({ cards, moveCard }) => {
   useEffect(() => {
-    if (cards[0].position.x < 300)
+    if (cards[0].position.x < 300) {
       cards.forEach((card) => {
         const newPos = {
           ...card.position,
-          x: card.position.x + 0.5,
-          y: card.position.y + 0.5,
+          x: card.position.x + 10.5,
+          y: card.position.y + 120.5,
         };
         moveCard(card.id, { position: newPos });
       });
+    }
   });
 
   const adjustXPos = (e, id, position) => {
@@ -73,9 +75,10 @@ const Game = ({ cards, moveCard }) => {
   return <div className="App">{cardsToShow}</div>;
 };
 
-const mapStateToProps = (state) => {
-  const cards = getCards(state);
-  return { cards };
-};
+const mapStateToProps = (state) => ({ cards: getCards(state) });
 
+Game.propTypes = {
+  cards: PropTypes.array,
+  moveCard: PropTypes.func.isRequired,
+};
 export default connect(mapStateToProps, { moveCard })(Game);

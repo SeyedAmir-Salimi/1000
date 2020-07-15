@@ -14,14 +14,6 @@ export default function (state = initialState, action) {
       sliced[id].position = position;
       return sliced;
     }
-    // case ANIMATE: {
-    //   // state.cards.forEach((card) => {
-    //   //   const newPos = { ...card.position, x: card.position.x + 10 };
-    //   //   const sliced = state.slice();
-    //   //   sliced[card.id].position = card.position;
-    //   //   return sliced;
-    //   // });
-    // }
     default:
       return state;
   }
