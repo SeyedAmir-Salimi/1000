@@ -3,7 +3,10 @@
     "ecmaVersion": 2019,
     "sourceType": "module"
   },
-  "plugins": ["react-hooks", "simple-import-sort"],
+  "plugins": [
+    "react-hooks",
+    "simple-import-sort"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:import/recommended",
@@ -20,7 +23,16 @@
     "react-hooks/rules-of-hooks": "error",
     "simple-import-sort/sort": "error",
     "sort-imports": "off",
-    "strict": ["error", "never"]
+    "strict": [
+      "error",
+      "never"
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "env": {
     "node": true,
@@ -34,7 +46,9 @@
   },
   "overrides": [
     {
-      "files": ["src/**/__tests__/**/*.js"],
+      "files": [
+        "src/**/__tests__/**/*.js"
+      ],
       "env": {
         "jest": true
       },
