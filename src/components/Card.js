@@ -1,11 +1,10 @@
 import "./Card.css";
-
+import React  from "react";
 import PropTypes from "prop-types";
-import React from "react";
 import Draggable from "react-draggable";
 import { useDispatch } from "react-redux";
+import { getCard, moveCard  } from "../redux/actions/actions";
 
-import { getCard, moveCard } from "../redux/actions";
 
 function Card({ card }) {
   const dispatch = useDispatch();
@@ -35,6 +34,8 @@ function Card({ card }) {
   const onDrag = (e, position, id) => {
     dispatch(moveCard(id, { position }));
   };
+
+
 
   return (
     <Draggable

@@ -2,7 +2,7 @@ import {
   tryGetMeldFromHand,
   tryGetMeldFromOtherMelds,
 } from "../../providers/cardProvider";
-import { GET_CARD, PLAY_CARD } from "../actionTypes";
+import { GET_CARD, PLAY_CARD } from "../actions/actionTypes";
 
 const initialState = [
   {
@@ -48,13 +48,20 @@ export default function (state = initialState, action) {
     case GET_CARD: {
       const { id, card } = action.payload;
 
-      const usersSliced = state.slice();
-      usersSliced[id].cards.push(card);
-      const meldFromHand = tryGetMeldFromHand(usersSliced[id].cards);
+      // const usersSliced = state.slice();
+      // usersSliced[id].cards.push(card);
 
-      if (meldFromHand) {
-        usersSliced[id].melds.push(meldFromHand);
+      const meldFromHand = tryGetMeldFromHand(state[id].cards);
+      const copyState = [...state];
+      const filtrthand = copyState[0].cards.filter(
+        (x) => !meldFromHand.includes(x)
+      );
+
+      if ((meldFromHand, state[id].melds)) {
+        state[id].melds.push(meldFromHand);
       }
+      state[id].cards = filtrthand;
+
       console.log(state);
       // const otherUsersLastMeld = state.map((x) => x.melds[x.melds.length - 1]);
 

@@ -10,7 +10,7 @@ export function getRandomCard() {
   return newCard;
 }
 
-export function tryGetMeldFromHand(hand) {
+export function tryGetMeldFromHand(hand, meld) {
   const melds = hand.reduce((result, item) => {
     if (!result.length) {
       result.push([item]);
@@ -26,8 +26,10 @@ export function tryGetMeldFromHand(hand) {
     }
     return result;
   }, []);
-  const nande = melds.filter((x) => x.length > 2);
-  return nande[0];
+
+  const filermelds = melds.filter((x) => x.length > 2);
+
+  return filermelds[0];
 }
 
 export function tryGetMeldFromOtherMelds(hand, otherMelds) {

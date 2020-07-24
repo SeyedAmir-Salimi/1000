@@ -1,5 +1,5 @@
 import { getRandomCard } from "../../providers/cardProvider";
-import { MOVE_CARD } from "../actionTypes";
+import { MOVE_CARD } from "../actions/actionTypes";
 
 const initialState = [
   { id: 0, position: { x: -300, y: 0 } },
