@@ -1,4 +1,4 @@
-import { GET_CARD, MOVE_CARD, GET_USED_CARD, CREATE_GAME, GET_GAME_INFO } from './actionTypes'
+import { GET_CARD, MOVE_CARD, GET_USED_CARD, CREATE_GAME, GET_GAME_ID} from './actionTypes'
 
 export const moveCard = (id, content) => {
   return {
@@ -34,9 +34,9 @@ export const create_game = info => {
   }
 }
 
-export const get_game_info = info => {
+export const get_game_id = info => {
   return {
-    type: GET_GAME_INFO,
+    type: GET_GAME_ID,
     payload: info
   }
 }

@@ -1,314 +1,312 @@
 [
 	{
 		"id": "2-hearts",
-		"suit": "hearts",
-		"value": "2",
-		"image": "./images/back-0062ff.png"
+		"image": "2-hearts.png"
 	},
 	{
 		"id": "3-hearts",
-		"suit": "hearts",
-		"value": "3",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "3-hearts.png"
 	},
 	{
 		"id": "4-hearts",
-		"suit": "hearts",
-		"value": "4",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "4-hearts.png"
 	},
 	{
 		"id": "5-hearts",
-		"suit": "hearts",
-		"value": "5",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "5-hearts.png"
 	},
 	{
 		"id": "6-hearts",
-		"suit": "hearts",
-		"value": "6",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "6-hearts.png"
 	},
 	{
 		"id": "7-hearts",
-		"suit": "hearts",
-		"value": "7",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "7-hearts.png"
 	},
 	{
 		"id": "8-hearts",
-		"suit": "hearts",
-		"value": "8",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "8-hearts.png"
 	},
 	{
 		"id": "9-hearts",
-		"suit": "hearts",
-		"value": "9",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "9-heart.png"
 	},
 	{
 		"id": "10-hearts",
-		"suit": "hearts",
-		"value": "10",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "10-hearts.png"
 	},
 	{
 		"id": "J-hearts",
-		"suit": "hearts",
-		"value": "J",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "J-hearts.png"
 	},
 	{
 		"id": "Q-hearts",
-		"suit": "hearts",
-		"value": "Q",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "Q-hearts.png"
 	},
 	{
 		"id": "K-hearts",
-		"suit": "hearts",
-		"value": "K",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "K-hearts.png"
 	},
 	{
 		"id": "A-hearts",
-		"suit": "hearts",
-		"value": "A",
-		"image": "./images/back-0062ff.png"
+		
+		
+		"image": "A-hearts.png"
 	},
 	{
 		"id": "2-diamonds",
 		"suit": "diamonds",
-		"value": "2",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "2-diamonds.png"
 	},
 	{
 		"id": "3-diamonds",
 		"suit": "diamonds",
-		"value": "3",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "3-diamonds.png"
 	},
 	{
 		"id": "4-diamonds",
 		"suit": "diamonds",
-		"value": "4",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "4-diamonds.png"
 	},
 	{
 		"id": "5-diamonds",
 		"suit": "diamonds",
-		"value": "5",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "5-diamonds.png"
 	},
 	{
 		"id": "6-diamonds",
 		"suit": "diamonds",
-		"value": "6",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "6-diamonds.png"
 	},
 	{
 		"id": "7-diamonds",
 		"suit": "diamonds",
-		"value": "7",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "7-diamonds.png"
 	},
 	{
 		"id": "8-diamonds",
 		"suit": "diamonds",
-		"value": "8",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "8-diamonds.png"
 	},
 	{
 		"id": "9-diamonds",
 		"suit": "diamonds",
-		"value": "9",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "9-diamonds.png"
 	},
 	{
 		"id": "10-diamonds",
 		"suit": "diamonds",
-		"value": "10",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "10-diamonds.png"
 	},
 	{
 		"id": "J-diamonds",
 		"suit": "diamonds",
-		"value": "J",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "J-diamonds.png"
 	},
 	{
 		"id": "Q-diamonds",
 		"suit": "diamonds",
-		"value": "Q",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "Q-diamonds.png"
 	},
 	{
 		"id": "K-diamonds",
 		"suit": "diamonds",
-		"value": "K",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "K-diamonds.png"
 	},
 	{
 		"id": "A-diamonds",
 		"suit": "diamonds",
-		"value": "A",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "A-diamonds.png"
 	},
 	{
 		"id": "2-clubs",
 		"suit": "clubs",
-		"value": "2",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "2-clubs.png"
 	},
 	{
 		"id": "3-clubs",
 		"suit": "clubs",
-		"value": "3",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "3-clubs.png"
 	},
 	{
 		"id": "4-clubs",
 		"suit": "clubs",
-		"value": "4",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "4-clubs.png"
 	},
 	{
 		"id": "5-clubs",
 		"suit": "clubs",
-		"value": "5",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "5-clubs.png"
 	},
 	{
 		"id": "6-clubs",
 		"suit": "clubs",
-		"value": "6",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "6-clubs.png"
 	},
 	{
 		"id": "7-clubs",
 		"suit": "clubs",
-		"value": "7",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "7-clubs.png"
 	},
 	{
 		"id": "8-clubs",
 		"suit": "clubs",
-		"value": "8",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "8-clubs.png"
 	},
 	{
 		"id": "9-clubs",
 		"suit": "clubs",
-		"value": "9",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "9-clubs.png"
 	},
 	{
 		"id": "10-clubs",
 		"suit": "clubs",
-		"value": "10",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "10-clubs.png"
 	},
 	{
 		"id": "J-clubs",
 		"suit": "clubs",
-		"value": "J",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "J-clubs.png"
 	},
 	{
 		"id": "Q-clubs",
 		"suit": "clubs",
-		"value": "Q",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "Q-clubs.png"
 	},
 	{
 		"id": "K-clubs",
 		"suit": "clubs",
-		"value": "K",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "K-clubs.png"
 	},
 	{
 		"id": "A-clubs",
 		"suit": "clubs",
-		"value": "A",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "A-clubs.png"
 	},
 	{
 		"id": "2-spades",
 		"suit": "spades",
-		"value": "2",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "2-spades.png"
 	},
 	{
 		"id": "3-spades",
 		"suit": "spades",
-		"value": "3",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "3-spades.png"
 	},
 	{
 		"id": "4-spades",
 		"suit": "spades",
-		"value": "4",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "4-spades.png"
 	},
 	{
 		"id": "5-spades",
 		"suit": "spades",
-		"value": "5",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "5-spades.png"
 	},
 	{
 		"id": "6-spades",
 		"suit": "spades",
-		"value": "6",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "6-spades.png"
 	},
 	{
 		"id": "7-spades",
 		"suit": "spades",
-		"value": "7",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "7-spades.png"
 	},
 	{
 		"id": "8-spades",
 		"suit": "spades",
-		"value": "8",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "8-spades.png"
 	},
 	{
 		"id": "9-spades",
 		"suit": "spades",
-		"value": "9",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "9-spades.png"
 	},
 	{
 		"id": "10-spades",
 		"suit": "spades",
-		"value": "10",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "10-spades.png"
 	},
 	{
 		"id": "J-spades",
 		"suit": "spades",
-		"value": "J",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "J-spades.png"
 	},
 	{
 		"id": "Q-spades",
 		"suit": "spades",
-		"value": "Q",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "Q-spades.png"
 	},
 	{
 		"id": "K-spades",
 		"suit": "spades",
-		"value": "K",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "K-spades.png"
 	},
 	{
 		"id": "A-spades",
 		"suit": "spades",
-		"value": "A",
-		"image": "./images/back-0062ff.png"
+		
+		"image": "A-spades.png"
 	}
 ]
