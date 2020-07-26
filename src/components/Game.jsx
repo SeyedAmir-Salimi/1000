@@ -25,6 +25,7 @@ const Game = () => {
   const createGameCall = () => {
     dispatch(createGame(4))
   }
+  console.log(opponents);
 
   return (
     <>
