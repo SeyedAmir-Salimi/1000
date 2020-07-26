@@ -1,16 +1,19 @@
-import React from 'react'
+import PropTypes from "prop-types";
+import React from "react";
 
-function OpponentHand({count}) {
-    let cards = [];
-    for (let index = 0; index < count; index++) {
-        const imageFile = require(`../assets/images/back-0062ff.png`)
-        cards.push(<div className='box' style={{ backgroundImage: `url(${imageFile})` }}></div>)
-    }
-    return (
-        <div>
-            {cards}
-        </div>
-    )
+import ReversedCard from "./ReversedCard";
+
+function OpponentHand({ handKey, count }) {
+  let cards = [];
+  for (let index = 0; index < count; index++) {
+    cards.push(<ReversedCard cardKey={`${handKey}-${index}`} />);
+  }
+  return <>{cards}</>;
 }
 
-export default OpponentHand
+OpponentHand.propTypes = {
+  handKey: PropTypes.string,
+  count: PropTypes.number,
+};
+
+export default OpponentHand;

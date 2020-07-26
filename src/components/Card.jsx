@@ -1,21 +1,28 @@
-import './Card.css'
-import React, { useEffect } from 'react'
-import Draggable from 'react-draggable'
-import { useDispatch } from 'react-redux'
-import cardImages from '../assets/cards.json'
+import "./Card.css";
 
-function Card ({ card }) {
-  const dispatch = useDispatch()
-  const cardObject = cardImages.filter(x => x.id === card.cardId)[0]
+import PropTypes from "prop-types";
+import React from "react";
+import Draggable from "react-draggable";
 
-  const imageFile = require(`../assets/images/${cardObject.image}`)
+import cardImages from "../assets/cards.json";
+
+function Card({ card }) {
+  const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
+
+  const imageFile = require(`../assets/images/${cardObject.image}`);
 
   return (
-    <Draggable key={card.id} bounds='body'>
-      <div className='box' style={{ backgroundImage: `url(${imageFile})` }}>
-      </div>
+    <Draggable key={card.id} bounds="parent">
+      <div
+        className="box"
+        style={{ backgroundImage: `url(${imageFile})` }}
+      ></div>
     </Draggable>
-  )
+  );
 }
 
-export default Card
+Card.propTypes = {
+  card: PropTypes.object,
+};
+
+export default Card;

@@ -1,7 +1,2 @@
-export const MOVE_CARD = "MOVE_CARD";
-export const GET_CARD = "GETS_CARD";
-export const PLAY_CARD = "PLAYS_CARD";
-export const GET_USED_CARD = "GET_USED_CARD";
+export const SET_GAME_INFO = "SET_GAME_INFO";
 export const CREATE_GAME = "CREATE_GAME";
-export const GET_GAME_ID = "GET_GAME_ID";
-

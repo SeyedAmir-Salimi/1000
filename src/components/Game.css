@@ -1,0 +1,47 @@
+.user1Wrapper {
+  display: flexbox;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.user1Wrapper .reversedCard, .user3Wrapper .reversedCard{
+    transform: rotate(90deg);
+    margin-top: -200px;
+}
+
+.user2Wrapper {
+  display: flex;
+  position: absolute;
+  left: 42%;
+  top: 0;
+}
+
+.user2Wrapper .reversedCard{
+    margin-right: -210px;
+}
+
+.user3Wrapper {
+  display: flexbox;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.user4Wrapper {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
+
+.user4Wrapper .box{
+    margin-right: -340px;
+}
+
+.deckWrapper {
+  display: flex;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}

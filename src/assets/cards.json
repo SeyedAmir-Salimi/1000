@@ -1,312 +1,210 @@
 [
-	{
-		"id": "2-hearts",
-		"image": "2-hearts.png"
-	},
-	{
-		"id": "3-hearts",
-		
-		
-		"image": "3-hearts.png"
-	},
-	{
-		"id": "4-hearts",
-		
-		
-		"image": "4-hearts.png"
-	},
-	{
-		"id": "5-hearts",
-		
-		
-		"image": "5-hearts.png"
-	},
-	{
-		"id": "6-hearts",
-		
-		
-		"image": "6-hearts.png"
-	},
-	{
-		"id": "7-hearts",
-		
-		
-		"image": "7-hearts.png"
-	},
-	{
-		"id": "8-hearts",
-		
-		
-		"image": "8-hearts.png"
-	},
-	{
-		"id": "9-hearts",
-		
-		
-		"image": "9-heart.png"
-	},
-	{
-		"id": "10-hearts",
-		
-		
-		"image": "10-hearts.png"
-	},
-	{
-		"id": "J-hearts",
-		
-		
-		"image": "J-hearts.png"
-	},
-	{
-		"id": "Q-hearts",
-		
-		
-		"image": "Q-hearts.png"
-	},
-	{
-		"id": "K-hearts",
-		
-		
-		"image": "K-hearts.png"
-	},
-	{
-		"id": "A-hearts",
-		
-		
-		"image": "A-hearts.png"
-	},
-	{
-		"id": "2-diamonds",
-		"suit": "diamonds",
-		
-		"image": "2-diamonds.png"
-	},
-	{
-		"id": "3-diamonds",
-		"suit": "diamonds",
-		
-		"image": "3-diamonds.png"
-	},
-	{
-		"id": "4-diamonds",
-		"suit": "diamonds",
-		
-		"image": "4-diamonds.png"
-	},
-	{
-		"id": "5-diamonds",
-		"suit": "diamonds",
-		
-		"image": "5-diamonds.png"
-	},
-	{
-		"id": "6-diamonds",
-		"suit": "diamonds",
-		
-		"image": "6-diamonds.png"
-	},
-	{
-		"id": "7-diamonds",
-		"suit": "diamonds",
-		
-		"image": "7-diamonds.png"
-	},
-	{
-		"id": "8-diamonds",
-		"suit": "diamonds",
-		
-		"image": "8-diamonds.png"
-	},
-	{
-		"id": "9-diamonds",
-		"suit": "diamonds",
-		
-		"image": "9-diamonds.png"
-	},
-	{
-		"id": "10-diamonds",
-		"suit": "diamonds",
-		
-		"image": "10-diamonds.png"
-	},
-	{
-		"id": "J-diamonds",
-		"suit": "diamonds",
-		
-		"image": "J-diamonds.png"
-	},
-	{
-		"id": "Q-diamonds",
-		"suit": "diamonds",
-		
-		"image": "Q-diamonds.png"
-	},
-	{
-		"id": "K-diamonds",
-		"suit": "diamonds",
-		
-		"image": "K-diamonds.png"
-	},
-	{
-		"id": "A-diamonds",
-		"suit": "diamonds",
-		
-		"image": "A-diamonds.png"
-	},
-	{
-		"id": "2-clubs",
-		"suit": "clubs",
-		
-		"image": "2-clubs.png"
-	},
-	{
-		"id": "3-clubs",
-		"suit": "clubs",
-		
-		"image": "3-clubs.png"
-	},
-	{
-		"id": "4-clubs",
-		"suit": "clubs",
-		
-		"image": "4-clubs.png"
-	},
-	{
-		"id": "5-clubs",
-		"suit": "clubs",
-		
-		"image": "5-clubs.png"
-	},
-	{
-		"id": "6-clubs",
-		"suit": "clubs",
-		
-		"image": "6-clubs.png"
-	},
-	{
-		"id": "7-clubs",
-		"suit": "clubs",
-		
-		"image": "7-clubs.png"
-	},
-	{
-		"id": "8-clubs",
-		"suit": "clubs",
-		
-		"image": "8-clubs.png"
-	},
-	{
-		"id": "9-clubs",
-		"suit": "clubs",
-		
-		"image": "9-clubs.png"
-	},
-	{
-		"id": "10-clubs",
-		"suit": "clubs",
-		
-		"image": "10-clubs.png"
-	},
-	{
-		"id": "J-clubs",
-		"suit": "clubs",
-		
-		"image": "J-clubs.png"
-	},
-	{
-		"id": "Q-clubs",
-		"suit": "clubs",
-		
-		"image": "Q-clubs.png"
-	},
-	{
-		"id": "K-clubs",
-		"suit": "clubs",
-		
-		"image": "K-clubs.png"
-	},
-	{
-		"id": "A-clubs",
-		"suit": "clubs",
-		
-		"image": "A-clubs.png"
-	},
-	{
-		"id": "2-spades",
-		"suit": "spades",
-		
-		"image": "2-spades.png"
-	},
-	{
-		"id": "3-spades",
-		"suit": "spades",
-		
-		"image": "3-spades.png"
-	},
-	{
-		"id": "4-spades",
-		"suit": "spades",
-		
-		"image": "4-spades.png"
-	},
-	{
-		"id": "5-spades",
-		"suit": "spades",
-		
-		"image": "5-spades.png"
-	},
-	{
-		"id": "6-spades",
-		"suit": "spades",
-		
-		"image": "6-spades.png"
-	},
-	{
-		"id": "7-spades",
-		"suit": "spades",
-		
-		"image": "7-spades.png"
-	},
-	{
-		"id": "8-spades",
-		"suit": "spades",
-		
-		"image": "8-spades.png"
-	},
-	{
-		"id": "9-spades",
-		"suit": "spades",
-		
-		"image": "9-spades.png"
-	},
-	{
-		"id": "10-spades",
-		"suit": "spades",
-		
-		"image": "10-spades.png"
-	},
-	{
-		"id": "J-spades",
-		"suit": "spades",
-		
-		"image": "J-spades.png"
-	},
-	{
-		"id": "Q-spades",
-		"suit": "spades",
-		
-		"image": "Q-spades.png"
-	},
-	{
-		"id": "K-spades",
-		"suit": "spades",
-		
-		"image": "K-spades.png"
-	},
-	{
-		"id": "A-spades",
-		"suit": "spades",
-		
-		"image": "A-spades.png"
-	}
+  {
+    "id": "2-hearts",
+    "image": "2-hearts.png"
+  },
+  {
+    "id": "3-hearts",
+    "image": "3-hearts.png"
+  },
+  {
+    "id": "4-hearts",
+    "image": "4-hearts.png"
+  },
+  {
+    "id": "5-hearts",
+    "image": "5-hearts.png"
+  },
+  {
+    "id": "6-hearts",
+    "image": "6-hearts.png"
+  },
+  {
+    "id": "7-hearts",
+    "image": "7-hearts.png"
+  },
+  {
+    "id": "8-hearts",
+    "image": "8-hearts.png"
+  },
+  {
+    "id": "9-hearts",
+    "image": "9-hearts.png"
+  },
+  {
+    "id": "10-hearts",
+    "image": "10-hearts.png"
+  },
+  {
+    "id": "J-hearts",
+    "image": "J-hearts.png"
+  },
+  {
+    "id": "Q-hearts",
+    "image": "Q-hearts.png"
+  },
+  {
+    "id": "K-hearts",
+    "image": "K-hearts.png"
+  },
+  {
+    "id": "A-hearts",
+    "image": "A-hearts.png"
+  },
+  {
+    "id": "2-diamonds",
+    "image": "2-diamonds.png"
+  },
+  {
+    "id": "3-diamonds",
+    "image": "3-diamonds.png"
+  },
+  {
+    "id": "4-diamonds",
+    "image": "4-diamonds.png"
+  },
+  {
+    "id": "5-diamonds",
+    "image": "5-diamonds.png"
+  },
+  {
+    "id": "6-diamonds",
+    "image": "6-diamonds.png"
+  },
+  {
+    "id": "7-diamonds",
+    "image": "7-diamonds.png"
+  },
+  {
+    "id": "8-diamonds",
+    "image": "8-diamonds.png"
+  },
+  {
+    "id": "9-diamonds",
+    "image": "9-diamonds.png"
+  },
+  {
+    "id": "10-diamonds",
+    "image": "10-diamonds.png"
+  },
+  {
+    "id": "J-diamonds",
+    "image": "J-diamonds.png"
+  },
+  {
+    "id": "Q-diamonds",
+    "image": "Q-diamonds.png"
+  },
+  {
+    "id": "K-diamonds",
+    "image": "K-diamonds.png"
+  },
+  {
+    "id": "A-diamonds",
+    "image": "A-diamonds.png"
+  },
+  {
+    "id": "2-clubs",
+    "image": "2-clubs.png"
+  },
+  {
+    "id": "3-clubs",
+    "image": "3-clubs.png"
+  },
+  {
+    "id": "4-clubs",
+    "image": "4-clubs.png"
+  },
+  {
+    "id": "5-clubs",
+    "image": "5-clubs.png"
+  },
+  {
+    "id": "6-clubs",
+    "image": "6-clubs.png"
+  },
+  {
+    "id": "7-clubs",
+    "image": "7-clubs.png"
+  },
+  {
+    "id": "8-clubs",
+    "image": "8-clubs.png"
+  },
+  {
+    "id": "9-clubs",
+    "image": "9-clubs.png"
+  },
+  {
+    "id": "10-clubs",
+    "image": "10-clubs.png"
+  },
+  {
+    "id": "J-clubs",
+    "image": "J-clubs.png"
+  },
+  {
+    "id": "Q-clubs",
+    "image": "Q-clubs.png"
+  },
+  {
+    "id": "K-clubs",
+    "image": "K-clubs.png"
+  },
+  {
+    "id": "A-clubs",
+    "image": "A-clubs.png"
+  },
+  {
+    "id": "2-spades",
+    "image": "2-spades.png"
+  },
+  {
+    "id": "3-spades",
+    "image": "3-spades.png"
+  },
+  {
+    "id": "4-spades",
+    "image": "4-spades.png"
+  },
+  {
+    "id": "5-spades",
+    "image": "5-spades.png"
+  },
+  {
+    "id": "6-spades",
+    "image": "6-spades.png"
+  },
+  {
+    "id": "7-spades",
+    "image": "7-spades.png"
+  },
+  {
+    "id": "8-spades",
+    "image": "8-spades.png"
+  },
+  {
+    "id": "9-spades",
+    "image": "9-spades.png"
+  },
+  {
+    "id": "10-spades",
+    "image": "10-spades.png"
+  },
+  {
+    "id": "J-spades",
+    "image": "J-spades.png"
+  },
+  {
+    "id": "Q-spades",
+    "image": "Q-spades.png"
+  },
+  {
+    "id": "K-spades",
+    "image": "K-spades.png"
+  },
+  {
+    "id": "A-spades",
+    "image": "A-spades.png"
+  }
 ]
