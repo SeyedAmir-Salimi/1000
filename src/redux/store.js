@@ -1,6 +1,7 @@
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import thunk from "redux-thunk";
 
-import rootReducer from "./reducers";
+import rootReducer from "./reducers/index";
 
 // const logger = (store) => (next) => (action) => {
 //   console.log("dispatching", action);
@@ -11,5 +12,6 @@ import rootReducer from "./reducers";
 
 export default createStore(
   rootReducer,
-  window._REDUX_DEVTOOLS_EXTENSION_ && window._REDUX_DEVTOOLS_EXTENSION_()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(thunk)
 );

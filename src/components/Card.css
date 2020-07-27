@@ -22,18 +22,6 @@
   text-align: center;
 }
 
-.box {
-  background: #fff;
-  border: 1px solid #999;
-  border-radius: 3px;
-  width: 172px;
-  height: 247px;
-  margin: 10px;
-  padding: 10px;
-  float: left;
-  background-image: url("../assets/images/back-0062ff.png");
-}
-
 /*
    * RemWrapper needs to take it's styles from this element,
    * and this element can't have an absolute position after it's kicked in.
@@ -41,4 +29,12 @@
    */
 .rem-position-fix {
   position: static !important;
+}
+
+.box {
+  border-radius: 8px;
+  width: 169px;
+  height: 244px;
+  margin: 10px;
+  float: left;
 }

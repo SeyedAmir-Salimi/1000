@@ -10,10 +10,28 @@ export function getRandomCard() {
   return newCard;
 }
 
-export function tryGetMeldFromHand(hand) {
-  return null;
+export function tryGetMeldFromHand(hand, meld) {
+  const melds = hand.reduce((result, item) => {
+    if (!result.length) {
+      result.push([item]);
+    } else if (!result.some((x) => x[0].value === item.value)) {
+      result.push([item]);
+    } else {
+      result = result.map((x) => {
+        if (x.some((y) => y.value === item.value)) {
+          x.push(item);
+        }
+        return x;
+      });
+    }
+    return result;
+  }, []);
+
+  const filermelds = melds.filter((x) => x.length > 2);
+
+  return filermelds[0];
 }
 
-export function tryGetMeldFromOtherMelds(hand, otherMelds){
+export function tryGetMeldFromOtherMelds(hand, otherMelds) {
   return null;
 }
