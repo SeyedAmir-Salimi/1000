@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { createGame, fetchGameInfo, generateHands } from "../API/index";
 import Card from "./Card";
+import DeckCard from "./Deckcard";
+import MeldButtun from "./MeldButton";
 import OpponentHand from "./OpponentHand";
 
 const Game = () => {
@@ -33,6 +35,7 @@ const Game = () => {
     <>
       <button onClick={() => createGameCall()}>create game</button>
       <button onClick={() => generateHandsCall()}>generate hands</button>
+      <MeldButtun />
 
       <div className="user1Wrapper">
         {opponents && opponents.User1 && (
@@ -53,7 +56,7 @@ const Game = () => {
       </div>
 
       <div className="deckWrapper">
-        {topOfTheDeck && <Card key={topOfTheDeck.id} card={topOfTheDeck} />}
+        {topOfTheDeck && <DeckCard key={topOfTheDeck.id} card={topOfTheDeck} />}
       </div>
       <div className="user4Wrapper">{handCard}</div>
     </>

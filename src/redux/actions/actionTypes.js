@@ -1,2 +1,6 @@
+// gameInfo
 export const SET_GAME_INFO = "SET_GAME_INFO";
 export const CREATE_GAME = "CREATE_GAME";
+export const DISCARD_CARD = "DISCARD_CARD";
+export const ADD_MELD_PROPOSAL = "ADD_MELD_PROPOSAL";
+export const DELETE_MELD_PROPOSAL = "DELETE_MELD_PROPOSAL";

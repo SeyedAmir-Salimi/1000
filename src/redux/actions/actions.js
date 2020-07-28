@@ -1,4 +1,10 @@
-import { CREATE_GAME, SET_GAME_INFO } from "./actionTypes";
+import {
+  ADD_MELD_PROPOSAL,
+  CREATE_GAME,
+  DELETE_MELD_PROPOSAL,
+  DISCARD_CARD,
+  SET_GAME_INFO,
+} from "./actionTypes";
 
 export const set_game_info = (cards) => {
   return {
@@ -13,3 +19,18 @@ export const create_game = (info) => {
     payload: info,
   };
 };
+
+export const discard_card = (payload) => ({
+  type: DISCARD_CARD,
+  payload,
+});
+
+export const add_meld_proposal = (payload) => ({
+  type: ADD_MELD_PROPOSAL,
+  payload,
+});
+
+export const delete_meld_proposal = (payload) => ({
+  type: DELETE_MELD_PROPOSAL,
+  payload,
+});
