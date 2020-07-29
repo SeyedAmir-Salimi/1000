@@ -1,9 +1,9 @@
 import {
-  ADD_MELD_PROPOSAL,
+  ADD_SELECTED_CARD,
   CREATE_GAME,
-  DELETE_MELD_PROPOSAL,
-  DISCARD_CARD,
+  DELETE_SELECTED_CARD,
   SET_GAME_INFO,
+  TOGGLE_SELECTED_MELD,
 } from "./actionTypes";
 
 export const set_game_info = (cards) => {
@@ -20,17 +20,17 @@ export const create_game = (info) => {
   };
 };
 
-export const discard_card = (payload) => ({
-  type: DISCARD_CARD,
+export const add_selected_card = (payload) => ({
+  type: ADD_SELECTED_CARD,
   payload,
 });
 
-export const add_meld_proposal = (payload) => ({
-  type: ADD_MELD_PROPOSAL,
+export const delete_selected_card = (payload) => ({
+  type: DELETE_SELECTED_CARD,
   payload,
 });
 
-export const delete_meld_proposal = (payload) => ({
-  type: DELETE_MELD_PROPOSAL,
+export const toggle_selected_meld = (payload) => ({
+  type: TOGGLE_SELECTED_MELD,
   payload,
 });

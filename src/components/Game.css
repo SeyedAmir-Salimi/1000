@@ -45,3 +45,11 @@
   top: 40%;
   left: 40%;
 }
+
+.topOfTheMeldWrapper{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: scale(0.75, 0.5)
+
+}

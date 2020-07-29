@@ -1,11 +1,11 @@
 import { number, string } from "prop-types";
 
 import {
-  ADD_MELD_PROPOSAL,
+  ADD_SELECTED_CARD,
   CREATE_GAME,
-  DELETE_MELD_PROPOSAL,
-  DISCARD_CARD,
+  DELETE_SELECTED_CARD,
   SET_GAME_INFO,
+  TOGGLE_SELECTED_MELD,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -17,7 +17,8 @@ const initialState = {
   hand: [],
   topOfTheMeld: null,
   topOfTheDeck: null,
-  meldProposals: [],
+  selectedCards: [],
+  selectedMeld: null,
 };
 
 export default (state = initialState, action) => {
@@ -43,36 +44,41 @@ export default (state = initialState, action) => {
         set,
         hand,
         topOfTheDeck,
+        topOfTheMeld,
       } = action.payload;
-      return { ...state, gameId, round, set, opponents, hand, topOfTheDeck };
-    }
-
-    case DISCARD_CARD: {
-      const NewtopOfTheDeck = {
-        id: action.payload.id,
-        cardId: action.payload.cardId,
-      };
       return {
         ...state,
-        topOfTheDeck: NewtopOfTheDeck,
-        hand: state.hand.filter((x) => x.id !== action.payload.id),
-      };
-    }
-
-    case ADD_MELD_PROPOSAL: {
-      const addedCard = [...state.meldProposals, action.payload];
-      return {
-        ...state,
-        meldProposals: addedCard,
+        gameId,
+        round,
+        set,
+        opponents,
+        hand,
+        topOfTheDeck,
+        topOfTheMeld,
+        selectedCards: [],
+        selectedMeld: null,
       };
     }
 
-    case DELETE_MELD_PROPOSAL: {
+    case ADD_SELECTED_CARD: {
+      const uodated = [...state.selectedCards, action.payload];
       return {
         ...state,
-        meldProposals: state.meldProposals.filter(
-          (x) => x.id !== action.payload.id
-        ),
+        selectedCards: uodated,
+      };
+    }
+
+    case DELETE_SELECTED_CARD: {
+      return {
+        ...state,
+        selectedCards: state.selectedCards.filter((x) => x !== action.payload),
+      };
+    }
+
+    case TOGGLE_SELECTED_MELD: {
+      return {
+        ...state,
+        selectedMeld: state.selectedMeld ? null : action.payload,
       };
     }
 

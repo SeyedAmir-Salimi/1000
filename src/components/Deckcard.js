@@ -10,8 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import cardImages from "../assets/cards.json";
 import thief from "../assets/images/thief.png";
 import {
-  add_meld_proposal,
-  delete_meld_proposal,
+  add_selected_card,
+  delete_selected_card,
 } from "../redux/actions/actions";
 
 function Deckcard({ card }) {
@@ -22,7 +22,7 @@ function Deckcard({ card }) {
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
 
-  // const selectedCardState = useSelector((state) => state.gameInfo.meldProposals);
+  // const selectedCardState = useSelector((state) => state.gameInfo.selectedCards);
   // const selectedTopOfDeck = useSelector((state) => state.gameInfo.topOfTheDeck);
   // const all = [...selectedCardState, selectedTopOfDeck];
 
@@ -42,9 +42,9 @@ function Deckcard({ card }) {
   const toggleSelection = () => {
     setIsSelected(!isSelected);
     if (isSelected) {
-      dispatch(delete_meld_proposal(card.id));
+      dispatch(delete_selected_card(card.id));
     } else {
-      dispatch(add_meld_proposal(card.id));
+      dispatch(add_selected_card(card.id));
     }
   };
 

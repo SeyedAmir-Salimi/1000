@@ -4,15 +4,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { createMeldFromCards } from "../API/index";
 
 export default function MeldButton() {
-  const meldProposals = useSelector((state) => state.gameInfo.meldProposals);
+  const selectedCards = useSelector((state) => state.gameInfo.selectedCards);
+  const selectedMeld = useSelector((state) => state.gameInfo.selectedMeld);
   const dispatch = useDispatch();
   return (
     <div>
-      {meldProposals && meldProposals.length > 1 && (
-        <button onClick={() => dispatch(createMeldFromCards(meldProposals))}>
+      {shoudShow(selectedCards, selectedMeld) && (
+        <button
+          onClick={() =>
+            dispatch(createMeldFromCards(selectedCards, selectedMeld))
+          }
+        >
           meld
         </button>
       )}
     </div>
+  );
+}
+
+function shoudShow(selectedCards, selectedMeld) {
+  return (
+    (selectedCards && selectedCards.length > 1) ||
+    (selectedCards.length > 0 && selectedMeld)
   );
 }

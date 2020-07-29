@@ -1,38 +1,28 @@
-import "./Card.css";
+import "./Meld.css";
 
 import PropTypes from "prop-types";
-import React, { useState } from "react";
-import Draggable from "react-draggable";
+import React, { useEffect, useState } from "react";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { MdRadioButtonUnchecked } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 
-import { discard } from "../API/index";
 import cardImages from "../assets/cards.json";
-import {
-  add_selected_card,
-  delete_selected_card,
-} from "../redux/actions/actions";
+import { toggle_selected_meld } from "../redux/actions/actions";
 
-function Card({ card }) {
+function Meld({ card }) {
   const [isSelected, setIsSelected] = useState(false);
   const dispatch = useDispatch();
+
+  console.log("meld", card);
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
 
   const toggleSelection = () => {
     setIsSelected(!isSelected);
-    if (isSelected) {
-      dispatch(delete_selected_card(card.id));
-    } else {
-      dispatch(add_selected_card(card.id));
-    }
+    dispatch(toggle_selected_meld(card.meldId));
   };
-
-  console.log("cardID", card.cardId);
-
   return (
-    <Draggable key={card.id} bounds="body">
+    <>
       <div className="box" style={{ backgroundImage: `url(${imageFile})` }}>
         {isSelected ? (
           <IoMdCheckmarkCircleOutline
@@ -47,17 +37,13 @@ function Card({ card }) {
             style={{ color: "red" }}
           />
         )}
-
-        <h2 className="fire" onClick={() => dispatch(discard(card.id))}>
-          🔥
-        </h2>
       </div>
-    </Draggable>
+    </>
   );
 }
 
-Card.propTypes = {
+Meld.propTypes = {
   card: PropTypes.object,
 };
 
-export default Card;
+export default Meld;
