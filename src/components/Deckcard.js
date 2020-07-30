@@ -1,4 +1,4 @@
-import "./Card.css";
+import "./Deckcard.css";
 
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
@@ -7,18 +7,24 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { MdRadioButtonUnchecked } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 
-import { discard } from "../API/index";
 import cardImages from "../assets/cards.json";
+import thief from "../assets/images/thief.png";
 import {
   add_selected_card,
   delete_selected_card,
 } from "../redux/actions/actions";
 
-function Card({ card }) {
+function Deckcard({ card }) {
   const [isSelected, setIsSelected] = useState(false);
   const dispatch = useDispatch();
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
+
+  // todo => insted of being dependent on the side efect we should be dipendent on the actual event
+  const set = useSelector((state) => state.gameInfo.set);
+  useEffect(() => {
+    setIsSelected(false);
+  }, [set]);
 
   const toggleSelection = () => {
     setIsSelected(!isSelected);
@@ -45,17 +51,13 @@ function Card({ card }) {
             style={{ color: "red" }}
           />
         )}
-
-        <h2 className="fire" onClick={() => dispatch(discard(card.id))}>
-          🔥
-        </h2>
       </div>
     </Draggable>
   );
 }
 
-Card.propTypes = {
+Deckcard.propTypes = {
   card: PropTypes.object,
 };
 
-export default Card;
+export default Deckcard;

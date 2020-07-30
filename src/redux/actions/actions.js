@@ -1,4 +1,10 @@
-import { CREATE_GAME, SET_GAME_INFO } from "./actionTypes";
+import {
+  ADD_SELECTED_CARD,
+  CREATE_GAME,
+  DELETE_SELECTED_CARD,
+  SET_GAME_INFO,
+  TOGGLE_SELECTED_MELD,
+} from "./actionTypes";
 
 export const set_game_info = (cards) => {
   return {
@@ -13,3 +19,18 @@ export const create_game = (info) => {
     payload: info,
   };
 };
+
+export const add_selected_card = (payload) => ({
+  type: ADD_SELECTED_CARD,
+  payload,
+});
+
+export const delete_selected_card = (payload) => ({
+  type: DELETE_SELECTED_CARD,
+  payload,
+});
+
+export const toggle_selected_meld = (payload) => ({
+  type: TOGGLE_SELECTED_MELD,
+  payload,
+});

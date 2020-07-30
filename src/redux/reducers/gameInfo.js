@@ -1,6 +1,12 @@
 import { number, string } from "prop-types";
 
-import { CREATE_GAME, SET_GAME_INFO } from "../actions/actionTypes";
+import {
+  ADD_SELECTED_CARD,
+  CREATE_GAME,
+  DELETE_SELECTED_CARD,
+  SET_GAME_INFO,
+  TOGGLE_SELECTED_MELD,
+} from "../actions/actionTypes";
 
 const initialState = {
   gameId: string,
@@ -9,14 +15,16 @@ const initialState = {
   set: number,
   opponents: null,
   hand: [],
+  topOfTheMeld: null,
   topOfTheDeck: null,
+  selectedCards: [],
+  selectedMeld: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case CREATE_GAME: {
       const { id, playerNumbers, round, set } = action.payload;
-      console.log("CREATE_GAME", id);
       return {
         ...state,
         gameId: id,
@@ -36,10 +44,45 @@ export default (state = initialState, action) => {
         set,
         hand,
         topOfTheDeck,
+        topOfTheMeld,
       } = action.payload;
-      console.log("SET_GAME_INFO", gameId);
-      return { ...state, gameId, round, set, opponents, hand, topOfTheDeck };
+      return {
+        ...state,
+        gameId,
+        round,
+        set,
+        opponents,
+        hand,
+        topOfTheDeck,
+        topOfTheMeld,
+        selectedCards: [],
+        selectedMeld: null,
+      };
     }
+
+    case ADD_SELECTED_CARD: {
+      const updated = [...state.selectedCards, action.payload];
+      return {
+        ...state,
+        selectedCards: updated,
+      };
+    }
+
+    case DELETE_SELECTED_CARD: {
+      return {
+        ...state,
+        selectedCards: state.selectedCards.filter((x) => x !== action.payload),
+      };
+    }
+
+    case TOGGLE_SELECTED_MELD: {
+      return {
+        ...state,
+        selectedMeld:
+          action.payload === state.selectedMeld ? null : action.payload,
+      };
+    }
+
     default:
       return state;
   }

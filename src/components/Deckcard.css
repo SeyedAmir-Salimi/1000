@@ -1,0 +1,30 @@
+.deckCard_Wrapper{
+    border-radius: 8px;
+    width: 169px;
+    height: 244px;
+    margin: 10px;
+    float: left;
+}
+
+.deckCard_img{
+    position: absolute;
+    width: 70%;
+    left: 1.6rem;
+    top: 2rem;
+    cursor: pointer;
+    display: none;
+}
+
+.box:hover .Selected_Card{
+    opacity: 100;
+     cursor: pointer;
+     transition: opacity 0.5s ease-in-out;
+   }
+   
+   .Selected_Card{
+     opacity: 0;
+     font-size: 2rem;
+     position: absolute;
+     bottom: 0.2rem;
+     left: 0.2rem;
+   }

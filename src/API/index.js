@@ -17,7 +17,8 @@ export const fetchGameInfo = () => {
   };
 };
 
-export const generateHands = (gameId) => {
+export const generateHands = () => {
+  const gameId = Cookies.get("Rummy_gameId");
   return (dispatch) => {
     Axios.post(`http://localhost:3000/cards/generateHands`, { gameId })
       .then((doc) => {
@@ -39,6 +40,38 @@ export const createGame = (PN) => {
       .then((doc) => {
         dispatch(create_game(doc.data));
         Cookies.set("Rummy_gameId", doc.data.id);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+export const discard = (cardId) => {
+  const gameId = Cookies.get("Rummy_gameId");
+  return (dispatch) => {
+    Axios.patch(`http://localhost:3000/cards/discard`, { _id: cardId, gameId })
+      .then((doc) => {
+        const result = doc.data;
+        dispatch(set_game_info(result));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+export const createMeldFromCards = (ids, meldId) => {
+  return (dispatch) => {
+    Axios.put(`http://localhost:3000/melds/`, {
+      cardIds: ids,
+      userId: "User4",
+      gameId: Cookies.get("Rummy_gameId"),
+      selectedMeld: meldId,
+    })
+      .then((doc) => {
+        const result = doc.data;
+        dispatch(set_game_info(result));
       })
       .catch((error) => {
         console.log(error);
