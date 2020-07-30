@@ -71,7 +71,6 @@ export const createMeldFromCards = (ids, meldId) => {
     })
       .then((doc) => {
         const result = doc.data;
-        console.log("indexAPI", result);
         dispatch(set_game_info(result));
       })
       .catch((error) => {

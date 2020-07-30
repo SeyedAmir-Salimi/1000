@@ -1,7 +1,7 @@
 import "./Card.css";
 
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { MdRadioButtonUnchecked } from "react-icons/md";
@@ -28,8 +28,6 @@ function Card({ card }) {
       dispatch(add_selected_card(card.id));
     }
   };
-
-  console.log("cardID", card.cardId);
 
   return (
     <Draggable key={card.id} bounds="body">

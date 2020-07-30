@@ -61,10 +61,10 @@ export default (state = initialState, action) => {
     }
 
     case ADD_SELECTED_CARD: {
-      const uodated = [...state.selectedCards, action.payload];
+      const updated = [...state.selectedCards, action.payload];
       return {
         ...state,
-        selectedCards: uodated,
+        selectedCards: updated,
       };
     }
 
@@ -78,7 +78,8 @@ export default (state = initialState, action) => {
     case TOGGLE_SELECTED_MELD: {
       return {
         ...state,
-        selectedMeld: state.selectedMeld ? null : action.payload,
+        selectedMeld:
+          action.payload === state.selectedMeld ? null : action.payload,
       };
     }
 

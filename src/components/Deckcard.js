@@ -15,29 +15,16 @@ import {
 } from "../redux/actions/actions";
 
 function Deckcard({ card }) {
-  // const [SelectedCardValue, setSelectedCardValue] = useState();
   const [isSelected, setIsSelected] = useState(false);
   const dispatch = useDispatch();
-
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
 
-  // const selectedCardState = useSelector((state) => state.gameInfo.selectedCards);
-  // const selectedTopOfDeck = useSelector((state) => state.gameInfo.topOfTheDeck);
-  // const all = [...selectedCardState, selectedTopOfDeck];
-
-  // const allEqual = (arr) => {
-  //   return new Set(arr).size == 1;
-  // };
-
-  // const isVisible = allEqual(SelectedCardValue);
-  // useEffect(() => {
-  //   setSelectedCardValue(
-  //     all.map((x) => x.cardId.substr(0, x.cardId.indexOf("-")))
-  //   );
-  // }, [selectedCardState]);
-
-  // const visibility = isVisible ? "flex" : "none";
+  // todo => insted of being dependent on the side efect we should be dipendent on the actual event
+  const set = useSelector((state) => state.gameInfo.set);
+  useEffect(() => {
+    setIsSelected(false);
+  }, [set]);
 
   const toggleSelection = () => {
     setIsSelected(!isSelected);

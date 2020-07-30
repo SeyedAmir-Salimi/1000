@@ -13,12 +13,18 @@ function Meld({ card }) {
   const [isSelected, setIsSelected] = useState(false);
   const dispatch = useDispatch();
 
-  console.log("meld", card);
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
+  const selectedMeld = useSelector((state) => state.gameInfo.selectedMeld);
+
+  // todo => insted of being dependent on the side efect we should be dipendent on the actual event
+  // const set = useSelector((state) => state.gameInfo.set);
+  useEffect(() => {
+    setIsSelected(selectedMeld === card.meldId);
+  }, [card.meldId, selectedMeld]);
 
   const toggleSelection = () => {
-    setIsSelected(!isSelected);
+    setIsSelected(selectedMeld === card.meldId);
     dispatch(toggle_selected_meld(card.meldId));
   };
   return (

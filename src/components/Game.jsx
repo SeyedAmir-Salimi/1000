@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { createGame, fetchGameInfo, generateHands } from "../API/index";
 import Card from "./Card";
-import DeckCard from "./Deckcard";
+import DeckCard from "./DeckCard";
 import Meld from "./Meld";
 import MeldButtun from "./MeldButton";
 import OpponentHand from "./OpponentHand";
@@ -59,9 +59,37 @@ const Game = () => {
         {topOfTheDeck && <DeckCard key={topOfTheDeck.id} card={topOfTheDeck} />}
       </div>
       <div className="user4Wrapper">{handCards}</div>
+
       {topOfTheMeld && (
-        <div className="topOfTheMeldWrapper">
+        <div className="topOfTheUser4MeldWrapper">
           <Meld key={topOfTheMeld.medlId} card={topOfTheMeld} />
+        </div>
+      )}
+
+      {opponents && opponents.User1.topOfTheMeld && (
+        <div className="topOfTheUser1MeldWrapper">
+          <Meld
+            key={opponents.User1.topOfTheMeld.medlId}
+            card={opponents.User1.topOfTheMeld}
+          />
+        </div>
+      )}
+
+      {opponents && opponents.User2.topOfTheMeld && (
+        <div className="topOfTheUser2MeldWrapper">
+          <Meld
+            key={opponents.User2.topOfTheMeld.medlId}
+            card={opponents.User2.topOfTheMeld}
+          />
+        </div>
+      )}
+
+      {opponents && opponents.User3.topOfTheMeld && (
+        <div className="topOfTheUser3MeldWrapper">
+          <Meld
+            key={opponents.User3.topOfTheMeld.medlId}
+            card={opponents.User3.topOfTheMeld}
+          />
         </div>
       )}
     </>
