@@ -50,7 +50,10 @@ export const createGame = (PN) => {
 export const discard = (cardId) => {
   const gameId = Cookies.get("Rummy_gameId");
   return (dispatch) => {
-    Axios.patch(`http://localhost:3000/cards/discard`, { _id: cardId, gameId })
+    Axios.patch(`http://localhost:3000/actions/discard`, {
+      _id: cardId,
+      gameId,
+    })
       .then((doc) => {
         const result = doc.data;
         dispatch(set_game_info(result));
@@ -63,7 +66,7 @@ export const discard = (cardId) => {
 
 export const createMeldFromCards = (ids, meldId) => {
   return (dispatch) => {
-    Axios.put(`http://localhost:3000/melds/`, {
+    Axios.put(`http://localhost:3000/actions/meld`, {
       cardIds: ids,
       userId: "User4",
       gameId: Cookies.get("Rummy_gameId"),
