@@ -51,12 +51,24 @@ export const discard = (cardId) => {
   const gameId = Cookies.get("Rummy_gameId");
   return (dispatch) => {
     Axios.patch(`http://localhost:3000/actions/discard`, {
-      _id: cardId,
+      id: cardId,
       gameId,
     })
       .then((doc) => {
-        const result = doc.data;
-        dispatch(set_game_info(result));
+        const gameStates = doc.data;
+        dispatch(set_game_info(gameStates[3]));
+
+        setTimeout(() => {
+          dispatch(set_game_info(gameStates[0]));
+        }, 1500);
+
+        setTimeout(() => {
+          dispatch(set_game_info(gameStates[1]));
+        }, 2500);
+
+        setTimeout(() => {
+          dispatch(set_game_info(gameStates[2]));
+        }, 3500);
       })
       .catch((error) => {
         console.log(error);
