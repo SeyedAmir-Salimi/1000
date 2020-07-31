@@ -4,6 +4,7 @@ import {
   DELETE_SELECTED_CARD,
   SET_GAME_INFO,
   TOGGLE_SELECTED_MELD,
+  TOGGLE_MY_TURN
 } from "./actionTypes";
 
 export const set_game_info = (cards) => {
@@ -33,4 +34,8 @@ export const delete_selected_card = (payload) => ({
 export const toggle_selected_meld = (payload) => ({
   type: TOGGLE_SELECTED_MELD,
   payload,
+});
+
+export const toggle_my_turn = () => ({
+  type: TOGGLE_MY_TURN,
 });

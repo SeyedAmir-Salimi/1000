@@ -6,10 +6,11 @@ import { createMeldFromCards } from "../API/index";
 export default function MeldButton() {
   const selectedCards = useSelector((state) => state.gameInfo.selectedCards);
   const selectedMeld = useSelector((state) => state.gameInfo.selectedMeld);
+  const isMyTurn = useSelector((state) => state.gameInfo.isMyTurn);
   const dispatch = useDispatch();
   return (
     <div>
-      {shoudShow(selectedCards, selectedMeld) && (
+      {shoudShow(selectedCards, selectedMeld, isMyTurn) && (
         <button
           onClick={() =>
             dispatch(createMeldFromCards(selectedCards, selectedMeld))
@@ -22,9 +23,9 @@ export default function MeldButton() {
   );
 }
 
-function shoudShow(selectedCards, selectedMeld) {
+function shoudShow(selectedCards, selectedMeld, isMyTurn) {
   return (
-    (selectedCards && selectedCards.length > 1) ||
-    (selectedCards.length > 0 && selectedMeld)
+    (selectedCards && selectedCards.length > 1 && isMyTurn) ||
+    (selectedCards.length > 0 && selectedMeld && isMyTurn)
   );
 }

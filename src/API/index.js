@@ -1,7 +1,11 @@
 import Axios from "axios";
 import Cookies from "js-cookie";
 
-import { create_game, set_game_info } from "../redux/actions/actions";
+import {
+  create_game,
+  set_game_info,
+  toggle_my_turn,
+} from "../redux/actions/actions";
 
 export const fetchGameInfo = () => {
   const gameId = Cookies.get("Rummy_gameId");
@@ -50,7 +54,8 @@ export const createGame = (PN) => {
 export const discard = (cardId) => {
   const gameId = Cookies.get("Rummy_gameId");
   return (dispatch) => {
-    Axios.patch(`http://localhost:3000/actions/discard`, {
+    dispatch(toggle_my_turn());
+    Axios.put(`http://localhost:3000/actions/discard`, {
       id: cardId,
       gameId,
     })
@@ -68,16 +73,19 @@ export const discard = (cardId) => {
 
         setTimeout(() => {
           dispatch(set_game_info(gameStates[2]));
+          dispatch(toggle_my_turn());
         }, 3500);
       })
       .catch((error) => {
         console.log(error);
+        dispatch(toggle_my_turn());
       });
   };
 };
 
 export const createMeldFromCards = (ids, meldId) => {
   return (dispatch) => {
+    dispatch(toggle_my_turn());
     Axios.put(`http://localhost:3000/actions/meld`, {
       cardIds: ids,
       userId: "User4",
@@ -85,11 +93,25 @@ export const createMeldFromCards = (ids, meldId) => {
       selectedMeld: meldId,
     })
       .then((doc) => {
-        const result = doc.data;
-        dispatch(set_game_info(result));
+        const gameStates = doc.data;
+        dispatch(set_game_info(gameStates[3]));
+
+        setTimeout(() => {
+          dispatch(set_game_info(gameStates[0]));
+        }, 1500);
+
+        setTimeout(() => {
+          dispatch(set_game_info(gameStates[1]));
+        }, 2500);
+
+        setTimeout(() => {
+          dispatch(set_game_info(gameStates[2]));
+          dispatch(toggle_my_turn());
+        }, 3500);
       })
       .catch((error) => {
         console.log(error);
+        dispatch(toggle_my_turn());
       });
   };
 };

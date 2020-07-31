@@ -5,6 +5,7 @@ import {
   CREATE_GAME,
   DELETE_SELECTED_CARD,
   SET_GAME_INFO,
+  TOGGLE_MY_TURN,
   TOGGLE_SELECTED_MELD,
 } from "../actions/actionTypes";
 
@@ -19,6 +20,7 @@ const initialState = {
   topOfTheDeck: null,
   selectedCards: [],
   selectedMeld: null,
+  isMyTurn: true,
 };
 
 export default (state = initialState, action) => {
@@ -83,6 +85,12 @@ export default (state = initialState, action) => {
       };
     }
 
+    case TOGGLE_MY_TURN: {
+      return {
+        ...state,
+        isMyTurn: !state.isMyTurn,
+      };
+    }
     default:
       return state;
   }
