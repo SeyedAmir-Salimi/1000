@@ -61,18 +61,18 @@ export const discard = (cardId) => {
     })
       .then((doc) => {
         const gameStates = doc.data;
-        dispatch(set_game_info(gameStates[3]));
-
-        setTimeout(() => {
-          dispatch(set_game_info(gameStates[0]));
-        }, 1500);
+        dispatch(set_game_info(gameStates[0]));
 
         setTimeout(() => {
           dispatch(set_game_info(gameStates[1]));
-        }, 2500);
+        }, 1500);
 
         setTimeout(() => {
           dispatch(set_game_info(gameStates[2]));
+        }, 2500);
+
+        setTimeout(() => {
+          dispatch(set_game_info(gameStates[3]));
           dispatch(toggle_my_turn());
         }, 3500);
       })
@@ -94,18 +94,18 @@ export const createMeldFromCards = (ids, meldId) => {
     })
       .then((doc) => {
         const gameStates = doc.data;
-        dispatch(set_game_info(gameStates[3]));
-
-        setTimeout(() => {
-          dispatch(set_game_info(gameStates[0]));
-        }, 1500);
+        dispatch(set_game_info(gameStates[0]));
 
         setTimeout(() => {
           dispatch(set_game_info(gameStates[1]));
-        }, 2500);
+        }, 1500);
 
         setTimeout(() => {
           dispatch(set_game_info(gameStates[2]));
+        }, 2500);
+
+        setTimeout(() => {
+          dispatch(set_game_info(gameStates[3]));
           dispatch(toggle_my_turn());
         }, 3500);
       })
