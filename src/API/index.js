@@ -73,8 +73,52 @@ export const discard = (cardId) => {
 
         setTimeout(() => {
           dispatch(set_game_info(gameStates[3]));
-          dispatch(toggle_my_turn());
+          if (!gameStates[4]) {
+            dispatch(toggle_my_turn());
+          }
         }, 3500);
+
+        if (gameStates[4]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[4]));
+            dispatch(toggle_my_turn());
+          }, 4000);
+        }
+
+        if (gameStates[5]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[5]));
+            dispatch(toggle_my_turn());
+          }, 5000);
+        }
+
+        if (gameStates[6]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[6]));
+            dispatch(toggle_my_turn());
+          }, 6000);
+        }
+
+        if (gameStates[7]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[7]));
+            dispatch(toggle_my_turn());
+          }, 7000);
+        }
+
+        if (gameStates[8]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[8]));
+            dispatch(toggle_my_turn());
+          }, 8000);
+        }
+
+        if (gameStates[9]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[9]));
+            dispatch(toggle_my_turn());
+          }, 9000);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -108,6 +152,48 @@ export const createMeldFromCards = (ids, meldId) => {
           dispatch(set_game_info(gameStates[3]));
           dispatch(toggle_my_turn());
         }, 3500);
+
+        if (gameStates[4]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[4]));
+            dispatch(toggle_my_turn());
+          }, 4000);
+        }
+
+        if (gameStates[5]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[5]));
+            dispatch(toggle_my_turn());
+          }, 5000);
+        }
+
+        if (gameStates[6]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[6]));
+            dispatch(toggle_my_turn());
+          }, 6000);
+        }
+
+        if (gameStates[7]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[7]));
+            dispatch(toggle_my_turn());
+          }, 7000);
+        }
+
+        if (gameStates[8]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[8]));
+            dispatch(toggle_my_turn());
+          }, 8000);
+        }
+
+        if (gameStates[9]) {
+          setTimeout(() => {
+            dispatch(set_game_info(gameStates[9]));
+            dispatch(toggle_my_turn());
+          }, 9000);
+        }
       })
       .catch((error) => {
         console.log(error);
