@@ -33,8 +33,12 @@ export default (state = initialState, action) => {
         hand: [],
         opponents: null,
         topOfTheDeck: null,
+        topOfTheMeld: null,
+        selectedCards: [],
+        selectedMeld: null,
         playerNumbers,
         round,
+        isMyTurn: true,
         set,
       };
     }
