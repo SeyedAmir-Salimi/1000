@@ -31,31 +31,33 @@ function Card({ card }) {
   };
 
   return (
-    <Draggable key={card.id} bounds="body">
-      <div className="box" style={{ backgroundImage: `url(${imageFile})` }}>
-        {isSelected && (
-          <IoMdCheckmarkCircleOutline
-            className="Selected_Card"
-            onClick={() => toggleSelection()}
-            style={{ color: "green", opacity: "100%" }}
-          />
-        )}
+    <div
+      className="box"
+      style={{ backgroundImage: `url(${imageFile})` }}
+      onClick={() => toggleSelection()}
+    >
+      {isSelected && (
+        <IoMdCheckmarkCircleOutline
+          className="Selected_Card"
+          onClick={() => toggleSelection()}
+          style={{ color: "green", opacity: "100%" }}
+        />
+      )}
 
-        {!isSelected && (
-          <MdRadioButtonUnchecked
-            className="Selected_Card"
-            onClick={() => toggleSelection()}
-            style={{ color: "red" }}
-          />
-        )}
+      {/* {!isSelected && (
+        <MdRadioButtonUnchecked
+          className="Selected_Card"
+          onClick={() => toggleSelection()}
+          style={{ color: "red" }}
+        />
+      )} */}
 
-        {isMyTurn && (
-          <h2 className="fire" onClick={() => dispatch(discard(card.id))}>
-            🔥
-          </h2>
-        )}
-      </div>
-    </Draggable>
+      {isMyTurn && (
+        <h2 className="fire" onClick={() => dispatch(discard(card.id))}>
+          🔥
+        </h2>
+      )}
+    </div>
   );
 }
 

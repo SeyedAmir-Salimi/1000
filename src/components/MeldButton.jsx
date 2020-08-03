@@ -1,3 +1,5 @@
+import "./MeldButton.css";
+
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,6 +14,7 @@ export default function MeldButton() {
     <div>
       {shoudShow(selectedCards, selectedMeld, isMyTurn) && (
         <button
+          className="meldButton"
           onClick={() =>
             dispatch(createMeldFromCards(selectedCards, selectedMeld))
           }

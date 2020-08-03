@@ -9,6 +9,7 @@ import DeckCard from "./DeckCard";
 import Meld from "./Meld";
 import MeldButtun from "./MeldButton";
 import OpponentHand from "./OpponentHand";
+import Points from "./Points";
 
 const Game = () => {
   const dispatch = useDispatch();
@@ -35,8 +36,12 @@ const Game = () => {
     <>
       <button onClick={() => createGameCall()}>create game</button>
       <button onClick={() => generateHandsCall()}>generate hands</button>
-      <MeldButtun />
-
+      <div className="meldButtonWrapper">
+        <MeldButtun />
+      </div>
+      <div className="pointsWrapper">
+        <Points />
+      </div>
       <div className="user1Wrapper">
         {opponents && opponents.User1 && (
           <OpponentHand handKey="User1" count={opponents.User1.cardCount} />

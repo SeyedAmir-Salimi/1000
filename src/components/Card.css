@@ -36,7 +36,9 @@
   width: 169px;
   height: 244px;
   margin: 10px;
-  float: left;
+  padding: 2rem;
+  position: relative;
+  cursor: pointer;
 }
 
 .fire{

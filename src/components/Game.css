@@ -75,3 +75,14 @@
   right: 0;
   transform: scale(0.6, 0.6) rotate(90deg);
 }
+
+.meldButtonWrapper{
+  position: absolute;
+  bottom: 5%;
+  right: 20%;
+}
+
+.pointsWrapper{
+  position: absolute;
+  left: 10%;
+}
