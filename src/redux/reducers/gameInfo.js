@@ -22,6 +22,7 @@ const initialState = {
   selectedCards: [],
   selectedMeld: null,
   isMyTurn: true,
+  winner: null,
 };
 
 export default (state = initialState, action) => {
@@ -42,6 +43,7 @@ export default (state = initialState, action) => {
         isMyTurn: true,
         set,
         points: {},
+        winner: null,
       };
     }
     case SET_GAME_INFO: {
@@ -54,6 +56,7 @@ export default (state = initialState, action) => {
         topOfTheDeck,
         topOfTheMeld,
         points,
+        winner,
       } = action.payload;
       return {
         ...state,
@@ -67,6 +70,7 @@ export default (state = initialState, action) => {
         selectedCards: [],
         selectedMeld: null,
         points: points,
+        winner,
       };
     }
 
