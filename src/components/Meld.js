@@ -29,18 +29,16 @@ function Meld({ card }) {
   };
   return (
     <>
-      <div className="box" style={{ backgroundImage: `url(${imageFile})` }}>
-        {isSelected ? (
+      <div
+        className="box"
+        style={{ backgroundImage: `url(${imageFile})` }}
+        onClick={() => toggleSelection()}
+      >
+        {isSelected && (
           <IoMdCheckmarkCircleOutline
             className="Selected_Card"
             onClick={() => toggleSelection()}
             style={{ color: "green", opacity: "100%" }}
-          />
-        ) : (
-          <MdRadioButtonUnchecked
-            className="Selected_Card"
-            onClick={() => toggleSelection()}
-            style={{ color: "red" }}
           />
         )}
       </div>

@@ -2,9 +2,16 @@ import "./ReversedCard.css";
 
 import PropTypes from "prop-types";
 import React from "react";
+import { useSelector } from "react-redux";
 
-function ReversedCard(cardKey) {
-  const imageFile = require(`../assets/images/back-0062ff.png`);
+function getBackgroundImage(round) {
+  return round % 14;
+}
+
+function ReversedCard({ cardKey }) {
+  const round = useSelector((state) => state.gameInfo.round);
+  const backNumber = getBackgroundImage(round);
+  const imageFile = require(`../assets/images/${backNumber}.png`);
 
   return (
     <div
@@ -17,6 +24,7 @@ function ReversedCard(cardKey) {
 
 ReversedCard.propTypes = {
   cardKey: PropTypes.string,
+  backNumber: PropTypes.number,
 };
 
 export default ReversedCard;

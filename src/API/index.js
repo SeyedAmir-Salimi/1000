@@ -1,5 +1,6 @@
 import Axios from "axios";
 import Cookies from "js-cookie";
+import { isEqual } from "lodash";
 
 import {
   create_game,
@@ -53,7 +54,7 @@ export const createGame = (PN) => {
 
 export const discard = (cardId) => {
   const gameId = Cookies.get("Rummy_gameId");
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch(toggle_my_turn());
     Axios.put(`http://localhost:3000/actions/discard`, {
       id: cardId,
@@ -61,10 +62,9 @@ export const discard = (cardId) => {
     })
       .then((doc) => {
         const gameStates = doc.data;
-        dispatch(set_game_info(gameStates[0]));
-
         let delay = 0;
         gameStates.forEach((element) => {
+          getDiff(getState().gameInfo, element)
           delay = delay + 500;
           setTimeout(() => {
             dispatch(set_game_info(element));
@@ -92,8 +92,6 @@ export const createMeldFromCards = (ids, meldId) => {
     })
       .then((doc) => {
         const gameStates = doc.data;
-        dispatch(set_game_info(gameStates[0]));
-
         let delay = 0;
         gameStates.forEach((element) => {
           delay = delay + 500;
@@ -104,61 +102,6 @@ export const createMeldFromCards = (ids, meldId) => {
             }
           }, delay);
         });
-
-        // setTimeout(() => {
-        //   dispatch(set_game_info(gameStates[1]));
-        // }, 1500);
-
-        // setTimeout(() => {
-        //   dispatch(set_game_info(gameStates[2]));
-        // }, 2500);
-
-        // setTimeout(() => {
-        //   dispatch(set_game_info(gameStates[3]));
-        //   dispatch(toggle_my_turn());
-        // }, 3500);
-
-        // if (gameStates[4]) {
-        //   setTimeout(() => {
-        //     dispatch(set_game_info(gameStates[4]));
-        //     dispatch(toggle_my_turn());
-        //   }, 4000);
-        // }
-
-        // if (gameStates[5]) {
-        //   setTimeout(() => {
-        //     dispatch(set_game_info(gameStates[5]));
-        //     dispatch(toggle_my_turn());
-        //   }, 5000);
-        // }
-
-        // if (gameStates[6]) {
-        //   setTimeout(() => {
-        //     dispatch(set_game_info(gameStates[6]));
-        //     dispatch(toggle_my_turn());
-        //   }, 6000);
-        // }
-
-        // if (gameStates[7]) {
-        //   setTimeout(() => {
-        //     dispatch(set_game_info(gameStates[7]));
-        //     dispatch(toggle_my_turn());
-        //   }, 7000);
-        // }
-
-        // if (gameStates[8]) {
-        //   setTimeout(() => {
-        //     dispatch(set_game_info(gameStates[8]));
-        //     dispatch(toggle_my_turn());
-        //   }, 8000);
-        // }
-
-        // if (gameStates[9]) {
-        //   setTimeout(() => {
-        //     dispatch(set_game_info(gameStates[9]));
-        //     dispatch(toggle_my_turn());
-        //   }, 9000);
-        // }
       })
       .catch((error) => {
         console.log(error);
@@ -166,3 +109,17 @@ export const createMeldFromCards = (ids, meldId) => {
       });
   };
 };
+
+function getDiff(oldState, newState) {
+  const user1old = oldState.opponents.User1;
+  const user1new = newState.opponents.User1;
+  console.log(user1old, user1new);
+  if (!isEqual(user1old, user1new)) {
+    if (!isEqual(user1old.topOfTheMeld, user1new.topOfTheMeld)) {
+      console.log("user1 melded");
+    }
+    if (!isEqual(user1old.cardCount, user1new.cardCount)) {
+      console.log("user1 discarded");
+    }
+  }
+}

@@ -3,8 +3,8 @@ import {
   CREATE_GAME,
   DELETE_SELECTED_CARD,
   SET_GAME_INFO,
+  TOGGLE_MY_TURN,
   TOGGLE_SELECTED_MELD,
-  TOGGLE_MY_TURN
 } from "./actionTypes";
 
 export const set_game_info = (cards) => {
