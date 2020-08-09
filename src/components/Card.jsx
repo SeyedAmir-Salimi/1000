@@ -1,10 +1,8 @@
 import "./Card.css";
 
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-import Draggable from "react-draggable";
+import React, { useState } from "react";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import { MdRadioButtonUnchecked } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 
 import { discard } from "../API/index";
@@ -54,7 +52,7 @@ function Card({ card }) {
 
       {isMyTurn && (
         <h2 className="fire" onClick={() => dispatch(discard(card.id))}>
-          🔥
+          <>🔥</>
         </h2>
       )}
     </div>

@@ -2,6 +2,8 @@ import {
   ADD_SELECTED_CARD,
   CREATE_GAME,
   DELETE_SELECTED_CARD,
+  DISCARD_OPPONENT_CARD,
+  SET_EVENT,
   SET_GAME_INFO,
   TOGGLE_MY_TURN,
   TOGGLE_SELECTED_MELD,
@@ -38,4 +40,14 @@ export const toggle_selected_meld = (payload) => ({
 
 export const toggle_my_turn = () => ({
   type: TOGGLE_MY_TURN,
+});
+
+export const discard_opponent_card = (payload) => ({
+  type: DISCARD_OPPONENT_CARD,
+  payload,
+});
+
+export const set_event = (payload) => ({
+  type: SET_EVENT,
+  payload,
 });

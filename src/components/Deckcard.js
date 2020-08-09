@@ -2,13 +2,10 @@ import "./Deckcard.css";
 
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import Draggable from "react-draggable";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import { MdRadioButtonUnchecked } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 
 import cardImages from "../assets/cards.json";
-import thief from "../assets/images/thief.png";
 import {
   add_selected_card,
   delete_selected_card,

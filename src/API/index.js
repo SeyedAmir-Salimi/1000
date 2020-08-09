@@ -4,6 +4,8 @@ import { isEqual } from "lodash";
 
 import {
   create_game,
+  discard_opponent_card,
+  set_event,
   set_game_info,
   toggle_my_turn,
 } from "../redux/actions/actions";
@@ -55,6 +57,8 @@ export const createGame = (PN) => {
 export const discard = (cardId) => {
   const gameId = Cookies.get("Rummy_gameId");
   return (dispatch, getState) => {
+    let prevState = getState().gameInfo;
+
     dispatch(toggle_my_turn());
     Axios.put(`http://localhost:3000/actions/discard`, {
       id: cardId,
@@ -64,10 +68,37 @@ export const discard = (cardId) => {
         const gameStates = doc.data;
         let delay = 0;
         gameStates.forEach((element) => {
-          getDiff(getState().gameInfo, element)
           delay = delay + 500;
           setTimeout(() => {
-            dispatch(set_game_info(element));
+            for (const [key, value] of Object.entries(prevState.opponents)) {
+              const userBefore = value;
+              const userAfter = element.opponents[key];
+
+              if (hasUserDiscarded(userBefore, userAfter)) {
+                dispatch(
+                  set_event({
+                    user: key,
+                    type: "discard",
+                    cards: [element.topOfTheMeld],
+                  })
+                );
+                // dispatch(discard_opponent_card({ user: key }));
+              }
+            }
+
+            prevState = element;
+
+            setTimeout(() => {
+              dispatch(
+                set_event({
+                  user: null,
+                  type: null,
+                  cards: [],
+                })
+              );
+              dispatch(set_game_info(element));
+            }, 400);
+
             if (element === gameStates[gameStates.length - 1]) {
               dispatch(toggle_my_turn());
             }
@@ -94,7 +125,7 @@ export const createMeldFromCards = (ids, meldId) => {
         const gameStates = doc.data;
         let delay = 0;
         gameStates.forEach((element) => {
-          delay = delay + 500;
+          delay = delay + 2000;
           setTimeout(() => {
             dispatch(set_game_info(element));
             if (element === gameStates[gameStates.length - 1]) {
@@ -110,16 +141,19 @@ export const createMeldFromCards = (ids, meldId) => {
   };
 };
 
-function getDiff(oldState, newState) {
-  const user1old = oldState.opponents.User1;
-  const user1new = newState.opponents.User1;
-  console.log(user1old, user1new);
-  if (!isEqual(user1old, user1new)) {
-    if (!isEqual(user1old.topOfTheMeld, user1new.topOfTheMeld)) {
-      console.log("user1 melded");
-    }
-    if (!isEqual(user1old.cardCount, user1new.cardCount)) {
-      console.log("user1 discarded");
+function hasUserDiscarded(userBefore, userAfter) {
+  if (!isEqual(userBefore, userAfter)) {
+    if (!isEqual(userBefore.cardCount, userAfter.cardCount)) {
+      if (!isEqual(userBefore.topOfTheMeld, userAfter.topOfTheMeld)) {
+      } else {
+        return true;
+      }
     }
   }
+
+  return false;
+}
+
+function hasUserMelded(oldState, newState) {
+  return false;
 }

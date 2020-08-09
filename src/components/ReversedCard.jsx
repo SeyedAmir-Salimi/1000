@@ -8,15 +8,14 @@ function getBackgroundImage(round) {
   return round % 14;
 }
 
-function ReversedCard({ cardKey }) {
+function ReversedCard({ cardKey, isDiscarding }) {
   const round = useSelector((state) => state.gameInfo.round);
   const backNumber = getBackgroundImage(round);
   const imageFile = require(`../assets/images/${backNumber}.png`);
-
   return (
     <div
       key={cardKey}
-      className="reversedCard"
+      className={isDiscarding ? "reversedCard animated" : "reversedCard"}
       style={{ backgroundImage: `url(${imageFile})` }}
     ></div>
   );
@@ -25,6 +24,7 @@ function ReversedCard({ cardKey }) {
 ReversedCard.propTypes = {
   cardKey: PropTypes.string,
   backNumber: PropTypes.number,
+  isDiscarding: PropTypes.bool,
 };
 
 export default ReversedCard;

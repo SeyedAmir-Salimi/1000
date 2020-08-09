@@ -1,37 +1,28 @@
-
-.user1Wrapper {
-  display: flexbox;
+.userWrapper {
   position: absolute;
-  top: 50%;
-  left: 0;
+  display: inline-block;
+  z-index: 9999;
 }
 
-.user1Wrapper .reversedCard, .user3Wrapper .reversedCard{
+.user1Wrapper {
+  left: 120px;
+}
+
+.user1Wrapper, .user3Wrapper{
     transform: rotate(90deg);
-    margin-top: -200px;
+    top: 38%;
 }
 
 .user2Wrapper {
-  display: flex;
-  position: absolute;
   left: 42%;
   top: 0;
 }
 
-.user2Wrapper .reversedCard{
-    margin-right: -210px;
-}
-
 .user3Wrapper {
-  display: flexbox;
-  position: absolute;
-  top: 50%;
-  right: 0;
+  right: 120px;
 }
 
 .user4Wrapper {
-  display: flex;
-  position: absolute;
   bottom: 0;
   left: 50%;
 }
