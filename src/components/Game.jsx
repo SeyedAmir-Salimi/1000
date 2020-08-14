@@ -10,6 +10,7 @@ import Meld from "./Meld";
 import MeldButtun from "./MeldButton";
 import OpponentHand from "./OpponentHand";
 import Points from "./Points";
+import UserHand from "./UserHand";
 
 const Game = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,6 @@ const Game = () => {
   const topOfTheDeck = useSelector((state) => state.gameInfo.topOfTheDeck);
   const opponents = useSelector((state) => state.gameInfo.opponents);
   const topOfTheMeld = useSelector((state) => state.gameInfo.topOfTheMeld);
-
-  const handCards = hand.map((card) => <Card key={card.id} card={card} />);
 
   useEffect(() => {
     dispatch(fetchGameInfo());
@@ -64,7 +63,9 @@ const Game = () => {
         {topOfTheDeck && <DeckCard key={topOfTheDeck.id} card={topOfTheDeck} />}
       </div>
 
-      <div className="userWrapper user4Wrapper">{handCards}</div>
+      <div className="userWrapper user4Wrapper">
+        <UserHand cards={hand} />
+      </div>
 
       {topOfTheMeld && (
         <div className="topOfTheUser4MeldWrapper">

@@ -1,6 +1,6 @@
 .userWrapper {
   position: absolute;
-  display: inline-block;
+  display: flex;
   z-index: 9999;
 }
 

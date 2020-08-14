@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import "./Deckcard.css";
 
 import PropTypes from "prop-types";
@@ -11,7 +12,10 @@ import {
   delete_selected_card,
 } from "../redux/actions/actions";
 
-function Deckcard({ card }) {
+function areEqual(prevProps, nextProps) {
+  return prevProps.cardId === nextProps.cardId;
+}
+const Deckcard = React.memo(({ card }) => {
   const [isSelected, setIsSelected] = useState(false);
   const dispatch = useDispatch();
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
@@ -46,17 +50,10 @@ function Deckcard({ card }) {
             style={{ color: "green", opacity: "100%" }}
           />
         )}
-        {/* (
-          <MdRadioButtonUnchecked
-            className="Selected_Card"
-            onClick={() => toggleSelection()}
-            style={{ color: "red" }}
-          />
-        )} */}
       </div>
     </>
   );
-}
+}, areEqual);
 
 Deckcard.propTypes = {
   card: PropTypes.object,

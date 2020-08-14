@@ -1,11 +1,9 @@
 import Axios from "axios";
 import Cookies from "js-cookie";
-import { isEqual } from "lodash";
 
+// import { isEqual } from "lodash";
 import {
   create_game,
-  discard_opponent_card,
-  set_event,
   set_game_info,
   toggle_my_turn,
 } from "../redux/actions/actions";
@@ -70,32 +68,17 @@ export const discard = (cardId) => {
         gameStates.forEach((element) => {
           delay = delay + 500;
           setTimeout(() => {
-            for (const [key, value] of Object.entries(prevState.opponents)) {
-              const userBefore = value;
-              const userAfter = element.opponents[key];
+            // for (const [key, value] of Object.entries(prevState.opponents)) {
+            //   const userBefore = value;
+            //   const userAfter = element.opponents[key];
 
-              if (hasUserDiscarded(userBefore, userAfter)) {
-                dispatch(
-                  set_event({
-                    user: key,
-                    type: "discard",
-                    cards: [element.topOfTheMeld],
-                  })
-                );
-                // dispatch(discard_opponent_card({ user: key }));
-              }
-            }
+            //   if (hasUserDiscarded(userBefore, userAfter)) {
+            //   }
+            // }
 
             prevState = element;
 
             setTimeout(() => {
-              dispatch(
-                set_event({
-                  user: null,
-                  type: null,
-                  cards: [],
-                })
-              );
               dispatch(set_game_info(element));
             }, 400);
 
@@ -125,7 +108,7 @@ export const createMeldFromCards = (ids, meldId) => {
         const gameStates = doc.data;
         let delay = 0;
         gameStates.forEach((element) => {
-          delay = delay + 2000;
+          delay = delay + 500;
           setTimeout(() => {
             dispatch(set_game_info(element));
             if (element === gameStates[gameStates.length - 1]) {
@@ -141,19 +124,19 @@ export const createMeldFromCards = (ids, meldId) => {
   };
 };
 
-function hasUserDiscarded(userBefore, userAfter) {
-  if (!isEqual(userBefore, userAfter)) {
-    if (!isEqual(userBefore.cardCount, userAfter.cardCount)) {
-      if (!isEqual(userBefore.topOfTheMeld, userAfter.topOfTheMeld)) {
-      } else {
-        return true;
-      }
-    }
-  }
+// function hasUserDiscarded(userBefore, userAfter) {
+//   if (!isEqual(userBefore, userAfter)) {
+//     if (!isEqual(userBefore.cardCount, userAfter.cardCount)) {
+//       if (!isEqual(userBefore.topOfTheMeld, userAfter.topOfTheMeld)) {
+//       } else {
+//         return true;
+//       }
+//     }
+//   }
 
-  return false;
-}
+//   return false;
+// }
 
-function hasUserMelded(oldState, newState) {
-  return false;
-}
+// function hasUserMelded(oldState, newState) {
+//   return false;
+// }

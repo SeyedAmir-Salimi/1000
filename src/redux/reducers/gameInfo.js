@@ -4,7 +4,6 @@ import {
   ADD_SELECTED_CARD,
   CREATE_GAME,
   DELETE_SELECTED_CARD,
-  DISCARD_OPPONENT_CARD,
   SET_GAME_INFO,
   TOGGLE_MY_TURN,
   TOGGLE_SELECTED_MELD,
@@ -104,14 +103,7 @@ export default (state = initialState, action) => {
         isMyTurn: !state.isMyTurn,
       };
     }
-    case DISCARD_OPPONENT_CARD: {
-      const { user } = action.payload;
-      const updated = { ...state.opponents[user], isDiscarding: true };
-      return {
-        ...state,
-        opponents: { ...state.opponents, [user]: updated },
-      };
-    }
+
     default:
       return state;
   }
