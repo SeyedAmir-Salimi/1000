@@ -11,12 +11,8 @@ function areEqual(prevProps, nextProps) {
   return prevProps.cardId === nextProps.cardId;
 }
 const Meld = React.memo(({ card }) => {
-  console.log("Meld");
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
-
-  // todo => insted of being dependent on the side efect we should be dipendent on the actual event
-  // const set = useSelector((state) => state.gameInfo.set);
 
   return (
     <>

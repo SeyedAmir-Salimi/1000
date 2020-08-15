@@ -1,7 +1,6 @@
 import Axios from "axios";
 import Cookies from "js-cookie";
 
-// import { isEqual } from "lodash";
 import {
   create_game,
   set_game_info,
@@ -54,9 +53,7 @@ export const createGame = (PN) => {
 
 export const discard = (cardId) => {
   const gameId = Cookies.get("Rummy_gameId");
-  return (dispatch, getState) => {
-    let prevState = getState().gameInfo;
-
+  return (dispatch) => {
     dispatch(toggle_my_turn());
     Axios.put(`http://localhost:3000/actions/discard`, {
       id: cardId,
@@ -65,27 +62,18 @@ export const discard = (cardId) => {
       .then((doc) => {
         const gameStates = doc.data;
         let delay = 0;
+
         gameStates.forEach((element) => {
-          delay = delay + 500;
           setTimeout(() => {
-            // for (const [key, value] of Object.entries(prevState.opponents)) {
-            //   const userBefore = value;
-            //   const userAfter = element.opponents[key];
-
-            //   if (hasUserDiscarded(userBefore, userAfter)) {
-            //   }
-            // }
-
-            prevState = element;
-
             setTimeout(() => {
               dispatch(set_game_info(element));
-            }, 400);
-
-            if (element === gameStates[gameStates.length - 1]) {
-              dispatch(toggle_my_turn());
-            }
+              if (element === gameStates[gameStates.length - 1]) {
+                dispatch(toggle_my_turn());
+              }
+            }, 500);
           }, delay);
+
+          delay = delay + 1500;
         });
       })
       .catch((error) => {
@@ -123,20 +111,3 @@ export const createMeldFromCards = (ids, meldId) => {
       });
   };
 };
-
-// function hasUserDiscarded(userBefore, userAfter) {
-//   if (!isEqual(userBefore, userAfter)) {
-//     if (!isEqual(userBefore.cardCount, userAfter.cardCount)) {
-//       if (!isEqual(userBefore.topOfTheMeld, userAfter.topOfTheMeld)) {
-//       } else {
-//         return true;
-//       }
-//     }
-//   }
-
-//   return false;
-// }
-
-// function hasUserMelded(oldState, newState) {
-//   return false;
-// }
