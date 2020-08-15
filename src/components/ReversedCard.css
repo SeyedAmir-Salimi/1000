@@ -2,10 +2,23 @@
   width: 169px;
   height: 244px;
   margin-right: -210px;
-  transition-property: left;
-  transition-duration: 1s;
+  transition-property: all;
+  transition-duration: 0.5s;
 }
 
-.animated {
-  left: 500px;
+.User1_discarding {
+  
 }
+
+.User2_discarding {
+  margin-top: 500px;
+}
+
+.User3_discarding {
+  
+}
+
+/* user2 */
+/* .reversedCard:hover{
+  margin-top: 500px;
+} */

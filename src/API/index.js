@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import {
   create_game,
   set_game_info,
+  set_ui_info,
   toggle_my_turn,
 } from "../redux/actions/actions";
 
@@ -65,6 +66,7 @@ export const discard = (cardId) => {
 
         gameStates.forEach((element) => {
           setTimeout(() => {
+            dispatch(set_ui_info(element.action));
             setTimeout(() => {
               dispatch(set_game_info(element));
               if (element === gameStates[gameStates.length - 1]) {
