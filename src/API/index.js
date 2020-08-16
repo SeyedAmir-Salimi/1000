@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 
 import {
   create_game,
+  reset_ui_info,
   set_game_info,
   set_ui_info,
   toggle_my_turn,
@@ -69,6 +70,7 @@ export const discard = (cardId) => {
             dispatch(set_ui_info(element.action));
             setTimeout(() => {
               dispatch(set_game_info(element));
+              dispatch(set_ui_info({ type: null, user: null, cards: [] }));
               if (element === gameStates[gameStates.length - 1]) {
                 dispatch(toggle_my_turn());
               }

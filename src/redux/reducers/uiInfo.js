@@ -1,4 +1,4 @@
-import { SET_UI_INFO } from "../actions/actionTypes";
+import { RESET_UI_INFO, SET_UI_INFO } from "../actions/actionTypes";
 
 const initialState = {
   type: null,
@@ -12,7 +12,9 @@ export default (state = initialState, action) => {
       const { type, user, cards } = action.payload;
       return { ...state, type, user, cards };
     }
-
+    case RESET_UI_INFO: {
+      return { ...state, type: null, user: null, cards: [] };
+    }
     default:
       return state;
   }

@@ -8,3 +8,4 @@ export const TOGGLE_MY_TURN = "TOGGLE_MY_TURN";
 
 // uiInfo
 export const SET_UI_INFO = "SET_UI_INFO";
+export const RESET_UI_INFO = "RESET_UI_INFO";
