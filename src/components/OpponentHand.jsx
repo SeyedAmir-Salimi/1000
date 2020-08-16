@@ -6,6 +6,10 @@ import { useSelector } from "react-redux";
 import ReversedCard from "./ReversedCard";
 
 const OpponentHand = React.memo(({ user, count }) => {
+  // const action = useSelector((state) => state.uiInfo);
+
+  // const isDiscarded = action.user === user && action.type === "discard";
+  console.log("nader quanto", user);
   let cards = [];
   for (let index = 0; index < count; index++) {
     cards.push(
@@ -13,6 +17,7 @@ const OpponentHand = React.memo(({ user, count }) => {
         key={`${user}-${index}`}
         cardKey={`${user}-${index}`}
         user={user}
+        isDiscarded={index === count - 1}
       />
     );
   }

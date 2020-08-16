@@ -41,11 +41,11 @@ const Game = () => {
       <div className="pointsWrapper">
         <Points />
       </div>
-      <div className="userWrapper user1Wrapper">
+      {/* <div className="userWrapper user1Wrapper">
         {opponents && opponents.User1 && (
           <OpponentHand user="User1" count={opponents.User1.cardCount} />
         )}
-      </div>
+      </div> */}
 
       <div className="userWrapper user2Wrapper">
         {opponents && opponents.User2 && (
@@ -53,11 +53,11 @@ const Game = () => {
         )}
       </div>
 
-      <div className="userWrapper user3Wrapper">
+      {/* <div className="userWrapper user3Wrapper">
         {opponents && opponents.User3 && (
           <OpponentHand user="User3" count={opponents.User3.cardCount} />
         )}
-      </div>
+      </div> */}
 
       <div className="deckWrapper">
         {topOfTheDeck && <DeckCard key={topOfTheDeck.id} card={topOfTheDeck} />}

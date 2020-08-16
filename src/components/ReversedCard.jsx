@@ -9,17 +9,8 @@ function getBackgroundImage(round) {
   return round % 14;
 }
 
-const ReversedCard = React.memo(({ cardKey, user }) => {
+const ReversedCard = React.memo(({ cardKey, user, isDiscarded }) => {
   const round = useSelector((state) => state.gameInfo.round);
-  const action = useSelector((state) => state.uiInfo);
-  const handLength = useSelector(
-    (state) => state.gameInfo.opponents[user].cardCount
-  );
-
-  const isDiscarded =
-    action.user === user &&
-    action.type === "discard" &&
-    cardKey === `${user}-${handLength - 1}`;
 
   const backNumber = getBackgroundImage(round);
   const imageFile = require(`../assets/images/${backNumber}.png`);
@@ -37,6 +28,7 @@ const ReversedCard = React.memo(({ cardKey, user }) => {
 ReversedCard.propTypes = {
   cardKey: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
+  isDiscarded: PropTypes.bool,
 };
 
 export default ReversedCard;
