@@ -16,7 +16,10 @@ const Meld = React.memo(({ card }) => {
 
   return (
     <>
-      <div className="box" style={{ backgroundImage: `url(${imageFile})` }}>
+      <div
+        className="topOfMeld"
+        style={{ backgroundImage: `url(${imageFile})` }}
+      >
         <MeldSelection meldId={card.meldId} />
       </div>
     </>

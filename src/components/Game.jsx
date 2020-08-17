@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createGame, fetchGameInfo, generateHands } from "../API/index";
-import Card from "./Card";
 import DeckCard from "./DeckCard";
 import Meld from "./Meld";
 import MeldButtun from "./MeldButton";
@@ -41,31 +40,22 @@ const Game = () => {
       <div className="pointsWrapper">
         <Points />
       </div>
-      <div className="userWrapper user1Wrapper">
-        {opponents && opponents.User1 && (
-          <OpponentHand user="User1" count={opponents.User1.cardCount} />
-        )}
-      </div>
 
-      <div className="userWrapper user2Wrapper">
-        {opponents && opponents.User2 && (
-          <OpponentHand user="User2" count={opponents.User2.cardCount} />
-        )}
-      </div>
+      {opponents && opponents.User1 && (
+        <OpponentHand user="User1" count={opponents.User1.cardCount} />
+      )}
 
-      <div className="userWrapper user3Wrapper">
-        {opponents && opponents.User3 && (
-          <OpponentHand user="User3" count={opponents.User3.cardCount} />
-        )}
-      </div>
+      {opponents && opponents.User2 && (
+        <OpponentHand user="User2" count={opponents.User2.cardCount} />
+      )}
 
-      <div className="deckWrapper">
-        {topOfTheDeck && <DeckCard key={topOfTheDeck.id} card={topOfTheDeck} />}
-      </div>
+      {opponents && opponents.User3 && (
+        <OpponentHand user="User3" count={opponents.User3.cardCount} />
+      )}
 
-      <div className="userWrapper user4Wrapper">
-        <UserHand cards={hand} />
-      </div>
+      {topOfTheDeck && <DeckCard key={topOfTheDeck.id} card={topOfTheDeck} />}
+
+      <UserHand cards={hand} />
 
       {topOfTheMeld && (
         <div className="topOfTheUser4MeldWrapper">

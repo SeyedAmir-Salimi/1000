@@ -16,7 +16,10 @@ const Deckcard = React.memo(({ card }) => {
 
   return (
     <>
-      <div className="box" style={{ backgroundImage: `url(${imageFile})` }}>
+      <div
+        className="deckCard"
+        style={{ backgroundImage: `url(${imageFile})` }}
+      >
         <Selection cardId={card.id} />
       </div>
     </>

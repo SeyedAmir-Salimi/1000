@@ -8,16 +8,17 @@ import cardImages from "../assets/cards.json";
 import Discard from "./Discard";
 import Selection from "./Selection";
 
-function areEqual(prevProps, nextProps) {
-  return prevProps.cardId === nextProps.cardId;
-}
-
-const Card = ({ card }) => {
+const Card = ({ card, index, isDiscarded }) => {
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
-
+  console.log(isDiscarded);
   return (
-    <div className="box" style={{ backgroundImage: `url(${imageFile})` }}>
+    <div
+      className={
+        isDiscarded ? `card card${index} user4_discarding` : `card card${index}`
+      }
+      style={{ backgroundImage: `url(${imageFile})` }}
+    >
       <Selection cardId={card.id} />
       <Discard cardId={card.id} />
     </div>
@@ -26,6 +27,8 @@ const Card = ({ card }) => {
 
 Card.propTypes = {
   card: PropTypes.object,
+  index: PropTypes.number,
+  isDiscarded: PropTypes.bool,
 };
 
-export default React.memo(Card, areEqual);
+export default React.memo(Card);

@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
       return { ...state, type, user, cards };
     }
     case RESET_UI_INFO: {
-      return { ...state, type: null, user: null, cards: [] };
+      return initialState;
     }
     default:
       return state;

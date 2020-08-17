@@ -68,13 +68,15 @@ export const discard = (cardId) => {
         gameStates.forEach((element) => {
           setTimeout(() => {
             dispatch(set_ui_info(element.action));
+
             setTimeout(() => {
               dispatch(set_game_info(element));
-              dispatch(set_ui_info({ type: null, user: null, cards: [] }));
+              dispatch(reset_ui_info());
+
               if (element === gameStates[gameStates.length - 1]) {
                 dispatch(toggle_my_turn());
               }
-            }, 500);
+            }, 800);
           }, delay);
 
           delay = delay + 1500;

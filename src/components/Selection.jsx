@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { MdRadioButtonUnchecked } from "react-icons/md"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import {
   add_selected_card,

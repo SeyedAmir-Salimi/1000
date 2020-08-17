@@ -16,11 +16,13 @@ const OpponentHand = React.memo(({ user, count }) => {
         key={`${user}-${index}`}
         cardKey={`${user}-${index}`}
         user={user}
+        index={index + 1}
         isDiscarded={isDiscarded && index === count - 1}
       />
     );
   }
-  return <>{cards}</>;
+
+  return <div className={`opponent${user}`}>{cards}</div>;
 });
 
 OpponentHand.propTypes = {

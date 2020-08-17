@@ -38,41 +38,6 @@
   left: 40%;
 }
 
-.topOfTheUser4MeldWrapper{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: scale(0.75, 0.5)
-
-}
-
-.topOfTheUser1MeldWrapper{
-  position: absolute;
-  top: 30;
-  left: 0;
-  transform: scale(0.6, 0.6) rotate(90deg) ;
-}
-
-.topOfTheUser2MeldWrapper{
-  position: absolute;
-  top: 30;
-  right: 20%;
-  transform: scale(0.6, 0.6);
-}
-
-.topOfTheUser3MeldWrapper{
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  transform: scale(0.6, 0.6) rotate(90deg);
-}
-
-.meldButtonWrapper{
-  position: absolute;
-  bottom: 5%;
-  right: 20%;
-}
-
 .pointsWrapper{
   position: absolute;
   left: 10%;
