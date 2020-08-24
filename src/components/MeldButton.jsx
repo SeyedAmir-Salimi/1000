@@ -3,7 +3,7 @@ import "./MeldButton.css";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { createMeldFromCards } from "../API/index";
+import { meldCards } from "../redux/gameManager";
 
 export default function MeldButton() {
   const selectedCards = useSelector((state) => state.gameInfo.selectedCards);
@@ -15,9 +15,7 @@ export default function MeldButton() {
       {shoudShow(selectedCards, selectedMeld, isMyTurn) && (
         <button
           className="meldButton"
-          onClick={() =>
-            dispatch(createMeldFromCards(selectedCards, selectedMeld))
-          }
+          onClick={() => dispatch(meldCards(selectedCards, selectedMeld))}
         >
           meld
         </button>

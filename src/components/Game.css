@@ -1,44 +1,5 @@
-.userWrapper {
-  position: absolute;
-  display: flex;
-  z-index: 9999;
-}
-
-.user1Wrapper {
-  left: 120px;
-}
-
-.user1Wrapper, .user3Wrapper{
-    transform: rotate(90deg);
-    top: 38%;
-}
-
-.user2Wrapper {
-  left: 42%;
-  top: 0;
-}
-
-.user3Wrapper {
-  right: 120px;
-}
-
-.user4Wrapper {
-  bottom: 0;
-  left: 50%;
-}
-
-.user4Wrapper .box{
-    margin-right: -340px;
-}
-
-.deckWrapper {
-  display: flex;
-  position: absolute;
-  top: 40%;
-  left: 40%;
-}
-
 .pointsWrapper{
   position: absolute;
+  color: white;
   left: 10%;
 }

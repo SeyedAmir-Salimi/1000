@@ -2,38 +2,47 @@
   width: 169px;
   height: 244px;
   border-radius: 8px;
-}
-
-.topOfTheUser4MeldWrapper {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: scale(0.75, 0.5);
-}
-
-.topOfTheUser1MeldWrapper {
-  position: absolute;
-  top: 30;
-  left: 0;
-  transform: scale(0.6, 0.6) rotate(90deg);
-}
-
-.topOfTheUser2MeldWrapper {
-  position: absolute;
-  top: 30;
-  right: 20%;
-  transform: scale(0.6, 0.6);
-}
-
-.topOfTheUser3MeldWrapper {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  transform: scale(0.6, 0.6) rotate(90deg);
+  transition: all;
+  animation-duration: 0.9s;
+  transform: scale(0.42, 0.42);
+  
 }
 
 .meldButtonWrapper {
   position: absolute;
   bottom: 5%;
   right: 20%;
+}
+
+
+.User4_topOfTheMeld{
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  transition: all;
+  animation-duration: 0.9s;
+}
+
+.User3_topOfTheMeld{
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  transition: all;
+  animation-duration: 0.9s;
+}
+
+.User2_topOfTheMeld{
+  position: absolute;
+  top:  2.6%;
+  right: 20%;
+  transition: all;
+  animation-duration: 0.9s;
+}
+
+.User1_topOfTheMeld{
+  position: absolute;
+  top: 2.6%;
+  left: 0;
+  transition: all;
+  animation-duration: 0.9s;
 }

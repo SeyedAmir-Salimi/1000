@@ -7,27 +7,25 @@ import React from "react";
 import cardImages from "../assets/cards.json";
 import Selection from "./Selection";
 
-function areEqual(prevProps, nextProps) {
-  return prevProps.cardId === nextProps.cardId;
-}
-const Deckcard = React.memo(({ card }) => {
+const Deckcard = ({ card, className }) => {
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
-
+  console.log("className", className);
   return (
     <>
       <div
-        className="deckCard"
+        className={className}
         style={{ backgroundImage: `url(${imageFile})` }}
       >
         <Selection cardId={card.id} />
       </div>
     </>
   );
-}, areEqual);
+};
 
 Deckcard.propTypes = {
   card: PropTypes.object,
+  className: PropTypes.string,
 };
 
 export default Deckcard;

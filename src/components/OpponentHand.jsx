@@ -9,6 +9,8 @@ const OpponentHand = React.memo(({ user, count }) => {
   const action = useSelector((state) => state.uiInfo);
 
   const isDiscarded = action.user === user && action.type === "discard";
+  const isMeld = action.user === user && action.type.slice(0, 4) === "meld";
+
   let cards = [];
   for (let index = 0; index < count; index++) {
     cards.push(
@@ -18,11 +20,13 @@ const OpponentHand = React.memo(({ user, count }) => {
         user={user}
         index={index + 1}
         isDiscarded={isDiscarded && index === count - 1}
+        isMeld={isMeld && index === count - 1}
+        meld={action}
       />
     );
   }
 
-  return <div className={`opponent${user}`}>{cards}</div>;
+  return <div className={`opponent${user} `}>{cards}</div>;
 });
 
 OpponentHand.propTypes = {
