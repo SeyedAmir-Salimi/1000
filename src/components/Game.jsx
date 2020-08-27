@@ -3,33 +3,30 @@ import "./Game.css";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { createGame, fetchGameInfo, generateHands } from "../API/index";
-import Card from "./Card";
-import DeckCard from "./DeckCard";
-import Meld from "./Meld";
+import { createNewGame, getGame, getHands } from "../redux/gameManager";
+import AllMelds from "./AllMelds";
+import Deck from "./Deck";
+import GenerateHandsCards from "./GenerateHandsCards";
 import MeldButtun from "./MeldButton";
 import OpponentHand from "./OpponentHand";
 import Points from "./Points";
+import UserHand from "./UserHand";
 
 const Game = () => {
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
-  const topOfTheDeck = useSelector((state) => state.gameInfo.topOfTheDeck);
   const opponents = useSelector((state) => state.gameInfo.opponents);
-  const topOfTheMeld = useSelector((state) => state.gameInfo.topOfTheMeld);
-
-  const handCards = hand.map((card) => <Card key={card.id} card={card} />);
 
   useEffect(() => {
-    dispatch(fetchGameInfo());
+    dispatch(getGame());
   }, [dispatch]);
 
   const createGameCall = () => {
-    dispatch(createGame(4));
+    dispatch(createNewGame());
   };
 
   const generateHandsCall = () => {
-    dispatch(generateHands());
+    dispatch(getHands());
   };
 
   return (
@@ -42,61 +39,23 @@ const Game = () => {
       <div className="pointsWrapper">
         <Points />
       </div>
-      <div className="user1Wrapper">
-        {opponents && opponents.User1 && (
-          <OpponentHand handKey="User1" count={opponents.User1.cardCount} />
-        )}
-      </div>
-
-      <div className="user2Wrapper">
-        {opponents && opponents.User2 && (
-          <OpponentHand handKey="User2" count={opponents.User2.cardCount} />
-        )}
-      </div>
-
-      <div className="user3Wrapper">
-        {opponents && opponents.User3 && (
-          <OpponentHand handKey="User3" count={opponents.User3.cardCount} />
-        )}
-      </div>
-
-      <div className="deckWrapper">
-        {topOfTheDeck && <DeckCard key={topOfTheDeck.id} card={topOfTheDeck} />}
-      </div>
-      <div className="user4Wrapper">{handCards}</div>
-
-      {topOfTheMeld && (
-        <div className="topOfTheUser4MeldWrapper">
-          <Meld key={topOfTheMeld.medlId} card={topOfTheMeld} />
-        </div>
+      <GenerateHandsCards />
+      {opponents && opponents.User1 && (
+        <OpponentHand user="User1" count={opponents.User1.cardCount} />
       )}
 
-      {opponents && opponents.User1.topOfTheMeld && (
-        <div className="topOfTheUser1MeldWrapper">
-          <Meld
-            key={opponents.User1.topOfTheMeld.medlId}
-            card={opponents.User1.topOfTheMeld}
-          />
-        </div>
+      {opponents && opponents.User2 && (
+        <OpponentHand user="User2" count={opponents.User2.cardCount} />
       )}
 
-      {opponents && opponents.User2.topOfTheMeld && (
-        <div className="topOfTheUser2MeldWrapper">
-          <Meld
-            key={opponents.User2.topOfTheMeld.medlId}
-            card={opponents.User2.topOfTheMeld}
-          />
-        </div>
+      {opponents && opponents.User3 && (
+        <OpponentHand user="User3" count={opponents.User3.cardCount} />
       )}
 
-      {opponents && opponents.User3.topOfTheMeld && (
-        <div className="topOfTheUser3MeldWrapper">
-          <Meld
-            key={opponents.User3.topOfTheMeld.medlId}
-            card={opponents.User3.topOfTheMeld}
-          />
-        </div>
-      )}
+      <Deck />
+
+      <UserHand cards={hand} />
+      <AllMelds />
     </>
   );
 };

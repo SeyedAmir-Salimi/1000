@@ -1,0 +1,52 @@
+.topOfMeld {
+  width: 169px;
+  height: 244px;
+  border-radius: 8px;
+  transition: all;
+  animation-duration: 1.6s;
+  transform: scale(0.42, 0.42);
+  
+}
+
+.meldButtonWrapper {
+  position: absolute;
+  bottom: 5%;
+  right: 20%;
+}
+
+
+.User4_topOfTheMeld{
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  transition: all;
+  animation-duration: 1.6s;
+  z-index: 1;
+}
+
+.User3_topOfTheMeld{
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  transition: all;
+  animation-duration: 1.6s;
+  z-index: 1;
+}
+
+.User2_topOfTheMeld{
+  position: absolute;
+  top:  2.6%;
+  right: 20%;
+  transition: all;
+  animation-duration: 1.6s;
+  z-index: 1;
+}
+
+.User1_topOfTheMeld{
+  position: absolute;
+  top: 2.6%;
+  left: 0;
+  transition: all;
+  animation-duration: 1.6s;
+  z-index: 1;
+}

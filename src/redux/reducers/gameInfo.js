@@ -103,6 +103,7 @@ export default (state = initialState, action) => {
         isMyTurn: !state.isMyTurn,
       };
     }
+
     default:
       return state;
   }

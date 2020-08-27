@@ -2,7 +2,9 @@ import {
   ADD_SELECTED_CARD,
   CREATE_GAME,
   DELETE_SELECTED_CARD,
+  RESET_UI_INFO,
   SET_GAME_INFO,
+  SET_UI_INFO,
   TOGGLE_MY_TURN,
   TOGGLE_SELECTED_MELD,
 } from "./actionTypes";
@@ -38,4 +40,13 @@ export const toggle_selected_meld = (payload) => ({
 
 export const toggle_my_turn = () => ({
   type: TOGGLE_MY_TURN,
+});
+
+export const set_ui_info = (payload) => ({
+  type: SET_UI_INFO,
+  payload,
+});
+
+export const reset_ui_info = () => ({
+  type: RESET_UI_INFO,
 });

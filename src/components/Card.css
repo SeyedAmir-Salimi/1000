@@ -1,60 +1,49 @@
-.react-draggable,
-.cursor {
-  cursor: move;
-}
-.no-cursor {
-  cursor: auto;
-}
-.cursor-y {
-  cursor: ns-resize;
-}
-.cursor-x {
-  cursor: ew-resize;
-}
-
-.react-draggable strong {
-  background: #ddd;
-  border: 1px solid #999;
-  border-radius: 3px;
-  display: block;
-  margin-bottom: 10px;
-  padding: 3px 5px;
-  text-align: center;
-}
-
-/*
-   * RemWrapper needs to take it's styles from this element,
-   * and this element can't have an absolute position after it's kicked in.
-   * AFAIK it's not possible to do this directly in the RemWrapper component.
-   */
-.rem-position-fix {
-  position: static !important;
-}
-
-.box {
+.card {
   border-radius: 8px;
   width: 169px;
   height: 244px;
   margin: 10px;
   padding: 2rem;
-  position: relative;
-  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  transition-property: all;
+  transition-duration: 1.6s;
+  z-index: 999;
 }
 
-.fire{
- opacity: 0;
+.card1 {
+  left: 30%;
+}
+
+.card2 {
+  left: 38%;
+}
+
+.card3 {
+  left: 46%;
+}
+
+.card4 {
+  left: 54%;
+}
+
+
+
+.fire {
+  opacity: 0;
   position: absolute;
   right: 0;
   top: -1rem;
 }
 
-.box:hover .fire, .box:hover .Selected_Card{
- opacity: 100;
+.card:hover .fire,
+.card:hover .Selected_Card {
+  opacity: 100;
   cursor: pointer;
   transition: opacity 0.5s ease-in-out;
 }
 
-.Selected_Card{
+.Selected_Card {
   opacity: 0;
   font-size: 2rem;
   position: absolute;

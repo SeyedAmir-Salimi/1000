@@ -1,6 +1,9 @@
-
-.reversedCard {
-    width: 169px;
-    height: 244px;
-    position: relative;
-  }
+.reversedCard{
+  width: 169px;
+  height: 244px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 2;
+  animation-duration: 1.6s;
+  transform: scale(0.7, 0.7);
+}
