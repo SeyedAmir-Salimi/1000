@@ -18,7 +18,7 @@ function User3Melds({ className }) {
         </div>
       )}
       {action.user3NextMeld && action.otherUser === "User3" && (
-        <div className="User3_topOfTheMeld">
+        <div className="User3_topOfTheMeld meldSecondCard">
           <Meld key={action.user3NextMeld.medlId} card={action.user3NextMeld} />
         </div>
       )}

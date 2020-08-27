@@ -10,26 +10,29 @@ export default function Deck() {
   const action = useSelector((state) => state.uiInfo);
   const secondCard = action.replaceTopofTheDeck;
 
-  let className =
-    action.type === "meldFromDeck"
-      ? `deckCard ${action.user}_MeldDeck`
-      : "deckCard";
+  let deckclassName = "deckCard";
+  if (action.type === "meldFromDeck")
+    deckclassName = `deckCard ${action.user}_MeldDeck`;
+
+  let replaceClassName = "deckCardReplace";
+  if (action.type === "discard" && action.user !== "User4")
+    replaceClassName = `deckCardReplace ${action.user}_DeckDiscard`;
 
   return (
     <>
       {topOfTheDeck && (
         <DeckCard
-          key={topOfTheDeck.id}
+          key={topOfTheDeck.cardId}
           card={topOfTheDeck}
-          className={className}
+          className={deckclassName}
         />
       )}
 
-      {action.type === "meldFromDeck" && (
+      {(action.type === "meldFromDeck" || action.replaceTopofTheDeck) && (
         <DeckCard
           key={secondCard.id}
           card={secondCard}
-          className="deckCardReplace"
+          className={replaceClassName}
         />
       )}
     </>

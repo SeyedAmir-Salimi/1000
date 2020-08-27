@@ -12,6 +12,7 @@ function getBackgroundImage(round) {
 const ReversedCard = React.memo(
   ({ cardKey, user, index, isDiscarded, isMeld, meld }) => {
     const round = useSelector((state) => state.gameInfo.round);
+    const action = useSelector((state) => state.uiInfo);
     const backNumber = getBackgroundImage(round);
     const imageFile = require(`../assets/images/${backNumber}.png`);
 
@@ -30,11 +31,15 @@ const ReversedCard = React.memo(
     }
 
     return (
-      <div
-        key={cardKey}
-        className={className}
-        style={{ backgroundImage: `url(${imageFile})` }}
-      ></div>
+      <>
+        {action.type === "generateHands" ? null : (
+          <div
+            key={cardKey}
+            className={className}
+            style={{ backgroundImage: `url(${imageFile})` }}
+          ></div>
+        )}
+      </>
     );
   }
 );

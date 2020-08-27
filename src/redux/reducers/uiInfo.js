@@ -32,6 +32,7 @@ export default (state = initialState, action) => {
     case RESET_UI_INFO: {
       return initialState;
     }
+
     default:
       return state;
   }

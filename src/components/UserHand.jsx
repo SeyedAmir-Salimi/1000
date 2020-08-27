@@ -19,14 +19,16 @@ const UserHand = ({ cards }) => {
         card={card}
         index={index}
         isDiscarded={isDiscarded && card.cardId === action.cards}
-        isMeld={isMeld && action.cards.find((x) => x === card.cardId)}
+        isMeld={
+          isMeld && action.cards.find((x) => x === card.cardId) ? true : false
+        }
         meld={action}
       />
     );
     index++;
   });
 
-  return <>{handCards}</>;
+  return <>{action.type === "generateHands" ? null : handCards}</>;
 };
 
 UserHand.propTypes = {

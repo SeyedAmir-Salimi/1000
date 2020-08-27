@@ -10,10 +10,10 @@ import Selection from "./Selection";
 const Deckcard = ({ card, className }) => {
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
-  console.log("className", className);
   return (
     <>
       <div
+        key={card.cardId}
         className={className}
         style={{ backgroundImage: `url(${imageFile})` }}
       >

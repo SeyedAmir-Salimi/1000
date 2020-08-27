@@ -4,14 +4,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createNewGame, getGame, getHands } from "../redux/gameManager";
+import AllMelds from "./AllMelds";
 import Deck from "./Deck";
+import GenerateHandsCards from "./GenerateHandsCards";
 import MeldButtun from "./MeldButton";
 import OpponentHand from "./OpponentHand";
 import Points from "./Points";
-import User1Melds from "./User1Melds";
-import User2Melds from "./User2Melds";
-import User3Melds from "./User3Melds";
-import User4Melds from "./User4Melds";
 import UserHand from "./UserHand";
 
 const Game = () => {
@@ -31,30 +29,6 @@ const Game = () => {
     dispatch(getHands());
   };
 
-  const action = useSelector((state) => state.uiInfo);
-  const isMeldFromOther =
-    action.type === "meldByOtherUserMeld" && action.user !== action.otherUser;
-
-  const User1MeldClassName =
-    isMeldFromOther && action.otherUser === "User1"
-      ? `${action.user}MeldFromUser1`
-      : "User1_topOfTheMeld";
-
-  const User2MeldClassName =
-    isMeldFromOther && action.otherUser === "User2"
-      ? `${action.user}MeldFromUser2`
-      : "User2_topOfTheMeld";
-
-  const User3MeldClassName =
-    isMeldFromOther && action.otherUser === "User3"
-      ? `${action.user}MeldFromUser3`
-      : "User3_topOfTheMeld";
-
-  const User4MeldClassName =
-    isMeldFromOther && action.otherUser === "User4"
-      ? `${action.user}MeldFromUser4`
-      : "User4_topOfTheMeld";
-
   return (
     <>
       <button onClick={() => createGameCall()}>create game</button>
@@ -65,7 +39,7 @@ const Game = () => {
       <div className="pointsWrapper">
         <Points />
       </div>
-
+      <GenerateHandsCards />
       {opponents && opponents.User1 && (
         <OpponentHand user="User1" count={opponents.User1.cardCount} />
       )}
@@ -81,11 +55,7 @@ const Game = () => {
       <Deck />
 
       <UserHand cards={hand} />
-
-      <User4Melds className={User4MeldClassName} />
-      <User1Melds className={User1MeldClassName} />
-      <User2Melds className={User2MeldClassName} />
-      <User3Melds className={User3MeldClassName} />
+      <AllMelds />
     </>
   );
 };

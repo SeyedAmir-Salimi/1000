@@ -41,14 +41,24 @@ body {
 }
 
 @keyframes user1AnimeDiscard {
-  from {
+  0% {
     left: 0%;
     transform:  scale(0.7, 0.7) rotate(90) rotate3d(0, 1, 0, 0deg);
+    opacity: 1;
   }
-  to {
+  70% {
     transform:  scale(0.7, 0.7) rotate(0) rotate3d(0, 1, 0, 90deg);
     top: 37%;
     left: 38.4%;
+    z-index: 3;
+    opacity: 1;
+  }
+  100% {
+    transform:  scale(0.7, 0.7) rotate(0) rotate3d(0, 1, 0, 90deg);
+    top: 37%;
+    left: 38.4%;
+    z-index: 3;
+    opacity: 0;
   }
 }
 
@@ -65,6 +75,7 @@ body {
   to {
     top: 11%;
     left: -0.0%;
+    z-index: 3;
     transform: scale(0.42, 0.42) rotate(0deg) rotate3d(1, 0, 0, 90deg);
   }
 }
@@ -80,7 +91,8 @@ body {
     transform:  scale(0.7, 0.7);
   }
   to {
-    transform: translateX(-387%) translateY(-101%)scale(0.42, 0.42);
+    z-index: 3;
+    transform: translateX(-387%) translateY(-101%) scale(0.42, 0.42);
   }
 }
 
@@ -108,17 +120,28 @@ body {
 }
 
 @keyframes user2AnimeDiscard {
-  from {
+  0% {
     top: 0%;
     transform:  scale(0.7, 0.7) rotate3d(1, 0, 0, 0deg);
+    opacity: 1;
   }
-  to {
+  70% {
     transform:  scale(0.7, 0.7) rotate3d(1, 0, 0, 90deg);
     top: 26%;
     left: 42.5%;
+    z-index: 3;
+    opacity: 1;
+  }
+  100%{
+    transform:  scale(0.7, 0.7) rotate3d(1, 0, 0, 90deg);
+    top: 26%;
+    left: 42.5%;
+    z-index: 3;
+    opacity: 0;
   }
 }
 .User2_discarding {
+  
   animation-name: user2AnimeDiscard;
 }
 
@@ -136,6 +159,7 @@ body {
     transform:  scale(0.42, 0.42) rotate3d(0, 1, 0, 90deg);
     left: 66.5%;
     top:3%;
+    z-index: 3;
   }
 }
 
@@ -150,6 +174,7 @@ body {
     transform:  scale(0.7, 0.7);
   }
   to {
+    z-index: 3;
     transform: translateX(239%) translateY(-102%) scale(0.42, 0.42);
   }
 }
@@ -178,13 +203,23 @@ body {
 }
 
 @keyframes user3AnimeDiscard {
-  from {
+  0% {
     transform:  scale(0.7, 0.7) rotate(90) rotate3d(0, 1, 0, 0deg);
+    opacity: 1;
   }
-  to {
+  70% {
     transform:  scale(0.7, 0.7) rotate(0) rotate3d(0, 1, 0, 90deg);
     top: 37%;
     right: 42%;
+    z-index: 2;
+    opacity: 1;
+  }
+  100%{
+    transform:  scale(0.7, 0.7) rotate(0) rotate3d(0, 1, 0, 90deg);
+    top: 37%;
+    right: 42%;
+    z-index: 2;
+    opacity: 0;
   }
 }
 
@@ -205,6 +240,7 @@ body {
     transform: scale(0.42, 0.42) rotate(0) rotate3d(1, 0, 0, 90deg);
     right: 0%;
     top: 58.5%;
+    z-index: 2;
   }
 }
 
@@ -219,6 +255,7 @@ body {
     transform:  scale(0.7, 0.7);
   }
   to {
+    z-index: 3;
     transform: translateX(421%) translateY(85%) scale(0.42, 0.42);
   }
 }
@@ -246,6 +283,7 @@ body {
     transform:  scale(0.7, 0.7);
   }
   to {
+    z-index: 3;
     transform: translateX(-388%) translateY(84%) scale(0.42, 0.42);
   }
 }
@@ -260,14 +298,16 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User1MeldFromUser2{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User1MeldFromUser2
 }
 @keyframes User1MeldFromUser2 {
   from {
+    z-index: 2;
     transform: translateX(627%) translateY(-2%);
   }
   to {
+    z-index: 2;
     transform: translateX(0%) translateY(-2%);
   }
 }
@@ -275,14 +315,16 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User1MeldFromUser3{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User1MeldFromUser3
 }
 @keyframes User1MeldFromUser3 {
   from {
+    z-index: 2;
     transform: translateX(809%) translateY(187%);
   }
   to {
+    z-index: 2;
     transform: translateX(0%) translateY(-2%);
   }
 }
@@ -290,15 +332,17 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User1MeldFromUser4{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User1MeldFromUser4;
 }
 
 @keyframes User1MeldFromUser4 {
   from {
+    z-index: 2;
     transform: translateX(0%) translateY(187%) ;
   }
   to {
+    z-index: 2;
     transform: translateX(0%) translateY(-2%);
   }
 }
@@ -307,15 +351,17 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User2MeldFromUser3{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User2MeldFromUser3;
 }
 
 @keyframes User2MeldFromUser3 {
   from {
+    z-index: 2;
     transform: translateX(809%) translateY(187%) ;
   }
   to {
+    z-index: 2;
     transform:  translateX(627%) translateY(-2%) ;
   }
 }
@@ -323,15 +369,17 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User2MeldFromUser4{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User2MeldFromUser4;
 }
 
 @keyframes User2MeldFromUser4 {
   from {
+    z-index: 2;
     transform: translateX(0%) translateY(187%) ;
   }
   to {
+    z-index: 2;
     transform:  translateX(627%) translateY(-2%) ;
   }
 }
@@ -339,15 +387,17 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User2MeldFromUser1{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User2MeldFromUser1;
 }
 
 @keyframes User2MeldFromUser1 {
   from {
+    z-index: 2;
     transform: translateX(0%) translateY(-2%) ;
   }
   to {
+    z-index: 2;
     transform:  translateX(627%) translateY(-2%) ;
   }
 }
@@ -357,31 +407,35 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User3MeldFromUser4{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User3MeldFromUser4;
 }
 
 @keyframes User3MeldFromUser4 {
   from {
+    z-index: 2;
     transform: translateX(0%) translateY(187%) ;
   }
   to {
+    z-index: 2;
     transform:  translateX(809%) translateY(187%)  ;
   }
 }
 
 .User3MeldFromUser1{
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   position: absolute;
   animation-name: User3MeldFromUser1;
 }
 
 @keyframes User3MeldFromUser1 {
   from {
+    z-index: 2;
     transform: translateX(0%) translateY(-2%) ;
   }
   to {
+    z-index: 2;
     transform:  translateX(809%) translateY(187%)  ;
   }
 }
@@ -389,15 +443,17 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User3MeldFromUser2{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User3MeldFromUser2;
 }
 
 @keyframes User3MeldFromUser2 {
   from {
+    z-index: 2;
     transform: translateX(627%) translateY(-2%) ;
   }
   to {
+    z-index: 2;
     transform:  translateX(809%) translateY(187%)  ;
   }
 }
@@ -406,15 +462,17 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User4MeldFromUser1{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User4MeldFromUser1;
 }
 
 @keyframes  User4MeldFromUser1{
   from {
+    z-index: 2;
     transform: translateX(0%) translateY(-2%) ;
   }
   to {
+    z-index: 2;
     transform:  translateX(0%) translateY(187%)  ;
   }
 }
@@ -422,15 +480,17 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User4MeldFromUser2{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User4MeldFromUser2;
 }
 
 @keyframes  User4MeldFromUser2{
   from {
+    z-index: 2;
     transform: translateX(627%) translateY(-2%) ;
   }
   to {
+    z-index: 2;
     transform:  translateX(0%) translateY(187%)  ;
   }
 }
@@ -438,21 +498,91 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 .User4MeldFromUser3{
   position: absolute;
   transition: all;
-  animation-duration: 0.9s;
+  animation-duration: 1.6s;
   animation-name: User4MeldFromUser3;
 }
 
 @keyframes  User4MeldFromUser3{
   from {
+    z-index: 2;
     transform: translateX(809%) translateY(187%) ;
   }
   to {
+    z-index: 2;
     transform:  translateX(0%) translateY(187%)  ;
   }
 }
 
+/* Anime discard deckCard */
+.User1_DeckDiscard{
+  position: absolute;
+  transition: all;
+  animation-duration: 0.6s;
+  animation-delay: 0.9s;
+  animation-name: User1_DeckDiscard;
+}
+@keyframes  User1_DeckDiscard{
+  from {
+    z-index: 5;
+    left: 38.2%;
+    top: 36%;
+    transform:rotate3d(0, 1, 0, 90deg) scale(0.7, 0.7);
+  }
+  to {
+    top:36%;
+    left: 42%;
+    z-index: 5;
+    transform: rotate3d(0, 1, 0, 0deg) scale(0.7, 0.7) 
+  }
+}
 
+.User2_DeckDiscard{
+  position: absolute;
+  transition: all;
+  animation-duration: 0.6s;
+  animation-delay: 0.9s;
+  animation-name: User2_DeckDiscard;
+}
+@keyframes  User2_DeckDiscard{
+  from {
+    left: 42%;
+    top: 24.5%;
+    z-index: 5;
+    transform: rotate3d(1, 0, 0, 90deg) scale(0.7, 0.7);
+  }
+  to {
+    top:36%;
+    left: 42%;
+    z-index: 5;
+    transform: rotate3d(1, 0, 0, 0deg) scale(0.7, 0.7) 
+  }
+}
 
+.User3_DeckDiscard{
+  position: absolute;
+  transition: all;
+  animation-duration: 0.6s;
+  animation-delay: 0.9s;
+  animation-name: User3_DeckDiscard;
+}
+@keyframes  User3_DeckDiscard{
+  from {
+    left: 45.8%;
+    top: 36%;
+    z-index: 5;
+    transform: rotate3d(0, 1, 0, 90deg) scale(0.7, 0.7);
+  }
+  to {
+    top:36%;
+    left: 42%;
+    z-index: 5;
+    transform: rotate3d(0, 1, 0, 0deg) scale(0.7, 0.7) 
+  }
+}
+
+.meldSecondCard{
+  z-index: -1;
+}
 
 }
 

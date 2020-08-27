@@ -7,7 +7,7 @@
   position: absolute;
   bottom: 0;
   transition-property: all;
-  transition-duration: .9s;
+  transition-duration: 1.6s;
   z-index: 999;
 }
 

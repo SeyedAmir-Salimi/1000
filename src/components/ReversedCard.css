@@ -3,7 +3,7 @@
   height: 244px;
   border-radius: 8px;
   position: absolute;
-  z-index: 999;
-  animation-duration: 0.9s;
+  z-index: 2;
+  animation-duration: 1.6s;
   transform: scale(0.7, 0.7);
 }
