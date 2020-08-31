@@ -37,7 +37,6 @@ const Game = () => {
       <div className="pointsWrapper">
         <Points />
       </div>
-      <span className="test"><h2>Amiiiiir</h2></span>
       <GenerateHandsCards />
       {opponents && opponents.User1 && (
         <OpponentHand user="User1" count={opponents.User1.cardCount} />

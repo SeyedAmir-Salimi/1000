@@ -619,12 +619,6 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
   top: 15.5%;
 }
 
-.test{
-  position: absolute;
-  color: red;
-  left: 50px;
-  top: 50px;
-}
 
 }
 
