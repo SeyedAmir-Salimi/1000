@@ -1,3 +1,8 @@
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+
 body {
   background-color: rgb(30, 73, 35);
   width: 100%;
@@ -582,6 +587,43 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 
 .meldSecondCard{
   z-index: -1;
+}
+
+.playerNames_User1{
+  position: absolute;
+  color: rgb(208, 255, 0);
+  transform: translateX(191%) translateY(381%);;
+}
+
+.playerNames_User2{
+  color: rgb(185, 4, 4);
+  text-align: left;
+  position: absolute;
+  float: left;
+  justify-content: left;
+  justify-items: left;
+  transform: translateX(815%) translateY(610%);
+}
+
+.playerNames_User3{
+  color: white;
+  display: block;
+  position: absolute;
+  transform: translateX(2264%) translateY(383%)
+}
+.playerNames_User4{
+  color: white;
+  display: block;
+  position: absolute;
+  left: 0%;
+  top: 15.5%;
+}
+
+.test{
+  position: absolute;
+  color: red;
+  left: 50px;
+  top: 50px;
 }
 
 }

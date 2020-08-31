@@ -23,12 +23,13 @@ const initialState = {
   selectedMeld: null,
   isMyTurn: true,
   winner: null,
+  playerNames: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case CREATE_GAME: {
-      const { id, playerNumbers, round, set } = action.payload;
+      const { id, playerNumbers, round, set, playerNames } = action.payload;
       return {
         ...state,
         gameId: id,
@@ -44,6 +45,7 @@ export default (state = initialState, action) => {
         set,
         points: {},
         winner: null,
+        playerNames,
       };
     }
     case SET_GAME_INFO: {
@@ -57,7 +59,10 @@ export default (state = initialState, action) => {
         topOfTheMeld,
         points,
         winner,
+        playerNames,
       } = action.payload;
+      const prenNames = state.playerNames;
+      const newNames = playerNames ? playerNames : prenNames;
       return {
         ...state,
         gameId,
@@ -71,6 +76,7 @@ export default (state = initialState, action) => {
         selectedMeld: null,
         points: points,
         winner,
+        playerNames: newNames,
       };
     }
 

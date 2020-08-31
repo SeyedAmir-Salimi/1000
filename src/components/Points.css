@@ -1,0 +1,32 @@
+@media screen 
+  and (min-width: 1200px) 
+  and (max-width: 1600px) { 
+      .playerNamesUser1{
+        color: rgb(208, 255, 0);
+        transform: translateX(191%) translateY(381%);;
+      }
+      
+      .playerNamesUser2{
+        color: rgb(194, 15, 15);
+        text-align: left;
+        position: absolute;
+        float: left;
+        justify-content: left;
+        justify-items: left;
+        transform: translateX(1254%) translateY(610%);
+      }
+      
+      .playerNamesUser3{
+        color: white;
+        display: block;
+        position: absolute;
+        transform: translateX(2264%) translateY(383%)
+      }
+      .playerNamesUser4{
+        color: white;
+        display: block;
+        position: absolute;
+        left: 0%;
+        top: 15.5%;
+      }
+  }

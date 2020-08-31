@@ -1,4 +1,6 @@
 /* eslint-disable react/display-name */
+import "./Card.css";
+
 import PropTypes from "prop-types";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -28,7 +30,12 @@ const UserHand = ({ cards }) => {
     index++;
   });
 
-  return <>{action.type === "generateHands" ? null : handCards}</>;
+  return (
+    <>
+      {action.type === "generateHands" ? null : handCards}
+      {/* <h3 className="playerNames_User4">User4</h3> */}
+    </>
+  );
 };
 
 UserHand.propTypes = {

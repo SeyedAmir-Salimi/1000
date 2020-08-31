@@ -1,9 +1,11 @@
 import "./Game.css";
 
+import Cookies from "js-cookie";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import { createNewGame, getGame, getHands } from "../redux/gameManager";
+import { getGame } from "../redux/gameManager";
 import AllMelds from "./AllMelds";
 import Deck from "./Deck";
 import GenerateHandsCards from "./GenerateHandsCards";
@@ -21,24 +23,21 @@ const Game = () => {
     dispatch(getGame());
   }, [dispatch]);
 
-  const createGameCall = () => {
-    dispatch(createNewGame());
+  let history = useHistory();
+  const GoToLink = () => {
+    history.push("/");
+    Cookies.remove("Rummy_gameId");
   };
-
-  const generateHandsCall = () => {
-    dispatch(getHands());
-  };
-
   return (
     <>
-      <button onClick={() => createGameCall()}>create game</button>
-      <button onClick={() => generateHandsCall()}>generate hands</button>
+      <button onClick={() => GoToLink()}>Finish the game</button>
       <div className="meldButtonWrapper">
         <MeldButtun />
       </div>
       <div className="pointsWrapper">
         <Points />
       </div>
+      <span className="test"><h2>Amiiiiir</h2></span>
       <GenerateHandsCards />
       {opponents && opponents.User1 && (
         <OpponentHand user="User1" count={opponents.User1.cardCount} />

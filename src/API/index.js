@@ -12,9 +12,10 @@ export const generateHands = async (gameId) => {
   return result.data;
 };
 
-export const createGame = async (PN) => {
+export const createGame = async (PN, username) => {
   const result = await Axios.post("http://localhost:3000/game/start", {
     playerNumbers: PN,
+    username: username,
   });
   return result.data;
 };
