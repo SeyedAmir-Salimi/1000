@@ -12,19 +12,20 @@
 }
 
 .card1 {
-  left: 30%;
+  transform: translate(106px, 0px) scale(0.5);
 }
 
+
 .card2 {
-  left: 38%;
+  transform: translate(195px, 0px) scale(0.5);
 }
 
 .card3 {
-  left: 46%;
+  transform: translate(284px, 0px) scale(0.5);
 }
 
 .card4 {
-  left: 54%;
+  transform: translate(373px, 0px) scale(0.5);
 }
 
 

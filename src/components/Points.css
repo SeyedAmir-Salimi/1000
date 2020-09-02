@@ -1,32 +1,22 @@
-@media screen 
-  and (min-width: 1200px) 
-  and (max-width: 1600px) { 
+
       .playerNamesUser1{
-        color: rgb(208, 255, 0);
-        transform: translateX(191%) translateY(381%);;
+        color: white;
+        transform: translateX(68px) translateY(267px)
       }
       
       .playerNamesUser2{
-        color: rgb(194, 15, 15);
-        text-align: left;
-        position: absolute;
-        float: left;
-        justify-content: left;
-        justify-items: left;
-        transform: translateX(1254%) translateY(610%);
+        color: white;
+        transform: translateX(312px) translateY(-24px);
       }
       
       .playerNamesUser3{
         color: white;
-        display: block;
-        position: absolute;
-        transform: translateX(2264%) translateY(383%)
+        transform:translateX(550px) translateY(190px)
       }
       .playerNamesUser4{
         color: white;
-        display: block;
-        position: absolute;
-        left: 0%;
-        top: 15.5%;
+        transform: translateX(311px) translateY(498px);
       }
+  .highestNumber{
+    color: gold;
   }

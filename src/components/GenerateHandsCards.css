@@ -6,11 +6,8 @@
     transition: all;
     z-index: 6;
     animation-duration: 0.9s;
-    transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+    transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
   }
-  @media screen 
-  and (min-width: 1200px) 
-  and (max-width: 1600px) { 
             /*anime  */
     .GHC1_anime{
         animation-delay: 0.5s;
@@ -21,16 +18,16 @@
       @keyframes GHC1_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
             z-index: 2;
-            transform: translateX(17%) translateY(92%) scale(0.7, 0.7) rotate(90deg);
+            transform: translate(15px, 55px) rotate(90deg) scale(0.5);
           }
 
         100% {
           z-index: 2;
-          transform: translateX(17%) translateY(92%) scale(0.7, 0.7) rotate(90deg);
+          transform: translate(15px, 55px) rotate(90deg) scale(0.5);
         }
       }
 
@@ -43,15 +40,15 @@
       @keyframes GHC2_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(17%) translateY(98%) scale(0.7, 0.7) rotate(90deg)
+          transform: translate(15px, 69px) rotate(90deg) scale(0.5);
         }
         100% {
             z-index: 2;
-            transform: translateX(17%) translateY(98%) scale(0.7, 0.7) rotate(90deg)
+          transform: translate(15px, 69px) rotate(90deg) scale(0.5);
           }
       }
 
@@ -64,15 +61,15 @@
       @keyframes GHC3_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(17%) translateY(104%) scale(0.7, 0.7) rotate(90deg);
+          transform: translate(15px, 83px) rotate(90deg) scale(0.5);
         }
         100% {
           z-index: 2;
-          transform: translateX(17%) translateY(104%) scale(0.7, 0.7) rotate(90deg);
+          transform: translate(15px, 83px) rotate(90deg) scale(0.5);
         }
       }
 
@@ -86,15 +83,15 @@
       @keyframes GHC4_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(17%) translateY(109%) scale(0.7, 0.7) rotate(90deg);
+          transform: translate(15px, 97px) rotate(90deg) scale(0.5);
         }
         100% {
           z-index: 2;
-          transform: translateX(17%) translateY(109%) scale(0.7, 0.7) rotate(90deg);
+          transform: translate(15px, 97px) rotate(90deg) scale(0.5);
         }
       }
 
@@ -107,15 +104,15 @@
       @keyframes GHC5_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(364%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
+            transform: translate(230px, -173px) rotate(0deg) scale(0.5);
         }
         100% {
           z-index: 2;
-          transform: translateX(364%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
+            transform: translate(230px, -173px) rotate(0deg) scale(0.5);
         }
       }
 
@@ -128,15 +125,15 @@
       @keyframes GHC6_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(381%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
+            transform: translate(244px, -173px) rotate(0deg) scale(0.5);
         }
         100% {
           z-index: 2;
-          transform: translateX(381%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
+            transform: translate(244px, -173px) rotate(0deg) scale(0.5);
         }
       }
 
@@ -149,15 +146,15 @@
       @keyframes GHC7_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(401%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
+            transform: translate(258px, -173px) rotate(0deg) scale(0.5);
         }
         100% {
           z-index: 2;
-          transform: translateX(401%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
+            transform: translate(258px, -173px) rotate(0deg) scale(0.5);
         }
       }
 
@@ -170,15 +167,15 @@
       @keyframes GHC8_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(419%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
+            transform: translate(272px, -173px) rotate(0deg) scale(0.5);
         }
         100% {
           z-index: 2;
-          transform: translateX(419%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
+            transform: translate(272px, -173px) rotate(0deg) scale(0.5);
         }
       }
 
@@ -191,15 +188,15 @@
       @keyframes GHC9_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(792%) translateY(92%) scale(0.7, 0.7) rotate(90deg);
+            transform: translate(511px, 55px) rotate(90deg) scale(0.5);
         }
         100% {
           z-index: 2;
-          transform: translateX(792%) translateY(92%) scale(0.7, 0.7) rotate(90deg);
+            transform: translate(511px, 55px) rotate(90deg) scale(0.5);
         }
       }
 
@@ -212,15 +209,15 @@
       @keyframes GHC10_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
        5% {
           z-index: 2;
-          transform: translateX(792%) translateY(98%) scale(0.7, 0.7) rotate(90deg);
+            transform: translate(511px, 69px) rotate(90deg) scale(0.5);
         }
        100% {
           z-index: 2;
-          transform: translateX(792%) translateY(98%) scale(0.7, 0.7) rotate(90deg);
+            transform: translate(511px, 69px) rotate(90deg) scale(0.5);
         }
       }
 
@@ -233,15 +230,15 @@
       @keyframes GHC11_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(792%) translateY(104%) scale(0.7, 0.7) rotate(90deg);
+            transform: translate(511px, 83px) rotate(90deg) scale(0.5);
         }
         100% {
           z-index: 2;
-          transform: translateX(792%) translateY(104%) scale(0.7, 0.7) rotate(90deg);
+            transform: translate(511px, 83px) rotate(90deg) scale(0.5);
         }
       }
 
@@ -254,15 +251,15 @@
       @keyframes GHC12_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(792%) translateY(109%) scale(0.7, 0.7) rotate(90deg);
+            transform: translate(511px, 97px) rotate(90deg) scale(0.5);
         }
         100% {
           z-index: 2;
-          transform: translateX(792%) translateY(109%) scale(0.7, 0.7) rotate(90deg);
+            transform: translate(511px, 97px) rotate(90deg) scale(0.5);
         }
       }
 
@@ -275,15 +272,15 @@
       @keyframes GHC13_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(279%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
+            transform: translateX(117px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
         100% {
           z-index: 2;
-          transform: translateX(279%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
+            transform: translateX(117px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
       }
 
@@ -296,15 +293,15 @@
       @keyframes GHC14_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(351%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
+            transform: translateX(206px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
         100% {
           z-index: 2;
-          transform: translateX(351%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
+            transform: translateX(206px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
       }
       
@@ -317,15 +314,15 @@
       @keyframes GHC15_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(424%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
+            transform: translateX(295px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
         100% {
           z-index: 2;
-          transform: translateX(424%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
+            transform: translateX(295px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
       }
 
@@ -338,374 +335,14 @@
       @keyframes GHC16_anime{
         0% {
           z-index: 2;
-          transform: translateX(387%) translateY(101%) scale(0.7, 0.7) rotate(0deg);
+          transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
           z-index: 2;
-          transform: translateX(496%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
+            transform: translateX(384px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
         100% {
           z-index: 2;
-          transform: translateX(496%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
+            transform: translateX(384px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
       }
-
-        /* fix */
-
-      .GHC1{
-        animation-delay: 0.5s;
-        animation-duration: 8s;
-        animation-name: GHC1;
-        opacity: 0;
-        transform: translateX(17%) translateY(92%) scale(0.7, 0.7) rotate(90deg)
-      }
-      
-      @keyframes GHC1{
-        0% {
-          z-index: 2;
-          opacity: 0;
-        }
-        3.9% {
-            z-index: 2;
-            opacity: 0;
-          }
-        4% {
-            z-index: 2;
-            opacity: 1;
-        }
-        100% {
-            z-index: 2;
-            opacity: 1;
-        }
-      }
-
-      .GHC2{
-        animation-delay: 1s;
-        animation-duration: 8s;
-        animation-name: GHC2;
-        opacity: 1;
-      }
-      
-      @keyframes GHC2{
-        0% {
-            z-index: 2;
-            opacity: 0;
-          }
-          3.9% {
-              z-index: 2;
-              opacity: 0;
-            }
-          4% {
-              z-index: 2;
-              opacity: 1;
-          }
-          100% {
-              z-index: 2;
-              opacity: 1;
-          }
-      }
-      .GHC3{
-        animation-delay: 1.5s;
-        animation-duration: 0.1s;
-        animation-name: GHC3;
-        opacity: 1;
-      }
-      
-      @keyframes GHC3{
-        from {
-          z-index: 2;
-          opacity: 0;
-          transform: translateX(17%) translateY(104%) scale(0.7, 0.7) rotate(90deg);
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-          transform: translateX(17%) translateY(104%) scale(0.7, 0.7) rotate(90deg);
-        }
-      }
-      .GHC4{
-        animation-delay: 2s;
-        animation-duration: 0.1s;
-        animation-name: GHC4;
-        opacity: 1;
-      }
-      
-      @keyframes GHC4{
-        from {
-          z-index: 2;
-          opacity: 0;
-          transform: translateX(17%) translateY(109%) scale(0.7, 0.7) rotate(90deg);
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-          transform: translateX(17%) translateY(109%) scale(0.7, 0.7) rotate(90deg);
-        }
-      }
-      .GHC5{
-        animation-delay: 2.5s;
-        animation-duration: 0.1s;
-        animation-name: GHC5;
-        transform: translateX(364%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
-      }
-      
-      @keyframes GHC5{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-      .GHC6{
-        animation-delay: 3s;
-        animation-duration: 0.1s;
-        animation-name: GHC6;
-        transform: translateX(381%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
-      }
-      
-      @keyframes GHC5{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-      .GHC7{
-        animation-delay: 3.5s;
-        animation-duration: 0.1s;
-        animation-name: GHC7;
-        transform: translateX(401%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
-      }
-      
-      @keyframes GHC7{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-      .GHC8{
-        animation-delay: 4s;
-        animation-duration: 0.1s;
-        animation-name: GHC8;
-        transform: translateX(419%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
-      }
-      
-      @keyframes GHC8{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-      .GHC9{
-        animation-delay: 4.5s;
-        animation-duration: 0.1s;
-        animation-name: GHC9;
-        transform: translateX(792%) translateY(92%) scale(0.7, 0.7) rotate(90deg);
-      }
-      
-      @keyframes GHC9{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-      .GHC10{
-        animation-delay: 5s;
-        animation-duration: 0.1s;
-        animation-name: GHC10;
-        transform: translateX(792%) translateY(98%) scale(0.7, 0.7) rotate(90deg);
-
-      }
-      
-      @keyframes GHC10{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-      .GHC11{
-        animation-delay: 5.5s;
-        animation-duration: 0.1s;
-        animation-name: GHC11;
-        transform: translateX(792%) translateY(104%) scale(0.7, 0.7) rotate(90deg);
-      }
-      
-      @keyframes GHC11{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-      .GHC12{
-        animation-delay: 6s;
-        animation-duration: 0.1s;
-        animation-name: GHC12;
-        transform: translateX(792%) translateY(109%) scale(0.7, 0.7) rotate(90deg);
-      }
-      
-      @keyframes GHC12{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-      .GHC13{
-        animation-delay: 6.5s;
-        animation-duration: 0.1s;
-        animation-name: GHC13;
-        transform: translateX(279%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
-      }
-      
-      @keyframes GHC13{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-
-      .GHC14{
-        animation-delay: 7s;
-        animation-duration: 0.1s;
-        animation-name: GHC14;
-        transform: translateX(351%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
-      }
-      
-      @keyframes GHC14{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-      .GHC15{
-        animation-delay: 7.5s;
-        animation-duration: 0.1s;
-        animation-name: GHC15;
-        transform: translateX(424%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
-      }
-      
-      @keyframes GHC15{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-      .GHC16{
-        animation-delay: 8s;
-        animation-duration: 0.1s;
-        animation-name: GHC16;
-        transform: translateX(496%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
-      }
-      
-      @keyframes GHC16{
-        from {
-          z-index: 2;
-          opacity: 0;
-        }
-        to {
-          z-index: 2;
-          opacity: 1;
-        }
-      }
-
-
-  }
-
-
-
-
-  /* .GHC1{
-    transform: translateX(17%) translateY(92%) scale(0.7, 0.7) rotate(90deg);
-}
-.GHC2{
-    transform: translateX(17%) translateY(97%) scale(0.7, 0.7) rotate(90deg);
-}
-.GHC3{
-    transform: translateX(17%) translateY(104%) scale(0.7, 0.7) rotate(90deg);
-}
-.GHC4{
-    transform: translateX(17%) translateY(109%) scale(0.7, 0.7) rotate(90deg);
-}
-
-
-.GHC5{
-  transform: translateX(364%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
-}
-.GHC6{
-  transform: translateX(381%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
-}
-.GHC7{
-  transform: translateX(401%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
-}
-.GHC8{
-  transform: translateX(419%) translateY(-9%) scale(0.7, 0.7) rotate(0deg);
-}
-
-
-.GHC9{
-  transform: translateX(792%) translateY(92%) scale(0.7, 0.7) rotate(90deg);
-}
-.GHC10{
-  transform: translateX(792%) translateY(98%) scale(0.7, 0.7) rotate(90deg);
-}
-.GHC11{
-  transform: translateX(792%) translateY(104%) scale(0.7, 0.7) rotate(90deg);
-}
-.GHC12{
-  transform: translateX(792%) translateY(109%) scale(0.7, 0.7) rotate(90deg);
-}
-
-
-.GHC13{
-  transform: translateX(279%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
-}
-.GHC14{
-  transform: translateX(351%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
-}
-.GHC15{
-  transform: translateX(424%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
-}
-.GHC16{
-  transform: translateX(496%) translateY(182%) scale(0.7, 0.7) rotate(0deg);
-} */

@@ -5,7 +5,7 @@
   position: absolute;
   z-index: 2;
   animation-duration: 1.6s;
-  transform: scale(0.7, 0.7);
+  box-shadow: 7px 7px 7px -6px rgba(0,0,0,0.75);
 }
 .playerNames_User1{
   color: white;

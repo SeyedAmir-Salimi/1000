@@ -4,41 +4,45 @@
 } */
 
 body {
+  background-color: rgb(0, 45, 87);
+  width: 100vw;
+  /* height: 900px; */
+  /* position: relative; */
+}
+.board{
   background-color: rgb(30, 73, 35);
-  width: 100%;
-  height: 100%;
   position: relative;
+  height: 700px;
+  margin: 0 auto;
+  width: 700px;
+  border-radius: 2rem;
+  border: rgb(0, 44, 14) 2px solid;
+  overflow: hidden;
+  box-shadow: black;
 }
-
-
-@media screen 
-  and (min-width: 1200px) 
-  and (max-width: 1600px) { 
-    body{
-      background-color: rgb(0, 53, 22);
-    }
-    .reversedCard, .card, .topOfMeld{
-      transform: scale(0.7, 0.7);
-    }
+.reversedCard, .card, .topOfMeld{
+  transform: scale(0.5, 0.5);
+}
     /* User1 */
-.opponentUser1 .reversedCard {
-  transform: scale(0.7, 0.7) rotate(90deg);
-  left: 1.8%;
-}
-.reversedCard1 {
-  top: 34%;
+/* .opponentUser1 .reversedCard {
+  transform: scale(0.5, 0.5) rotate(90deg);
+
+} */
+
+.reversedCard_User1_1{
+  transform: translate(15px, 55px) rotate(90deg) scale(0.5);
 }
 
-.reversedCard2 {
-  top: 36%;
+.reversedCard_User1_2{
+  transform: translate(15px, 69px) rotate(90deg) scale(0.5);
 }
 
-.reversedCard3 {
-  top: 38%;
+.reversedCard_User1_3{
+  transform: translate(15px, 83px) rotate(90deg) scale(0.5);
 }
 
-.reversedCard4 {
-  top: 40%;
+.reversedCard_User1_4{
+  transform: translate(15px, 97px) rotate(90deg) scale(0.5);
 }
 
 .User1_discarding {
@@ -47,22 +51,19 @@ body {
 
 @keyframes user1AnimeDiscard {
   0% {
-    left: 0%;
-    transform:  scale(0.7, 0.7) rotate(90) rotate3d(0, 1, 0, 0deg);
+    transform: translate(15px, 55px) rotate(90deg) scale(0.5) rotate3d(0, 1, 0, 0deg);
     opacity: 1;
   }
+  
   70% {
-    transform:  scale(0.7, 0.7) rotate(0) rotate3d(0, 1, 0, 90deg);
-    top: 37%;
-    left: 38.4%;
+    transform: translate(213px, 75px) rotate3d(0, 1, 0, 90deg) rotate(0deg) scale(0.5);
     z-index: 3;
     opacity: 1;
   }
   100% {
-    transform:  scale(0.7, 0.7) rotate(0) rotate3d(0, 1, 0, 90deg);
-    top: 37%;
-    left: 38.4%;
+    transform: translate(213px, 75px) rotate3d(0, 1, 0, 90deg) rotate(0deg) scale(0.5);
     z-index: 3;
+    opacity: 1;
     opacity: 0;
   }
 }
@@ -74,14 +75,11 @@ body {
 
 @keyframes user1AnimeMeld {
   from {
-    left: 0%;
-    transform: scale(0.7, 0.7) rotate(90);
+    transform: translate(15px, 55px) rotate(90deg) scale(0.5) rotate3d(1, 0, 0, 0deg);
   }
   to {
-    top: 11%;
-    left: -0.0%;
     z-index: 3;
-    transform: scale(0.42, 0.42) rotate(0deg) rotate3d(1, 0, 0, 90deg);
+    transform: translate(14px, -61px) rotate(0deg) rotate3d(1, 0, 0, 90deg) scale(0.42);
   }
 }
 
@@ -91,56 +89,48 @@ body {
 
 @keyframes User1_MeldDeck {
   from {
-    top:36%;
-    left: 42%;
-    transform:  scale(0.7, 0.7);
+    transform: translateX(245px, 65px) scale(0.5, 0.5);
   }
   to {
     z-index: 3;
-    transform: translateX(-387%) translateY(-101%) scale(0.42, 0.42);
+    transform: translateX(5px) translateY(-124px) scale(0.42);
   }
 }
 
 
-
 /* User2 */
-.opponentUser2 .reversedCard {
+/* .opponentUser2 .reversedCard {
   top: 0;
+} */
+
+.reversedCard_User2_1{
+  transform: translate(230px, -173px) rotate(0deg) scale(0.5);
 }
 
-.opponentUser2 .reversedCard1 {
-  left: 40%;
+.reversedCard_User2_2{
+  transform: translate(244px, -173px) rotate(0deg) scale(0.5);
 }
 
-.opponentUser2 .reversedCard2 {
-  left: 42%;
+.reversedCard_User2_3{
+  transform: translate(258px, -173px) rotate(0deg) scale(0.5);
 }
 
-.opponentUser2 .reversedCard3 {
-  left: 44%;
-}
-
-.opponentUser2 .reversedCard4 {
-  left: 46%;
+.reversedCard_User2_4{
+  transform: translate(272px, -173px) rotate(0deg) scale(0.5);
 }
 
 @keyframes user2AnimeDiscard {
   0% {
-    top: 0%;
-    transform:  scale(0.7, 0.7) rotate3d(1, 0, 0, 0deg);
+    transform: translate(230px, -173px) rotate(0deg) scale(0.5);
     opacity: 1;
   }
   70% {
-    transform:  scale(0.7, 0.7) rotate3d(1, 0, 0, 90deg);
-    top: 26%;
-    left: 42.5%;
+    transform: translate(255px, 13px) rotate3d(1, 0, 0, 90deg) rotate(0deg) scale(0.5);
     z-index: 3;
     opacity: 1;
   }
   100%{
-    transform:  scale(0.7, 0.7) rotate3d(1, 0, 0, 90deg);
-    top: 26%;
-    left: 42.5%;
+    transform: translate(255px, 13px) rotate3d(1, 0, 0, 90deg) rotate(0deg) scale(0.5);
     z-index: 3;
     opacity: 0;
   }
@@ -156,14 +146,10 @@ body {
 
 @keyframes user2AnimeMeld {
   from {
-    top:0%;
-    left: 40%;
-    transform:  scale(0.7, 0.7) ;
+    transform: translate(230px, -173px) rotate(0deg) scale(0.5);
   }
   to {
-    transform:  scale(0.42, 0.42) rotate3d(0, 1, 0, 90deg);
-    left: 66.5%;
-    top:3%;
+    transform:  translate(465px, -113px) rotate(0deg)  rotate3d(0, 1, 0, 90deg) scale(0.42);
     z-index: 3;
   }
 }
@@ -174,55 +160,49 @@ body {
 
 @keyframes User2_MeldDeck {
   from {
-    top:36%;
-    left: 42%;
-    transform:  scale(0.7, 0.7);
+    transform: translateX(245px, 65px) scale(0.5, 0.5);
   }
   to {
     z-index: 3;
-    transform: translateX(239%) translateY(-102%) scale(0.42, 0.42);
+    transform: translateX(491px) translateY(-124px) scale(0.42)
   }
 }
 
 
 /* User3 */
 .opponentUser3 .reversedCard {
-  transform: scale(0.7, 0.7) rotate(90deg);
-  right: 1.9%;
+  /* transform: scale(0.5, 0.5) rotate(90deg); */
+  /* right: 1.9%; */
 }
 
-.opponentUser3 .reversedCard1 {
-  top: 34%;
+.reversedCard_User3_1{
+  transform: translate(511px, 55px) rotate(90deg) scale(0.5);
 }
 
-.opponentUser3 .reversedCard2 {
-  top: 36%;
+.reversedCard_User3_2{
+  transform: translate(511px, 69px) rotate(90deg) scale(0.5);
 }
 
-.opponentUser3 .reversedCard3 {
-  top: 38%;
+.reversedCard_User3_3{
+  transform: translate(511px, 83px) rotate(90deg) scale(0.5);
 }
 
-.opponentUser3 .reversedCard4 {
-  top: 40%;
+.reversedCard_User3_4{
+  transform: translate(511px, 97px) rotate(90deg) scale(0.5);
 }
 
 @keyframes user3AnimeDiscard {
   0% {
-    transform:  scale(0.7, 0.7) rotate(90) rotate3d(0, 1, 0, 0deg);
+    transform: translate(511px, 55px) rotate(90deg) scale(0.5) rotate3d(0, 1, 0, 0deg);
     opacity: 1;
   }
   70% {
-    transform:  scale(0.7, 0.7) rotate(0) rotate3d(0, 1, 0, 90deg);
-    top: 37%;
-    right: 42%;
+    transform: translate(299px, 75px) rotate3d(0, 1, 0, 90deg) rotate(0deg) scale(0.5);
     z-index: 2;
     opacity: 1;
   }
   100%{
-    transform:  scale(0.7, 0.7) rotate(0) rotate3d(0, 1, 0, 90deg);
-    top: 37%;
-    right: 42%;
+    transform: translate(299px, 75px) rotate3d(0, 1, 0, 90deg) rotate(0deg) scale(0.5);
     z-index: 2;
     opacity: 0;
   }
@@ -238,13 +218,10 @@ body {
 
 @keyframes user3AnimeMeld {
   from {
-    right: 1.9%;
-    transform:  scale(0.7, 0.7)  rotate(90);
+    transform: translate(511px, 55px) rotate(90deg) scale(0.5);
   }
   to {
-    transform: scale(0.42, 0.42) rotate(0) rotate3d(1, 0, 0, 90deg);
-    right: 0%;
-    top: 58.5%;
+    transform: translate(512px, 165px) rotate(0deg) rotate3d(1, 0, 0, 90deg) scale(0.42);
     z-index: 2;
   }
 }
@@ -255,49 +232,42 @@ body {
 
 @keyframes User3_MeldDeck {
   from {
-    top:36%;
-    left: 42%;
-    transform:  scale(0.7, 0.7);
+    transform: translateX(245px, 65px) scale(0.5, 0.5);
   }
   to {
+    transform: translateX(502px) translateY(203px) scale(0.42);
     z-index: 3;
-    transform: translateX(421%) translateY(85%) scale(0.42, 0.42);
+
   }
 }
 
 /* User4 */
-
-.card1.user4_discarding, .card2.user4_discarding,.card3.user4_discarding, .card4.user4_discarding  {
-  bottom: 27.5%;
-  left: 42%;
+.card1.user4_discarding, .card2.user4_discarding, .card3.user4_discarding, .card4.user4_discarding {
+transform:  translate(244px, -187px) scale(0.5);
 }
+
 .card1.user4_Meld, .card2.user4_Meld, .card3.user4_Meld, .card4.user4_Meld{
-  bottom: -1%;
-  left: -1%;
-  transform: scale(0.42, 0.42);
+  transform: translate(4px, -53px) scale(0.42);
 }
 
 .User4_MeldDeck{
-  animation-name: User4_Meld;
+  animation-name: User4_MeldDeck;
 }
 
-@keyframes User4_Meld {
+@keyframes User4_MeldDeck {
   from {
-    top:36%;
-    left: 42%;
-    transform:  scale(0.7, 0.7);
+    transform: translateX(245px) translateY(65px) scale(0.5);
   }
   to {
     z-index: 3;
-    transform: translateX(-388%) translateY(84%) scale(0.42, 0.42);
+    transform: translateX(4px) translateY(198px) scale(0.42);
   }
 }
 
-
-/* posizion user1 = translateX(0%) translateY(-2%) scale(0.42, 0.42);
-posizion user2 = translateX(627%) translateY(-2%) scale(0.42, 0.42)
-posizion user3 = translateX(809%) translateY(187%) scale(0.42, 0.42)
-posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
+/* posizion user1 = translateX(14px) translateY(-114px) scale(0.42, 0.42);
+posizion user2 = translateX(501px) translateY(-114px) scale(0.42, 0.42)
+posizion user3 = translateX(512px) translateY(214px) scale(0.42, 0.42)
+posizion user4 = translateX(14px) translateY(208px) scale(0.42, 0.42) */
 
 /* User1 meldByOtherUser*/
 .User1MeldFromUser2{
@@ -309,11 +279,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes User1MeldFromUser2 {
   from {
     z-index: 2;
-    transform: translateX(627%) translateY(-2%);
+    transform: translateX(501px) translateY(-114px);
   }
   to {
     z-index: 2;
-    transform: translateX(0%) translateY(-2%);
+    transform: translateX(14px) translateY(-114px);
   }
 }
 
@@ -326,11 +296,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes User1MeldFromUser3 {
   from {
     z-index: 2;
-    transform: translateX(809%) translateY(187%);
+    transform: translateX(512px) translateY(214px);
   }
   to {
     z-index: 2;
-    transform: translateX(0%) translateY(-2%);
+    transform: translateX(14px) translateY(-114px);
   }
 }
 
@@ -344,11 +314,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes User1MeldFromUser4 {
   from {
     z-index: 2;
-    transform: translateX(0%) translateY(187%) ;
+    transform: translateX(14px) translateY(208px) ;
   }
   to {
     z-index: 2;
-    transform: translateX(0%) translateY(-2%);
+    transform: translateX(14px) translateY(-114px);
   }
 }
 
@@ -363,11 +333,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes User2MeldFromUser3 {
   from {
     z-index: 2;
-    transform: translateX(809%) translateY(187%) ;
+    transform: translateX(512px) translateY(214px) ;
   }
   to {
     z-index: 2;
-    transform:  translateX(627%) translateY(-2%) ;
+    transform:  translateX(501px) translateY(-114px) ;
   }
 }
 
@@ -381,11 +351,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes User2MeldFromUser4 {
   from {
     z-index: 2;
-    transform: translateX(0%) translateY(187%) ;
+    transform: translateX(14px) translateY(208px) ;
   }
   to {
     z-index: 2;
-    transform:  translateX(627%) translateY(-2%) ;
+    transform:  translateX(501px) translateY(-114px) ;
   }
 }
 
@@ -399,11 +369,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes User2MeldFromUser1 {
   from {
     z-index: 2;
-    transform: translateX(0%) translateY(-2%) ;
+    transform: translateX(14px) translateY(-114px) ;
   }
   to {
     z-index: 2;
-    transform:  translateX(627%) translateY(-2%) ;
+    transform:  translateX(501px) translateY(-114px) ;
   }
 }
 
@@ -419,11 +389,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes User3MeldFromUser4 {
   from {
     z-index: 2;
-    transform: translateX(0%) translateY(187%) ;
+    transform: translateX(14px) translateY(208px) ;
   }
   to {
     z-index: 2;
-    transform:  translateX(809%) translateY(187%)  ;
+    transform:  translateX(512px) translateY(214px)  ;
   }
 }
 
@@ -437,11 +407,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes User3MeldFromUser1 {
   from {
     z-index: 2;
-    transform: translateX(0%) translateY(-2%) ;
+    transform: translateX(14px) translateY(-114px) ;
   }
   to {
     z-index: 2;
-    transform:  translateX(809%) translateY(187%)  ;
+    transform:  translateX(512px) translateY(214px)  ;
   }
 }
 
@@ -455,11 +425,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes User3MeldFromUser2 {
   from {
     z-index: 2;
-    transform: translateX(627%) translateY(-2%) ;
+    transform: translateX(501px) translateY(-114px) ;
   }
   to {
     z-index: 2;
-    transform:  translateX(809%) translateY(187%)  ;
+    transform:  translateX(512px) translateY(214px)  ;
   }
 }
 
@@ -474,11 +444,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes  User4MeldFromUser1{
   from {
     z-index: 2;
-    transform: translateX(0%) translateY(-2%) ;
+    transform: translateX(14px) translateY(-114px) ;
   }
   to {
     z-index: 2;
-    transform:  translateX(0%) translateY(187%)  ;
+    transform:  translateX(14px) translateY(208px)  ;
   }
 }
 
@@ -492,11 +462,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes  User4MeldFromUser2{
   from {
     z-index: 2;
-    transform: translateX(627%) translateY(-2%) ;
+    transform: translateX(501px) translateY(-114px) ;
   }
   to {
     z-index: 2;
-    transform:  translateX(0%) translateY(187%)  ;
+    transform: translateX(14px) translateY(208px)  ;
   }
 }
 
@@ -510,11 +480,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes  User4MeldFromUser3{
   from {
     z-index: 2;
-    transform: translateX(809%) translateY(187%) ;
+    transform: translateX(512px) translateY(214px) ;
   }
   to {
     z-index: 2;
-    transform:  translateX(0%) translateY(187%)  ;
+    transform:  translateX(14px) translateY(208px)  ;
   }
 }
 
@@ -529,15 +499,11 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 @keyframes  User1_DeckDiscard{
   from {
     z-index: 5;
-    left: 38.2%;
-    top: 36%;
-    transform:rotate3d(0, 1, 0, 90deg) scale(0.7, 0.7);
+    transform:  scale(0.5, 0.5) translateX(420px) translateY(130px) rotate3d(0, 1, 0, 90deg) ;
   }
   to {
-    top:36%;
-    left: 42%;
     z-index: 5;
-    transform: rotate3d(0, 1, 0, 0deg) scale(0.7, 0.7) 
+    transform: scale(0.5, 0.5) translateX(490px) translateY(130px) rotate3d(0, 1, 0, 0deg) ;
   }
 }
 
@@ -550,16 +516,16 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 }
 @keyframes  User2_DeckDiscard{
   from {
-    left: 42%;
-    top: 24.5%;
+    /* top:28%;
+    left:36.5%; */
     z-index: 5;
-    transform: rotate3d(1, 0, 0, 90deg) scale(0.7, 0.7);
+    transform: rotate3d(1, 0, 0, 90deg) scale(0.5, 0.5) translateX(490px) translateY(100px);
   }
   to {
-    top:36%;
-    left: 42%;
+    /* top:36%;
+    left: 42%; */
     z-index: 5;
-    transform: rotate3d(1, 0, 0, 0deg) scale(0.7, 0.7) 
+    transform: rotate3d(1, 0, 0, 0deg) scale(0.5, 0.5) translateX(490px) translateY(130px); 
   }
 }
 
@@ -572,16 +538,12 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
 }
 @keyframes  User3_DeckDiscard{
   from {
-    left: 45.8%;
-    top: 36%;
     z-index: 5;
-    transform: rotate3d(0, 1, 0, 90deg) scale(0.7, 0.7);
+    transform:  scale(0.5, 0.5) translateX(560px) translateY(130px) rotate3d(0, 1, 0, 90deg) ;
   }
   to {
-    top:36%;
-    left: 42%;
     z-index: 5;
-    transform: rotate3d(0, 1, 0, 0deg) scale(0.7, 0.7) 
+    transform: scale(0.5, 0.5) translateX(490px) translateY(130px) rotate3d(0, 1, 0, 0deg) ;
   }
 }
 
@@ -617,19 +579,6 @@ posizion user4 = translateX(0%) translateY(187%) scale(0.42, 0.42) */
   position: absolute;
   left: 0%;
   top: 15.5%;
-}
-
-
-}
-
-
-
-
-@media screen 
-  and (min-width: 1600px) { 
-    body{
-      background-color: rgb(255, 0, 212);
-    }
 }
 
 

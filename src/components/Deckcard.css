@@ -8,7 +8,7 @@
 }
 
 .deckCard{
-  transform: scale(0.7, 0.7);
+  /* transform: scale(0.5, 0.5); */
   border-radius: 8px;
   width: 169px;
   height: 244px;
@@ -16,8 +16,9 @@
   padding: 2rem;
   position: absolute;
   cursor: pointer;
-  left: 42%;
-  top:36%;
+  transform: translateX(245px) translateY(65px) scale(0.5, 0.5);
+  /* left: 42%;
+  top:36%; */
   transition: all;
   animation-duration: 1.6s;
   z-index: 2;
@@ -38,7 +39,6 @@
 }
 
 .deckCardReplace{
-  transform: scale(0.7, 0.7);
   border-radius: 8px;
   width: 169px;
   height: 244px;
@@ -46,6 +46,6 @@
   padding: 2rem;
   position: absolute;
   cursor: pointer;
-  left: 42%;
-  top:36%;
+  transform: translateX(245px) translateY(65px) scale(0.5, 0.5);
+
 }

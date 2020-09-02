@@ -15,7 +15,9 @@ const Deckcard = ({ card, className }) => {
       <div
         key={card.cardId}
         className={className}
-        style={{ backgroundImage: `url(${imageFile})` }}
+        style={{
+          backgroundImage: `url(${imageFile})`,
+        }}
       >
         <Selection cardId={card.id} />
       </div>

@@ -19,6 +19,7 @@ const initialState = {
   hand: [],
   topOfTheMeld: null,
   topOfTheDeck: null,
+  deckCount: 0,
   selectedCards: [],
   selectedMeld: null,
   isMyTurn: true,
@@ -29,13 +30,22 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case CREATE_GAME: {
-      const { id, playerNumbers, round, set, playerNames } = action.payload;
+      const {
+        id,
+        playerNumbers,
+        round,
+        set,
+        playerNames,
+        deckCount,
+      } = action.payload;
+
       return {
         ...state,
         gameId: id,
         hand: [],
         opponents: null,
         topOfTheDeck: null,
+        deckCount,
         topOfTheMeld: null,
         selectedCards: [],
         selectedMeld: null,
@@ -56,6 +66,7 @@ export default (state = initialState, action) => {
         set,
         hand,
         topOfTheDeck,
+        deckCount,
         topOfTheMeld,
         points,
         winner,
@@ -71,6 +82,7 @@ export default (state = initialState, action) => {
         opponents,
         hand,
         topOfTheDeck,
+        deckCount,
         topOfTheMeld,
         selectedCards: [],
         selectedMeld: null,

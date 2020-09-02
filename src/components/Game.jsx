@@ -29,32 +29,34 @@ const Game = () => {
     Cookies.remove("Rummy_gameId");
   };
   return (
-    <>
-      <button onClick={() => GoToLink()}>Finish the game</button>
+    <div>
+      <div className="board">
+        <Points />
+        <GenerateHandsCards />
+        {opponents && opponents.User1 && (
+          <OpponentHand user="User1" count={opponents.User1.cardCount} />
+        )}
+
+        {opponents && opponents.User2 && (
+          <OpponentHand user="User2" count={opponents.User2.cardCount} />
+        )}
+
+        {opponents && opponents.User3 && (
+          <OpponentHand user="User3" count={opponents.User3.cardCount} />
+        )}
+
+        <Deck />
+
+        <UserHand cards={hand} />
+        <AllMelds />
+      </div>
+      <button className="FinishButton" onClick={() => GoToLink()}>
+        Finish the game
+      </button>
       <div className="meldButtonWrapper">
         <MeldButtun />
       </div>
-      <div className="pointsWrapper">
-        <Points />
-      </div>
-      <GenerateHandsCards />
-      {opponents && opponents.User1 && (
-        <OpponentHand user="User1" count={opponents.User1.cardCount} />
-      )}
-
-      {opponents && opponents.User2 && (
-        <OpponentHand user="User2" count={opponents.User2.cardCount} />
-      )}
-
-      {opponents && opponents.User3 && (
-        <OpponentHand user="User3" count={opponents.User3.cardCount} />
-      )}
-
-      <Deck />
-
-      <UserHand cards={hand} />
-      <AllMelds />
-    </>
+    </div>
   );
 };
 
