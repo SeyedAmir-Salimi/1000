@@ -17,11 +17,16 @@ function User2Melds({ className }) {
           />
         </div>
       )}
-      {action.user2NextMeld && action.otherUser === "User2" && (
-        <div className="User2_topOfTheMeld meldSecondCard">
-          <Meld key={action.user2NextMeld.medlId} card={action.user2NextMeld} />
-        </div>
-      )}
+      {action.user2NextMeld &&
+        action.user !== "User2" &&
+        action.otherUser === "User2" && (
+          <div className="User2_topOfTheMeld meldSecondCard">
+            <Meld
+              key={action.user2NextMeld.medlId}
+              card={action.user2NextMeld}
+            />
+          </div>
+        )}
     </>
   );
 }

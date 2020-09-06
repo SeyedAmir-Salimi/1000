@@ -24,6 +24,7 @@ const ReversedCard = React.memo(
       if (
         meld.type === "meldFromDeck" ||
         meld.type === "meldFromHand" ||
+        meld.type === "meldAllofTheDeck" ||
         (meld.type === "meldByOtherUserMeld" && meld.user === user)
       ) {
         className = `reversedCard reversedCard_${user}_${index} ${user}_meld`;

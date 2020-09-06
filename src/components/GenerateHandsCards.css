@@ -8,25 +8,26 @@
     animation-duration: 0.9s;
     transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
   }
-            /*anime  */
+    /*anime  */
     .GHC1_anime{
         animation-delay: 0.5s;
         animation-duration: 8s;
         animation-name: GHC1_anime;
+        z-index: 30;
       }
       
       @keyframes GHC1_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-            z-index: 2;
+            z-index: 8;
             transform: translate(15px, 55px) rotate(90deg) scale(0.5);
           }
 
         100% {
-          z-index: 2;
+          z-index: 8;
           transform: translate(15px, 55px) rotate(90deg) scale(0.5);
         }
       }
@@ -39,15 +40,15 @@
       
       @keyframes GHC2_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
           transform: translate(15px, 69px) rotate(90deg) scale(0.5);
         }
         100% {
-            z-index: 2;
+            z-index: 8;
           transform: translate(15px, 69px) rotate(90deg) scale(0.5);
           }
       }
@@ -60,15 +61,15 @@
       
       @keyframes GHC3_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
           transform: translate(15px, 83px) rotate(90deg) scale(0.5);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
           transform: translate(15px, 83px) rotate(90deg) scale(0.5);
         }
       }
@@ -82,15 +83,15 @@
       
       @keyframes GHC4_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
           transform: translate(15px, 97px) rotate(90deg) scale(0.5);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
           transform: translate(15px, 97px) rotate(90deg) scale(0.5);
         }
       }
@@ -103,15 +104,15 @@
       
       @keyframes GHC5_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(230px, -173px) rotate(0deg) scale(0.5);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(230px, -173px) rotate(0deg) scale(0.5);
         }
       }
@@ -124,15 +125,15 @@
       
       @keyframes GHC6_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(244px, -173px) rotate(0deg) scale(0.5);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(244px, -173px) rotate(0deg) scale(0.5);
         }
       }
@@ -145,15 +146,15 @@
       
       @keyframes GHC7_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(258px, -173px) rotate(0deg) scale(0.5);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(258px, -173px) rotate(0deg) scale(0.5);
         }
       }
@@ -166,15 +167,15 @@
       
       @keyframes GHC8_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(272px, -173px) rotate(0deg) scale(0.5);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(272px, -173px) rotate(0deg) scale(0.5);
         }
       }
@@ -187,15 +188,15 @@
       
       @keyframes GHC9_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(511px, 55px) rotate(90deg) scale(0.5);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(511px, 55px) rotate(90deg) scale(0.5);
         }
       }
@@ -208,15 +209,15 @@
       
       @keyframes GHC10_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
        5% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(511px, 69px) rotate(90deg) scale(0.5);
         }
        100% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(511px, 69px) rotate(90deg) scale(0.5);
         }
       }
@@ -229,15 +230,15 @@
       
       @keyframes GHC11_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(511px, 83px) rotate(90deg) scale(0.5);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(511px, 83px) rotate(90deg) scale(0.5);
         }
       }
@@ -250,15 +251,15 @@
       
       @keyframes GHC12_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(511px, 97px) rotate(90deg) scale(0.5);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translate(511px, 97px) rotate(90deg) scale(0.5);
         }
       }
@@ -271,15 +272,15 @@
       
       @keyframes GHC13_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translateX(117px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translateX(117px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
       }
@@ -292,15 +293,15 @@
       
       @keyframes GHC14_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translateX(206px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translateX(206px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
       }
@@ -313,15 +314,15 @@
       
       @keyframes GHC15_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translateX(295px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translateX(295px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
       }
@@ -334,15 +335,15 @@
       
       @keyframes GHC16_anime{
         0% {
-          z-index: 2;
+          z-index: 8;
           transform: translateX(254px) translateY(75px) scale(0.5, 0.5) rotate(0deg);
         }
         5% {
-          z-index: 2;
+          z-index: 8;
             transform: translateX(384px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
         100% {
-          z-index: 2;
+          z-index: 8;
             transform: translateX(384px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
         }
       }

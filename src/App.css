@@ -24,12 +24,10 @@ body {
   transform: scale(0.5, 0.5);
 }
     /* User1 */
-/* .opponentUser1 .reversedCard {
-  transform: scale(0.5, 0.5) rotate(90deg);
-
-} */
 
 .reversedCard_User1_1{
+  transform-style: preserve-3d;
+  perspective: 100px;
   transform: translate(15px, 55px) rotate(90deg) scale(0.5);
 }
 
@@ -50,11 +48,11 @@ body {
 }
 
 @keyframes user1AnimeDiscard {
-  0% {
-    transform: translate(15px, 55px) rotate(90deg) scale(0.5) rotate3d(0, 1, 0, 0deg);
+  /* 5% {
+    transform: translate(15px, 97px) rotate(90deg) scale(0.5) rotate3d(0, 1, 0, 0deg);
     opacity: 1;
-  }
-  
+  } */
+
   70% {
     transform: translate(213px, 75px) rotate3d(0, 1, 0, 90deg) rotate(0deg) scale(0.5);
     z-index: 3;
@@ -74,10 +72,10 @@ body {
 }
 
 @keyframes user1AnimeMeld {
-  from {
+  /* from {
     transform: translate(15px, 55px) rotate(90deg) scale(0.5) rotate3d(1, 0, 0, 0deg);
-  }
-  to {
+  } */
+  100% {
     z-index: 3;
     transform: translate(14px, -61px) rotate(0deg) rotate3d(1, 0, 0, 90deg) scale(0.42);
   }
@@ -88,10 +86,10 @@ body {
 }
 
 @keyframes User1_MeldDeck {
-  from {
+  /* from {
     transform: translateX(245px, 65px) scale(0.5, 0.5);
-  }
-  to {
+  } */
+  100% {
     z-index: 3;
     transform: translateX(5px) translateY(-124px) scale(0.42);
   }
@@ -99,9 +97,6 @@ body {
 
 
 /* User2 */
-/* .opponentUser2 .reversedCard {
-  top: 0;
-} */
 
 .reversedCard_User2_1{
   transform: translate(230px, -173px) rotate(0deg) scale(0.5);
@@ -120,10 +115,10 @@ body {
 }
 
 @keyframes user2AnimeDiscard {
-  0% {
+  /* 0% {
     transform: translate(230px, -173px) rotate(0deg) scale(0.5);
     opacity: 1;
-  }
+  } */
   70% {
     transform: translate(255px, 13px) rotate3d(1, 0, 0, 90deg) rotate(0deg) scale(0.5);
     z-index: 3;
@@ -145,10 +140,10 @@ body {
 }
 
 @keyframes user2AnimeMeld {
-  from {
+  /* from {
     transform: translate(230px, -173px) rotate(0deg) scale(0.5);
-  }
-  to {
+  } */
+  100% {
     transform:  translate(465px, -113px) rotate(0deg)  rotate3d(0, 1, 0, 90deg) scale(0.42);
     z-index: 3;
   }
@@ -159,10 +154,10 @@ body {
 }
 
 @keyframes User2_MeldDeck {
-  from {
+  /* from {
     transform: translateX(245px, 65px) scale(0.5, 0.5);
-  }
-  to {
+  } */
+  100% {
     z-index: 3;
     transform: translateX(491px) translateY(-124px) scale(0.42)
   }
@@ -170,10 +165,6 @@ body {
 
 
 /* User3 */
-.opponentUser3 .reversedCard {
-  /* transform: scale(0.5, 0.5) rotate(90deg); */
-  /* right: 1.9%; */
-}
 
 .reversedCard_User3_1{
   transform: translate(511px, 55px) rotate(90deg) scale(0.5);
@@ -192,10 +183,10 @@ body {
 }
 
 @keyframes user3AnimeDiscard {
-  0% {
+  /* 0% {
     transform: translate(511px, 55px) rotate(90deg) scale(0.5) rotate3d(0, 1, 0, 0deg);
     opacity: 1;
-  }
+  } */
   70% {
     transform: translate(299px, 75px) rotate3d(0, 1, 0, 90deg) rotate(0deg) scale(0.5);
     z-index: 2;
@@ -217,10 +208,10 @@ body {
 }
 
 @keyframes user3AnimeMeld {
-  from {
+  /* from {
     transform: translate(511px, 55px) rotate(90deg) scale(0.5);
-  }
-  to {
+  } */
+  100% {
     transform: translate(512px, 165px) rotate(0deg) rotate3d(1, 0, 0, 90deg) scale(0.42);
     z-index: 2;
   }
@@ -231,10 +222,10 @@ body {
 }
 
 @keyframes User3_MeldDeck {
-  from {
+  /* from {
     transform: translateX(245px, 65px) scale(0.5, 0.5);
-  }
-  to {
+  } */
+  100% {
     transform: translateX(502px) translateY(203px) scale(0.42);
     z-index: 3;
 
@@ -255,10 +246,10 @@ transform:  translate(244px, -187px) scale(0.5);
 }
 
 @keyframes User4_MeldDeck {
-  from {
+  /* from {
     transform: translateX(245px) translateY(65px) scale(0.5);
-  }
-  to {
+  } */
+  100% {
     z-index: 3;
     transform: translateX(4px) translateY(198px) scale(0.42);
   }
@@ -495,6 +486,7 @@ posizion user4 = translateX(14px) translateY(208px) scale(0.42, 0.42) */
   animation-duration: 0.6s;
   animation-delay: 0.9s;
   animation-name: User1_DeckDiscard;
+  
 }
 @keyframes  User1_DeckDiscard{
   from {
@@ -516,14 +508,10 @@ posizion user4 = translateX(14px) translateY(208px) scale(0.42, 0.42) */
 }
 @keyframes  User2_DeckDiscard{
   from {
-    /* top:28%;
-    left:36.5%; */
     z-index: 5;
     transform: rotate3d(1, 0, 0, 90deg) scale(0.5, 0.5) translateX(490px) translateY(100px);
   }
   to {
-    /* top:36%;
-    left: 42%; */
     z-index: 5;
     transform: rotate3d(1, 0, 0, 0deg) scale(0.5, 0.5) translateX(490px) translateY(130px); 
   }
@@ -580,6 +568,3 @@ posizion user4 = translateX(14px) translateY(208px) scale(0.42, 0.42) */
   left: 0%;
   top: 15.5%;
 }
-
-
-
