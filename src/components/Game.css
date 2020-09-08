@@ -4,7 +4,7 @@
   left: 10%;
 }
 .FinishButton{
-  float: right;
+  	float: right;
 	padding: 5px;
 	color: white;
 	margin: 1rem auto;
@@ -20,8 +20,8 @@
 	text-decoration: none;
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 	border-radius: 0.5rem;
-  font-weight: bolder;
-  top: 0;
-  position: absolute;
-  cursor: pointer;
+ 	font-weight: bolder;
+  	top: 0;
+  	position: absolute;
+  	cursor: pointer;
 }

@@ -2,14 +2,34 @@
 import "./Deckcard.css";
 
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { MdRadioButtonUnchecked } from "react-icons/md";
+import { useDispatch } from "react-redux";
 
 import cardImages from "../assets/cards.json";
-import Selection from "./Selection";
+import {
+  add_selected_card,
+  delete_selected_card,
+} from "../redux/actions/actions";
+// import Selection from "./Selection";
 
 const Deckcard = ({ card, className }) => {
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
+
+  const [isSelected, setIsSelected] = useState(false);
+  const dispatch = useDispatch();
+
+  const toggleSelection = () => {
+    setIsSelected(!isSelected);
+    if (isSelected) {
+      dispatch(delete_selected_card(card.id));
+    } else {
+      dispatch(add_selected_card(card.id));
+    }
+  };
+
   return (
     <>
       <div
@@ -18,8 +38,21 @@ const Deckcard = ({ card, className }) => {
         style={{
           backgroundImage: `url(${imageFile})`,
         }}
+        onClick={() => toggleSelection()}
       >
-        <Selection cardId={card.id} />
+        {isSelected && (
+          <IoMdCheckmarkCircleOutline
+            className="Selected_Card"
+            style={{ color: "green", opacity: "100%" }}
+          />
+        )}
+        {!isSelected && (
+          <MdRadioButtonUnchecked
+            className="Selected_Card"
+            style={{ color: "green", opacity: "100%" }}
+          />
+        )}
+        {/* <Selection cardId={card.id} /> */}
       </div>
     </>
   );

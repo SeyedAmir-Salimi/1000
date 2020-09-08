@@ -12,6 +12,7 @@ import GenerateHandsCards from "./GenerateHandsCards";
 import MeldButtun from "./MeldButton";
 import OpponentHand from "./OpponentHand";
 import Points from "./Points";
+import Rules from "./Rules";
 import UserHand from "./UserHand";
 
 const Game = () => {
@@ -30,6 +31,7 @@ const Game = () => {
   };
   return (
     <div>
+      <Rules />
       <div className="board">
         <Points />
         <GenerateHandsCards />
