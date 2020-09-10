@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import "./Deckcard.css";
+import "./DeckCard.css";
 
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -14,7 +14,7 @@ import {
 } from "../redux/actions/actions";
 // import Selection from "./Selection";
 
-const Deckcard = ({ card, className }) => {
+const DeckCard = ({ card, className }) => {
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
   const imageFile = require(`../assets/images/${cardObject.image}`);
 
@@ -58,9 +58,9 @@ const Deckcard = ({ card, className }) => {
   );
 };
 
-Deckcard.propTypes = {
+DeckCard.propTypes = {
   card: PropTypes.object,
   className: PropTypes.string,
 };
 
-export default Deckcard;
+export default DeckCard;
