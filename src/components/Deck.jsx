@@ -1,4 +1,4 @@
-import "./DeckCard.css";
+import "./Deckcard.css";
 
 import React from "react";
 import { useSelector } from "react-redux";
@@ -38,5 +38,4 @@ export default function Deck() {
       )}
     </>
   );
-
 }

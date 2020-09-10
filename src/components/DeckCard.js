@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import "./DeckCard.css";
+import "./Deckcard.css";
 
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -56,7 +56,6 @@ const DeckCard = ({ card, className }) => {
       </div>
     </>
   );
-
 };
 
 DeckCard.propTypes = {
