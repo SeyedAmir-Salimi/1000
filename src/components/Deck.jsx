@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 import DeckCard from "./DeckCard";
 
+
 export default function Deck() {
   const topOfTheDeck = useSelector((state) => state.gameInfo.topOfTheDeck);
 
