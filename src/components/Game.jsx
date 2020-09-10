@@ -40,15 +40,6 @@ const Game = () => {
     <div>
       {rulesWindow && <Rules toggle={() => setRullesToggle()} />}
       <div className="board">
-        <button className="FinishButton" onClick={() => GoToLink()}>
-          Finish the game
-        </button>
-        <div className="meldButtonWrapper">
-          <MeldButtun />
-        </div>
-        <button className="HelpButton" onClick={() => setRullesToggle()}>
-          ?
-        </button>
         <Points />
         <GenerateHandsCards />
         {opponents && opponents.User1 && (
@@ -68,6 +59,15 @@ const Game = () => {
         <UserHand cards={hand} />
         <AllMelds />
       </div>
+      <button className="FinishButton" onClick={() => GoToLink()}>
+        Finish the game
+      </button>
+      <div className="meldButtonWrapper">
+        <MeldButtun />
+      </div>
+      <button className="HelpButton" onClick={() => setRullesToggle()}>
+        ?
+      </button>
     </div>
   );
 };
