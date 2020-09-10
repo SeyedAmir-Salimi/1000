@@ -3,7 +3,7 @@ import "./Deckcard.css";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import DeckCard from "./DeckCard";
+import DeckCard from "./Deckcard";
 
 export default function Deck() {
   const topOfTheDeck = useSelector((state) => state.gameInfo.topOfTheDeck);
