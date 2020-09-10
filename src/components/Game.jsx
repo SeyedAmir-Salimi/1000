@@ -1,7 +1,7 @@
 import "./Game.css";
 
 import Cookies from "js-cookie";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -16,6 +16,7 @@ import Rules from "./Rules";
 import UserHand from "./UserHand";
 
 const Game = () => {
+  const [rulesWindow, setRulesWindow] = useState(false);
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
@@ -29,9 +30,15 @@ const Game = () => {
     history.push("/");
     Cookies.remove("Rummy_gameId");
   };
+
+  const setRullesToggle = () => {
+    setRulesWindow(!rulesWindow);
+    console.log(rulesWindow);
+  };
+
   return (
     <div>
-      <Rules />
+      {rulesWindow && <Rules toggle={() => setRullesToggle()} />}
       <div className="board">
         <Points />
         <GenerateHandsCards />
@@ -58,6 +65,9 @@ const Game = () => {
       <div className="meldButtonWrapper">
         <MeldButtun />
       </div>
+      <button className="HelpButton" onClick={() => setRullesToggle()}>
+        ?
+      </button>
     </div>
   );
 };

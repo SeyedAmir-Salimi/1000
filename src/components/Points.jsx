@@ -1,7 +1,16 @@
 import "./Points.css";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import CountUp from "react-countup";
 import { useSelector } from "react-redux";
+
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
 
 function Points() {
   const gameInfo = useSelector((state) => state.gameInfo);
@@ -40,19 +49,55 @@ function Points() {
       ? "playerNamesUser4 highestNumber"
       : "playerNamesUser4";
 
+  const user1Points = points.User1 ? points.User1 : 0;
+  const user1prevPoints = usePrevious(user1Points);
+
+  const user2Points = points.User2 ? points.User2 : 0;
+  const user2prevPoints = usePrevious(user2Points);
+
+  const user3Points = points.User3 ? points.User3 : 0;
+  const user3prevPoints = usePrevious(user3Points);
+
+  const user4Points = points.User4 ? points.User4 : 0;
+  const user4prevPoints = usePrevious(user4Points);
+  const countDuration = 2.2;
   return (
     <>
       <h4 className={playerNamesUser1}>
-        {User1}:{points.User1 ? points.User1 : 0}
+        <CountUp
+          start={user1prevPoints}
+          end={user1Points}
+          duration={countDuration}
+          prefix={`${User1}: `}
+          separator=" "
+        />
       </h4>
       <h4 className={playerNamesUser2}>
-        {User2}:{points.User2 ? points.User2 : 0}
+        <CountUp
+          start={user2prevPoints}
+          end={user2Points}
+          duration={countDuration}
+          prefix={`${User2}: `}
+          separator=" "
+        />
       </h4>
       <h4 className={playerNamesUser3}>
-        {User3}:{points.User3 ? points.User3 : 0}
+        <CountUp
+          start={user3prevPoints}
+          end={user3Points}
+          duration={countDuration}
+          prefix={`${User3}: `}
+          separator=" "
+        />
       </h4>
       <h4 className={playerNamesUser4}>
-        {User4}:{points.User4 ? points.User4 : 0}
+        <CountUp
+          start={user4prevPoints}
+          end={user4Points}
+          duration={countDuration}
+          prefix={`${User4}: `}
+          separator=" "
+        />
       </h4>
     </>
   );

@@ -14,7 +14,11 @@
   bottom: 5%;
   right: 20%;
 }
-
+.HelpButton{
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
 
 .User4_topOfTheMeld{
   position: absolute;
