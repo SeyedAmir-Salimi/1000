@@ -56,6 +56,7 @@ const DeckCard = ({ card, className }) => {
       </div>
     </>
   );
+
 };
 
 DeckCard.propTypes = {
