@@ -11,13 +11,8 @@
 
 .meldButtonWrapper {
   position: absolute;
-  bottom: 5%;
-  right: 20%;
-}
-.HelpButton{
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
+	bottom: 20px;
+	right: 100px;
 }
 
 .User4_topOfTheMeld{
