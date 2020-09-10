@@ -12,7 +12,7 @@ import {
   add_selected_card,
   delete_selected_card,
 } from "../redux/actions/actions";
-// import Selection from "./Selection";
+// import Selection from "./Selection"
 
 const Deckcard = ({ card, className }) => {
   const cardObject = cardImages.filter((x) => x.id === card.cardId)[0];
