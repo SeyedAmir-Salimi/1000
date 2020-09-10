@@ -568,3 +568,10 @@ posizion user4 = translateX(14px) translateY(208px) scale(0.42, 0.42) */
   left: 0%;
   top: 15.5%;
 }
+
+
+@media only screen and (max-width: 600px) {
+  html {
+    zoom: .8;
+  }
+}

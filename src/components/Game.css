@@ -23,13 +23,15 @@
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 	border-radius: 0.5rem;
  	font-weight: bolder;
-  	cursor: pointer;
+	cursor: pointer;
+	margin-left: 20px;
 }
 
 .HelpButton{
+	float: right;
 	position: absolute;
-	bottom: 5%;
-	right: 5%;
+	padding: 5px;
+	bottom: 0;
 	color: white;
 	margin: 1rem auto;
 	background: rgb(160, 5, 0);
@@ -45,8 +47,11 @@
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 	border-radius: 0.5rem;
  	font-weight: bolder;
-  	cursor: pointer;
-  }
-  .HelpButton:focus{
+	cursor: pointer;
+	margin-left: 20px;
+}
+
+
+.HelpButton:focus{
 	  outline: none;
-  }
+}
