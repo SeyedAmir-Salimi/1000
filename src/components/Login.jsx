@@ -21,7 +21,7 @@ function Login() {
     history.push(link);
   };
 
-  const createGameCall = async (e) => {
+  const createSingelGameCall = async (e) => {
     if (user) {
       e.preventDefault();
       setError("");
@@ -35,6 +35,10 @@ function Login() {
   };
   const singelChangeHandler = (e) => {
     setUser(e.target.value);
+  };
+  const createMultiplayer = (e) => {
+    e.preventDefault();
+    setError("Coming Soon...");
   };
   return (
     <div className="LoginWrapper">
@@ -52,8 +56,13 @@ function Login() {
           <br />
         </span>
         <span>
-          <button className="button_Log">Multi Player</button>
-          <button className="button_Log" onClick={(e) => createGameCall(e)}>
+          <button className="button_Log" onClick={(e) => createMultiplayer(e)}>
+            Multi Player
+          </button>
+          <button
+            className="button_Log"
+            onClick={(e) => createSingelGameCall(e)}
+          >
             Singel Player
           </button>
         </span>
