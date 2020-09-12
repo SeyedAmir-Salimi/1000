@@ -34,7 +34,6 @@ const Game = () => {
 
   const setRullesToggle = () => {
     setRulesWindow(!rulesWindow);
-    console.log(rulesWindow);
   };
 
   return (

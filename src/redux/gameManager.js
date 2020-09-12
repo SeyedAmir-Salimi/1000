@@ -18,7 +18,6 @@ const generateHandAnimationDelay = 8500;
 
 export const getGame = () => {
   const gameId = getGameId();
-  console.log(gameId);
   return async (dispatch) => {
     if (gameId === undefined) return;
     const result = await fetchGameInfo(gameId);
