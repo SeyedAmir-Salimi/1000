@@ -22,7 +22,7 @@ function rules({ toggle }) {
         <h5>A: 20 points</h5>
         <h5>K, Q, j: 15 points</h5>
         <h5>10: 10 points</h5>
-        <h5>9, 8, 7...: 5points</h5>
+        <h5>9, 8, 7...: 5 points</h5>
       </span>
       <span>
         <h4>HOW TO PLAY</h4>
@@ -30,6 +30,11 @@ function rules({ toggle }) {
           Each player can make a meld either from the deck or other players
           melds with the cards and to do so should have a card with the same
           value. A card should be discarded if no matching card is available.
+        </h5>
+        <h5>
+          Each round has three sets, in the first set of each round if the first
+          player makes a meld from the deck, can take all the cards from the
+          deck, in other situations he can take just one card.
         </h5>
       </span>
       <span>

@@ -91,11 +91,13 @@ async function handleGameStates(gameStates, dispatch) {
 }
 
 function setGameId(gameId) {
-  Cookies.set("Rummy_gameId", gameId);
+  // Cookies.set("Rummy_gameId", gameId);
+  sessionStorage.setItem("Rummy_gameId", gameId);
 }
 
 function getGameId() {
-  return Cookies.get("Rummy_gameId");
+  // return Cookies.get("Rummy_gameId");
+  return sessionStorage.getItem("Rummy_gameId");
 }
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
