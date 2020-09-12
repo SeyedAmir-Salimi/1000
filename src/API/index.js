@@ -2,14 +2,14 @@ import Axios from "axios";
 
 export const fetchGameInfo = async (gameId) => {
   const result = await Axios.get(
-    `https://rummy-app.netlify.app/game/${gameId}`
+    `https://rummyapi.herokuapp.com/game/${gameId}`
   );
   return result.data;
 };
 
 export const generateHands = async (gameId) => {
   const result = await Axios.post(
-    `https://rummy-app.netlify.app/cards/generateHands`,
+    `https://rummyapi.herokuapp.com/cards/generateHands`,
     {
       gameId,
     }
@@ -18,7 +18,7 @@ export const generateHands = async (gameId) => {
 };
 
 export const createGame = async (PN, username) => {
-  const result = await Axios.post("https://rummy-app.netlify.app/game/start", {
+  const result = await Axios.post("https://rummyapi.herokuapp.com/game/start", {
     playerNumbers: PN,
     username: username,
   });
@@ -27,7 +27,7 @@ export const createGame = async (PN, username) => {
 
 export const discard = async (cardId, gameId) => {
   const result = await Axios.put(
-    `https://rummy-app.netlify.app/actions/discard`,
+    `https://rummyapi.herokuapp.com/actions/discard`,
     {
       id: cardId,
       gameId,
@@ -37,11 +37,14 @@ export const discard = async (cardId, gameId) => {
 };
 
 export const createMeldFromCards = async (ids, meldId, gameId) => {
-  const result = await Axios.put(`https://rummy-app.netlify.app/actions/meld`, {
-    cardIds: ids,
-    userId: "User4",
-    gameId,
-    selectedMeld: meldId,
-  });
+  const result = await Axios.put(
+    `https://rummyapi.herokuapp.com/actions/meld`,
+    {
+      cardIds: ids,
+      userId: "User4",
+      gameId,
+      selectedMeld: meldId,
+    }
+  );
   return result.data;
 };
