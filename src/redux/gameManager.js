@@ -92,13 +92,18 @@ async function handleGameStates(gameStates, dispatch) {
 
 function setGameId(gameId) {
   // Cookies.set("Rummy_gameId", gameId);
-  localStorage.setItem("Rummy_gameId", gameId);
+  sessionStorage.setItem("Rummy_gameId", gameId);
 }
 
 function getGameId() {
   // return Cookies.get("Rummy_gameId");
-  return localStorage.getItem("Rummy_gameId");
+  const LINK = window.location.pathname;
+  const gameId = LINK.slice(1);
+  // return sessionStorage.getItem("Rummy_gameId");
+  return gameId;
 }
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+// https://rummy-app.netlify.app/
+// 30

@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Switch>
         <Login exact path="/" component={Login} />
-        <Game exact path="/start" component={Game} />
+        <Game exact path="/:slug" component={Game} />
       </Switch>
     </div>
   );

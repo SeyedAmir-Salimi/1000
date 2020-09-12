@@ -20,7 +20,6 @@ function Login() {
   const GoToLink = (link) => {
     history.push(link);
   };
-
   const createSingelGameCall = async (e) => {
     if (user) {
       e.preventDefault();
@@ -28,7 +27,8 @@ function Login() {
       setUser("");
       const result = await createGame(4, user);
       dispatch(createNewGame(result));
-      GoToLink("/start");
+      const gameId = sessionStorage.getItem("Rummy_gameId")
+      GoToLink(`/${gameId}`);
     } else {
       setError("Please write your name");
     }
