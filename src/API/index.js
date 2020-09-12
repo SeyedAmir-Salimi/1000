@@ -4,6 +4,7 @@ export const fetchGameInfo = async (gameId) => {
   const result = await Axios.get(
     `https://rummyapi.herokuapp.com/game/${gameId}`
   );
+  console.log("result.data", result.data);
   return result.data;
 };
 
