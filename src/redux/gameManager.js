@@ -91,21 +91,12 @@ async function handleGameStates(gameStates, dispatch) {
 }
 
 function setGameId(gameId) {
-  // Cookies.set("Rummy_gameId", gameId);
   sessionStorage.setItem("Rummy_gameId", gameId);
 }
 
 function getGameId() {
-  // return Cookies.get("Rummy_gameId");
-  const LINK = window.location.pathname;
-  const gameId = LINK.slice(1);
-  // return sessionStorage.getItem("Rummy_gameId");
-  console.log("LINK", LINK);
-  console.log("gameId", gameId);
-  return gameId;
+  return sessionStorage.getItem("Rummy_gameId");
 }
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-// https://rummy-app.netlify.app/
-// 30

@@ -28,7 +28,6 @@ function Login() {
       const result = await createGame(4, user);
       dispatch(createNewGame(result));
       const gameId = sessionStorage.getItem("Rummy_gameId");
-      console.log(gameId);
       GoToLink(`/${gameId}`);
     } else {
       setError("Please write your name");
