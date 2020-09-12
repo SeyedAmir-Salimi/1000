@@ -97,6 +97,8 @@ function setGameId(gameId) {
 
 function getGameId() {
   // return Cookies.get("Rummy_gameId");
+  console.log("yes");
+  console.log(sessionStorage.getItem("Rummy_gameId"));
   return sessionStorage.getItem("Rummy_gameId");
 }
 function sleep(ms) {
