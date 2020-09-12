@@ -100,6 +100,8 @@ function getGameId() {
   const LINK = window.location.pathname;
   const gameId = LINK.slice(1);
   // return sessionStorage.getItem("Rummy_gameId");
+  console.log("LINK", LINK);
+  console.log("gameId", gameId);
   return gameId;
 }
 function sleep(ms) {
