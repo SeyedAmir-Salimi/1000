@@ -29,7 +29,7 @@ const Game = () => {
   const GoToLink = () => {
     history.push("/");
     // Cookies.remove("Rummy_gameId");
-    sessionStorage.removeItem("Rummy_gameId");
+    localStorage.removeItem("Rummy_gameId");
   };
 
   const setRullesToggle = () => {

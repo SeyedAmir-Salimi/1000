@@ -40,6 +40,10 @@ function rules({ toggle }) {
       <span>
         <h4>Meld</h4>
         <h5>Select two cards with the same value and click on meld buttun</h5>
+        <h5>
+          You cannot make a meld with two or three cards (even with the same
+          values) from your hand, they must be 4 cards with the same values
+        </h5>
         <img src={meldDeck} alt="meld-deck"></img>
         <img src={meldMeld} alt="meld-meld"></img>
       </span>

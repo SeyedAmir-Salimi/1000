@@ -49,8 +49,8 @@ export const createNewGame = (newGame) => {
 export const discardCard = (cardId) => {
   const gameId = getGameId();
   return async (dispatch) => {
-    dispatch(toggle_my_turn());
     const gameStates = await discard(cardId, gameId);
+    dispatch(toggle_my_turn());
     await handleGameStates(gameStates, dispatch);
     dispatch(toggle_my_turn());
   };
@@ -59,8 +59,8 @@ export const discardCard = (cardId) => {
 export const meldCards = (ids, meldId) => {
   const gameId = getGameId();
   return async (dispatch) => {
-    dispatch(toggle_my_turn());
     const gameStates = await createMeldFromCards(ids, meldId, gameId);
+    dispatch(toggle_my_turn());
     await handleGameStates(gameStates, dispatch);
     dispatch(toggle_my_turn());
   };
@@ -92,14 +92,12 @@ async function handleGameStates(gameStates, dispatch) {
 
 function setGameId(gameId) {
   // Cookies.set("Rummy_gameId", gameId);
-  sessionStorage.setItem("Rummy_gameId", gameId);
+  localStorage.setItem("Rummy_gameId", gameId);
 }
 
 function getGameId() {
   // return Cookies.get("Rummy_gameId");
-  console.log("yes");
-  console.log(sessionStorage.getItem("Rummy_gameId"));
-  return sessionStorage.getItem("Rummy_gameId");
+  return localStorage.getItem("Rummy_gameId");
 }
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
