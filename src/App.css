@@ -19,6 +19,7 @@ body {
   border: rgb(0, 44, 14) 2px solid;
   overflow: hidden;
   box-shadow: black;
+  z-index: 4;
 }
 .reversedCard, .card, .topOfMeld{
   transform: scale(0.5, 0.5);
@@ -592,7 +593,8 @@ posizion user4 = translateX(14px) translateY(208px) scale(0.42, 0.42) */
 	cursor: pointer;
 	margin-left: 20px;
 	bottom: 20px;
-	right: 20px;
+  right: 20px;
+  z-index: 10;
 }
 
 @media only screen and (max-width: 700px) {
@@ -602,14 +604,12 @@ posizion user4 = translateX(14px) translateY(208px) scale(0.42, 0.42) */
     zoom: 70%;
   }
   .HelpButton{
-  display: inline;
   top: 50px;
   left: 0;
   width: 3rem;
   height: 2rem;
   }
   .meldButtonWrapper{
-    display: inline;
     top: 130px;
     left: 10px;
     width: 3rem;

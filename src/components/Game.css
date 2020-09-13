@@ -25,6 +25,7 @@
  	font-weight: bolder;
 	cursor: pointer;
 	margin-left: 20px;
+	z-index: 10;
 }
 
 
