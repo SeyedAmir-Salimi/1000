@@ -595,9 +595,11 @@ posizion user4 = translateX(14px) translateY(208px) scale(0.42, 0.42) */
 	right: 20px;
 }
 
-@media only screen and (max-width: 600px) {
-  html {
-    zoom: .8;
+@media only screen and (max-width: 700px) {
+  html , body {
+    -moz-transform: scale(0.7); /* Moz-browsers */
+    zoom: 0.7; /* Other non-webkit browsers */
+    zoom: 70%;
   }
   .HelpButton{
   top: 50px;
