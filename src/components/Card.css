@@ -1,34 +1,32 @@
 .card {
-  border-radius: 8px;
   width: 169px;
   height: 244px;
-  margin: 10px;
   position: absolute;
-  bottom: 0;
   transition-property: all;
   transition-duration: 1.6s;
   z-index: 2;
   box-shadow: 8px 8px 5px -3px rgba(0,0,0,0.75);
   cursor: pointer;
 }
+
 .SelectedCard{
   margin-bottom: 25px;
 }
 .card1 {
-  transform: translate(106px, 0px) scale(0.5);
+  transform: translateX(117px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
 }
 
 
 .card2 {
-  transform: translate(195px, 0px) scale(0.5);
+  transform: translateX(206px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
 }
 
 .card3 {
-  transform: translate(284px, 0px) scale(0.5);
+  transform: translateX(295px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
 }
 
 .card4 {
-  transform: translate(373px, 0px) scale(0.5);
+  transform: translateX(384px) translateY(262px) scale(0.5, 0.5) rotate(0deg);
 }
 
 
