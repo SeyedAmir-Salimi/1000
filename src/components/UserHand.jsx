@@ -30,12 +30,7 @@ const UserHand = ({ cards }) => {
     index++;
   });
 
-  return (
-    <>
-      {action.type === "generateHands" ? null : handCards}
-      {/* <h3 className="playerNames_User4">User4</h3> */}
-    </>
-  );
+  return <>{action.type === "generateHands" ? null : handCards}</>;
 };
 
 UserHand.propTypes = {

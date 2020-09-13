@@ -13,7 +13,6 @@ import {
   delete_selected_card,
 } from "../redux/actions/actions";
 import Discard from "./Discard";
-// import Selection from "./Selection";
 
 const Card = ({ card, index, isDiscarded, isMeld }) => {
   const [isSelected, setIsSelected] = useState(false);
