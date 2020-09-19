@@ -37,8 +37,15 @@ function Login() {
     setUser(e.target.value);
   };
   const createMultiplayer = (e) => {
-    e.preventDefault();
-    setError("Coming Soon...");
+    if (user) {
+      e.preventDefault();
+      setError("");
+      setUser("");
+      sessionStorage.setItem("Rummy_multi_name", user);
+      GoToLink(`/multiPlayer`);
+    } else {
+      setError("Please write your name");
+    }
   };
   return (
     <div className="LoginWrapper">

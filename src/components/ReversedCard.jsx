@@ -17,9 +17,11 @@ const ReversedCard = React.memo(
     const imageFile = require(`../assets/images/${backNumber}.png`);
 
     let className = `reversedCard reversedCard_${user}_${index}`;
-
+    const max = index;
+    // const randomIndex = Math.floor(Math.random() * (max - 1 + 1) + 1);
     if (isDiscarded) {
-      className = `reversedCard reversedCard_${user}_${index} ${user}_discarding`;
+      // const cardRange = cardRange > 0 && cardRange <= index;
+      className = `reversedCard reversedCard_${user}_${max} ${user}_discarding`;
     } else if (isMeld) {
       if (
         meld.type === "meldFromDeck" ||
@@ -27,7 +29,7 @@ const ReversedCard = React.memo(
         meld.type === "meldAllofTheDeck" ||
         (meld.type === "meldByOtherUserMeld" && meld.user === user)
       ) {
-        className = `reversedCard reversedCard_${user}_${index} ${user}_meld`;
+        className = `reversedCard reversedCard_${user}_${max} ${user}_meld`;
       }
     }
 

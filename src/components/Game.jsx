@@ -1,9 +1,10 @@
 import "./Game.css";
 
 // import Cookies from "js-cookie";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import io from "socket.io-client";
 
 import { getGame } from "../redux/gameManager";
 import AllMelds from "./AllMelds";
@@ -20,7 +21,7 @@ const Game = () => {
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
-
+  const gameId = useSelector((state) => state.gameInfo.gameId);
   useEffect(() => {
     dispatch(getGame());
   }, [dispatch]);
@@ -30,9 +31,26 @@ const Game = () => {
     history.push("/");
     sessionStorage.removeItem("Rummy_gameId");
   };
-
   const setRullesToggle = () => {
     setRulesWindow(!rulesWindow);
+  };
+  const socketRef = useRef();
+  const message = Date.now();
+  const room = gameId;
+  useEffect(() => {
+    socketRef.current = io("http://localhost:3000");
+    socketRef.current.on("roomUsers", ({ user, room, message }) => {
+      console.log(message);
+      console.log(room);
+      console.log(user);
+    });
+
+    // return () => {
+    //   socketRef.current.disconnect();
+    // };
+  });
+  const sendMessage = (username, room) => {
+    socketRef.current.emit("joinRoom", { username, room, message });
   };
 
   return (
@@ -41,7 +59,13 @@ const Game = () => {
       <button className="FinishButton" onClick={() => GoToLink()}>
         Finish the game
       </button>
-      <button className="HelpButton" onClick={() => setRullesToggle()}>
+      <button
+        className="HelpButton"
+        onClick={() => {
+          setRullesToggle();
+          sendMessage("amir", room);
+        }}
+      >
         ?
       </button>
       <div className="meldButtonWrapper">

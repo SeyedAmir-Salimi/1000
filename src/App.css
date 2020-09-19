@@ -183,6 +183,8 @@ body {
   transform: translate(511px, 97px) rotate(90deg) scale(0.5);
 }
 
+
+
 @keyframes user3AnimeDiscard {
   /* 0% {
     transform: translate(511px, 55px) rotate(90deg) scale(0.5) rotate3d(0, 1, 0, 0deg);
@@ -199,7 +201,6 @@ body {
     opacity: 0;
   }
 }
-
 .User3_discarding {
   animation-name: user3AnimeDiscard;
 }

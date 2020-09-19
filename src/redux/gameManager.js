@@ -1,15 +1,19 @@
 // import Cookies from "js-cookie";
-
 import {
   createMeldFromCards,
   discard,
   fetchGameInfo,
+  fetchGameRooms,
   generateHands,
+  getGameMultinfo,
+  joinToMultiGane,
 } from "../API";
 import {
   create_game,
+  created_multi_game,
   reset_ui_info,
   set_game_info,
+  set_game_rooms,
   set_ui_info,
   toggle_my_turn,
 } from "./actions/actions";
@@ -100,3 +104,32 @@ function getGameId() {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+// multiPlayer
+export const getGameRooms = () => {
+  return async (dispatch) => {
+    const rooms = await fetchGameRooms();
+    dispatch(set_game_rooms(rooms));
+  };
+};
+export const createMultiGameCall = (result) => {
+  return async (dispatch) => {
+    dispatch(created_multi_game(result));
+    setGameId(result.id);
+  };
+};
+export const joinToMultiGaneCall = (gameId, username) => {
+  return async (dispatch) => {
+    const result = await joinToMultiGane(gameId, username);
+    setGameId(gameId);
+    console.log(result);
+  };
+};
+
+export const getGameinfoCall = () => {
+  const gameId = getGameId();
+  return async (dispatch) => {
+    const result = await getGameMultinfo(gameId);
+    dispatch(created_multi_game(result));
+  };
+};

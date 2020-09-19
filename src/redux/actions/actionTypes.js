@@ -9,3 +9,7 @@ export const TOGGLE_MY_TURN = "TOGGLE_MY_TURN";
 // uiInfo
 export const SET_UI_INFO = "SET_UI_INFO";
 export const RESET_UI_INFO = "RESET_UI_INFO";
+
+// multiInfo
+export const SET_GAME_ROOMS = "SET_GAME_ROOMS";
+export const CREATED_MULTI_GAME = "CREATED_MULTI_GAME";

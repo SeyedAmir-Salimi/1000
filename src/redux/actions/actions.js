@@ -1,9 +1,11 @@
 import {
   ADD_SELECTED_CARD,
   CREATE_GAME,
+  CREATED_MULTI_GAME,
   DELETE_SELECTED_CARD,
   RESET_UI_INFO,
   SET_GAME_INFO,
+  SET_GAME_ROOMS,
   SET_UI_INFO,
   TOGGLE_MY_TURN,
   TOGGLE_SELECTED_MELD,
@@ -49,4 +51,14 @@ export const set_ui_info = (payload) => ({
 
 export const reset_ui_info = () => ({
   type: RESET_UI_INFO,
+});
+
+// Multi
+export const set_game_rooms = (payload) => ({
+  type: SET_GAME_ROOMS,
+  payload,
+});
+export const created_multi_game = (payload) => ({
+  type: CREATED_MULTI_GAME,
+  payload,
 });

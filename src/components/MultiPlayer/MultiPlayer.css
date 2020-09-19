@@ -1,0 +1,55 @@
+.multi-LoginWrapper{
+    height: 45rem;
+	background-repeat: repeat-y;
+	background-size: cover;
+	background-image: url('../../assets/images/rummy-background-multi.jpg');
+}
+
+.Button-Wrapper{
+    max-width: 500px;
+	padding: 10px 20px;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	padding-top: 5rem;
+	border-radius: 8px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.room_search_form{
+	display: flex;
+	justify-content: center;
+}
+
+.rooms_list_titel, .rooms_list_room{
+	display: flex;
+	justify-content: center;
+
+}
+.rooms_list_titel h3{
+	width: 150px;
+	margin: 1rem;
+	text-align: center;
+	color:	red
+}
+.rooms_list_room h3{
+	width: 150px;
+	margin: 1rem;
+	text-align: center;
+	cursor: pointer;
+}
+
+.wait_join_Wrapper{
+	background-color: rgb(30, 73, 35);
+	height: 45rem;
+}
+.wait_join_Wrapper div{
+	display: flex;
+	justify-content: center;
+
+}
+.wait_join_Wrapper h2{
+	color: yellow;
+}
+.wait_join_Wrapper h3{
+	color: white;
+}
