@@ -54,11 +54,27 @@ export const createMultiGame = async (username) => {
   });
   return result.data;
 };
+export const startToPlayMulti = async (gameId) => {
+  const result = await Axios.post(`http://localhost:3000/multiPlayer/play`, {
+    gameId,
+  });
+  return result.data;
+};
 
-export const joinToMultiGane = async (gameId, username) => {
+export const joinToMultiGame = async (gameId, username) => {
   const result = await Axios.patch(`http://localhost:3000/multiPlayer/join`, {
     gameId,
     username,
   });
+  return result.data;
+};
+
+export const fetchGameStateMulti = async (gameId, user) => {
+  console.log(gameId);
+  console.log(user);
+  const result = await Axios.get(
+    `http://localhost:3000/multiPlayer/gamestate/${gameId}-${user}`
+  );
+  console.log(result);
   return result.data;
 };

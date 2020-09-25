@@ -1,18 +1,17 @@
 import "./MultiPlayer.css";
 
 import PropTypes from "prop-types";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import io from "socket.io-client";
 
-import { joinToMultiGaneCall } from "../../redux/gameManager";
+import { joinToMultiGameCall } from "../../redux/gameManager";
 
 function SearchToJoin({ searchToJoin }) {
   const [selectedRoomId, setselectedRoomId] = useState("");
   const [searchInput, setsearchInput] = useState("");
   const multiInfo = useSelector((state) => state.multiInfo);
-
   const rooms = multiInfo.gameRooms.map((x) => (
     <div
       key={x.id}
@@ -22,7 +21,7 @@ function SearchToJoin({ searchToJoin }) {
     >
       {/* <h3>{x.id}</h3> */}
       <h3>{x.playerNumbers}</h3>
-      <h3>{x.playerNames[0].id}</h3>
+      <h3>{x.playerNames[0].name}</h3>
     </div>
   ));
   const searchedRoom = multiInfo.gameRooms.find((x) => x.id === searchInput);
@@ -34,29 +33,18 @@ function SearchToJoin({ searchToJoin }) {
     history.push(link);
   };
   const username = sessionStorage.getItem("Rummy_multi_name");
-  const message = `${username}Join`;
+  const message = "Join";
   const gameId = selectedRoomId;
-  const room = `${gameId}Join`;
 
-  const socketRef = useRef();
-  useEffect(() => {
-    socketRef.current = io("http://localhost:3000");
-    socketRef.current.on("roomUsers", ({ username, room, message }) => {
-      console.log(message);
-      console.log(room);
-      console.log(username);
-    });
+  const socket = io("http://localhost:3000");
 
-    // return () => {
-    //   socketRef.current.disconnect();
-    // };
-  });
   const sendMessage = () => {
-    socketRef.current.emit("joinRoom", { username, room, message });
+    socket.emit("chatMessage", { username, gameId, message });
   };
-  const joinGame = () => {
-    dispatch(joinToMultiGaneCall(gameId, username));
-    sendMessage(username, room, message);
+
+  const joinGame = async () => {
+    dispatch(joinToMultiGameCall(gameId, username));
+    sendMessage(username, gameId, message);
     GoToLink(`/multiPlayer/${gameId}`);
   };
   return (

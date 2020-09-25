@@ -4,9 +4,11 @@ import {
   discard,
   fetchGameInfo,
   fetchGameRooms,
+  fetchGameStateMulti,
   generateHands,
   getGameMultinfo,
-  joinToMultiGane,
+  joinToMultiGame,
+  startToPlayMulti,
 } from "../API";
 import {
   create_game,
@@ -97,10 +99,17 @@ async function handleGameStates(gameStates, dispatch) {
 function setGameId(gameId) {
   sessionStorage.setItem("Rummy_gameId", gameId);
 }
+function setUser(user) {
+  sessionStorage.setItem("Rummy_user", user);
+}
 
 function getGameId() {
   return sessionStorage.getItem("Rummy_gameId");
 }
+function getUser() {
+  return sessionStorage.getItem("Rummy_user");
+}
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -116,13 +125,16 @@ export const createMultiGameCall = (result) => {
   return async (dispatch) => {
     dispatch(created_multi_game(result));
     setGameId(result.id);
+    setUser("User1");
   };
 };
-export const joinToMultiGaneCall = (gameId, username) => {
+export const joinToMultiGameCall = (gameId, username) => {
   return async (dispatch) => {
-    const result = await joinToMultiGane(gameId, username);
     setGameId(gameId);
+    const result = await joinToMultiGame(gameId, username);
+    dispatch(created_multi_game(result));
     console.log(result);
+    setUser(result.yourData.user);
   };
 };
 
@@ -131,5 +143,22 @@ export const getGameinfoCall = () => {
   return async (dispatch) => {
     const result = await getGameMultinfo(gameId);
     dispatch(created_multi_game(result));
+  };
+};
+export const getGameStateMultiCall = () => {
+  const gameId = getGameId();
+  const user = getUser();
+  return async (dispatch) => {
+    const result = await fetchGameStateMulti(gameId, user);
+    console.log(result);
+    dispatch(set_game_info(result));
+  };
+};
+
+export const startToPlayMultiCall = () => {
+  const gameId = getGameId();
+  return async (dispatch) => {
+    const result = await startToPlayMulti(gameId);
+    dispatch(set_game_info(result));
   };
 };

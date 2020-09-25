@@ -53,3 +53,9 @@
 .wait_join_Wrapper h3{
 	color: white;
 }
+.wait_join_Wrapper h4{
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	color: rgb(240, 0, 0);
+}

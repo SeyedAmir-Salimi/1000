@@ -7,7 +7,7 @@ import ReversedCard from "./ReversedCard";
 
 const OpponentHand = React.memo(({ user, count }) => {
   const action = useSelector((state) => state.uiInfo);
-
+  console.log(user, count);
   const isDiscarded = action.user === user && action.type === "discard";
   const isMeld = action.user === user && action.type.slice(0, 4) === "meld";
 
