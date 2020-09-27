@@ -28,9 +28,6 @@ function WaitToJoin({ goToPlay }) {
         console.log("true");
         GoToLink(`/multiPlayer/play/${gameId}`);
       }
-      // return () => {
-      //   socket.disconnect();
-      // };
     });
   });
 

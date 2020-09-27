@@ -44,7 +44,6 @@ const Meld = ({ card }) => {
             style={{ color: "green", opacity: "100%" }}
           />
         )}
-        {/* <MeldSelection meldId={card.meldId} /> */}
       </div>
     </>
   );

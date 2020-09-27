@@ -25,6 +25,7 @@ const initialState = {
   isMyTurn: true,
   winner: null,
   playerNames: [],
+  yourData: {},
 };
 
 export default (state = initialState, action) => {
@@ -71,6 +72,7 @@ export default (state = initialState, action) => {
         points,
         winner,
         playerNames,
+        yourData,
       } = action.payload;
       const prenNames = state.playerNames;
       const newNames = playerNames ? playerNames : prenNames;
@@ -89,6 +91,7 @@ export default (state = initialState, action) => {
         points: points,
         winner,
         playerNames: newNames,
+        yourData,
       };
     }
 

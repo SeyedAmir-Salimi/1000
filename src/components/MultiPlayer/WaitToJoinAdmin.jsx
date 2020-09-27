@@ -30,6 +30,14 @@ function WaitToJoinAdmin({ setupSocket }) {
   const username = sessionStorage.getItem("Rummy_multi_name");
   const message = "play";
 
+  useEffect(() => {
+    socket.on(gameId, (data) => {
+      if (data) {
+        dispatch(getGameinfoCall());
+      }
+    });
+  });
+
   const startGame = () => {
     if (playerLength && playerLength.length === 4) {
       dispatch(startToPlayMultiCall());

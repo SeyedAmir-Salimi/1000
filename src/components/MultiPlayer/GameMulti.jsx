@@ -5,24 +5,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { getGameStateMultiCall } from "../../redux/gameManager";
-import AllMelds from "../AllMelds";
 import Deck from "../Deck";
 import GenerateHandsCards from "../GenerateHandsCards";
 import MeldButtun from "../MeldButton";
-import OpponentHand from "../OpponentHand";
-import Points from "../Points";
 import Rules from "../Rules";
-import UserHand from "../UserHand";
+import UserHandMulti from "./UserHandMulti";
+import AllMeldsMulti from "./AllMeldsMulti";
+import OpponentHandMulti from "./OpponentHandMulti";
+import PointsMulti from "./PointsMulti";
 
 const Game = () => {
   const [rulesWindow, setRulesWindow] = useState(false);
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
+  const gameInfo = useSelector((state) => state.gameInfo);
 
   useEffect(() => {
     dispatch(getGameStateMultiCall());
-    console.log("in");
   }, [dispatch]);
 
   let history = useHistory();
@@ -70,23 +70,35 @@ const Game = () => {
         <MeldButtun />
       </div>
       <div className="board">
-        <Points />
+        <PointsMulti />
         <GenerateHandsCards />
         {opponents && firstOpponent && (
-          <OpponentHand user="User1" count={firstOpponentCardCount} />
+          <OpponentHandMulti
+            user="User1"
+            id={opponents[Object.keys(opponents)[0]].id}
+            count={firstOpponentCardCount}
+          />
         )}
 
         {opponents && secondOpponent && (
-          <OpponentHand user="User2" count={secondOpponentCardCount} />
+          <OpponentHandMulti
+            user="User2"
+            id={opponents[Object.keys(opponents)[1]]}
+            count={secondOpponentCardCount}
+          />
         )}
 
         {opponents && thirdOpponent && (
-          <OpponentHand user="User3" count={thirdOpponentCardCount} />
+          <OpponentHandMulti
+            user="User3"
+            id={opponents[Object.keys(opponents)[2]]}
+            count={thirdOpponentCardCount}
+          />
         )}
 
         <Deck />
 
-        <UserHand cards={hand} />
+        <UserHandMulti cards={hand} />
         {/* <AllMelds /> */}
       </div>
     </div>

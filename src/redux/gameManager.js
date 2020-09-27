@@ -162,3 +162,36 @@ export const startToPlayMultiCall = () => {
     dispatch(set_game_info(result));
   };
 };
+
+export const foundNewUserId = (gameInfo, actionUser) => {
+  if (gameInfo) {
+    const orginalUsersId = gameInfo.playerNames
+      ? gameInfo.playerNames
+      : undefined;
+
+    const newUserId =
+      gameInfo.opponents && gameInfo.yourData
+        ? [
+            {
+              user: gameInfo.opponents[Object.keys(gameInfo.opponents)[0]],
+              userId: "User1",
+            },
+            {
+              user: gameInfo.opponents[Object.keys(gameInfo.opponents)[1]],
+              userId: "User2",
+            },
+            {
+              user: gameInfo.opponents[Object.keys(gameInfo.opponents)[2]],
+              userId: "User3",
+            },
+            {
+              user: { id: gameInfo.yourData.id, name: gameInfo.yourData.name },
+              userId: "User4",
+            },
+          ]
+        : "undefined";
+
+    const foundedId = orginalUsersId.find((x) => x.user === actionUser).id;
+    return newUserId.find((x) => x.user.id === foundedId).userId;
+  } else return null;
+};

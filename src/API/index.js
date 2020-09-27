@@ -70,11 +70,8 @@ export const joinToMultiGame = async (gameId, username) => {
 };
 
 export const fetchGameStateMulti = async (gameId, user) => {
-  console.log(gameId);
-  console.log(user);
   const result = await Axios.get(
     `http://localhost:3000/multiPlayer/gamestate/${gameId}-${user}`
   );
-  console.log(result);
   return result.data;
 };
