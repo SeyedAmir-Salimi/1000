@@ -3,23 +3,46 @@ import "../Game.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import io from "socket.io-client";
 
-import { getGameStateMultiCall } from "../../redux/gameManager";
-import Deck from "../Deck";
+import {
+  getGameStateMultiCall,
+  getResultFromSocket,
+} from "../../redux/gameManager";
 import GenerateHandsCards from "../GenerateHandsCards";
-import MeldButtun from "../MeldButton";
 import Rules from "../Rules";
-import UserHandMulti from "./UserHandMulti";
 import AllMeldsMulti from "./AllMeldsMulti";
+import DeckMulti from "./DeckMulti";
+import MeldButtonMulti from "./MeldButtonMulti";
 import OpponentHandMulti from "./OpponentHandMulti";
 import PointsMulti from "./PointsMulti";
+import UserHandMulti from "./UserHandMulti";
 
-const Game = () => {
+const GameMulti = () => {
   const [rulesWindow, setRulesWindow] = useState(false);
+  const [socketIo, setSocketIo] = useState("");
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
   const gameInfo = useSelector((state) => state.gameInfo);
+
+  const socket = io("http://localhost:3000");
+  const gameId = sessionStorage.getItem("Rummy_gameId");
+  const userId = sessionStorage.getItem("Rummy_user");
+  const gameIdUser = `${gameId}${userId}`;
+
+  useEffect(() => {
+    socket.on(gameIdUser, (data) => {
+      console.log(data);
+      if (data) {
+        setSocketIo(data.state);
+      }
+    });
+  });
+
+  useEffect(() => {
+    dispatch(getResultFromSocket(socketIo));
+  }, [dispatch, socketIo]);
 
   useEffect(() => {
     dispatch(getGameStateMultiCall());
@@ -43,13 +66,13 @@ const Game = () => {
   const secondOpponent =
     opponents && Object.keys(opponents)[1] ? Object.keys(opponents)[1] : "";
   const secondOpponentCardCount = secondOpponent
-    ? opponents[Object.keys(opponents)[0]].cardCount
+    ? opponents[Object.keys(opponents)[1]].cardCount
     : "";
 
   const thirdOpponent =
     opponents && Object.keys(opponents)[2] ? Object.keys(opponents)[2] : "";
   const thirdOpponentCardCount = thirdOpponent
-    ? opponents[Object.keys(opponents)[0]].cardCount
+    ? opponents[Object.keys(opponents)[2]].cardCount
     : "";
 
   return (
@@ -67,7 +90,7 @@ const Game = () => {
         ?
       </button>
       <div className="meldButtonWrapper">
-        <MeldButtun />
+        <MeldButtonMulti />
       </div>
       <div className="board">
         <PointsMulti />
@@ -83,7 +106,7 @@ const Game = () => {
         {opponents && secondOpponent && (
           <OpponentHandMulti
             user="User2"
-            id={opponents[Object.keys(opponents)[1]]}
+            id={opponents[Object.keys(opponents)[1]].id}
             count={secondOpponentCardCount}
           />
         )}
@@ -91,18 +114,18 @@ const Game = () => {
         {opponents && thirdOpponent && (
           <OpponentHandMulti
             user="User3"
-            id={opponents[Object.keys(opponents)[2]]}
+            id={opponents[Object.keys(opponents)[2]].id}
             count={thirdOpponentCardCount}
           />
         )}
 
-        <Deck />
+        <DeckMulti />
 
         <UserHandMulti cards={hand} />
-        {/* <AllMelds /> */}
+        <AllMeldsMulti />
       </div>
     </div>
   );
 };
 
-export default Game;
+export default GameMulti;

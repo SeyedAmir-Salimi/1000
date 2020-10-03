@@ -4,6 +4,8 @@ const initialState = {
   type: null,
   user: null,
   otherUser: undefined,
+  userId: null,
+  otherUserId: null,
   cards: [],
   replaceTopofTheDeck: null,
   user1NextMeld: null,
@@ -15,17 +17,26 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_UI_INFO: {
-      const { type, user, cards, otherUser } = action.payload.action;
+      const {
+        type,
+        user,
+        cards,
+        otherUser,
+        userId,
+        otherUserId,
+      } = action.payload.action;
       return {
         ...state,
         type,
         user,
         otherUser,
+        userId,
+        otherUserId,
         cards,
         replaceTopofTheDeck: action.payload.topOfTheDeck,
-        user1NextMeld: action.payload.opponents.User1.topOfTheMeld,
-        user2NextMeld: action.payload.opponents.User2.topOfTheMeld,
-        user3NextMeld: action.payload.opponents.User3.topOfTheMeld,
+        // user1NextMeld: action.payload.opponents.User1.topOfTheMeld,
+        // user2NextMeld: action.payload.opponents.User2.topOfTheMeld,
+        // user3NextMeld: action.payload.opponents.User3.topOfTheMeld,
         user4NextMeld: action.payload.topOfTheMeld,
       };
     }

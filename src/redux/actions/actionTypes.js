@@ -13,3 +13,4 @@ export const RESET_UI_INFO = "RESET_UI_INFO";
 // multiInfo
 export const SET_GAME_ROOMS = "SET_GAME_ROOMS";
 export const CREATED_MULTI_GAME = "CREATED_MULTI_GAME";
+export const SET_GAME_INFO_MULTI = "SET_GAME_INFO_MULTI";

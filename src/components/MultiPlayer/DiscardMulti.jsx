@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { discardCard } from "../../redux/gameManager";
+import { discardCardMulti } from "../../redux/gameManager";
 
 function DiscardMulti({ cardId }) {
   const isMyTurn = useSelector((state) => state.gameInfo.isMyTurn);
@@ -13,7 +13,7 @@ function DiscardMulti({ cardId }) {
   return (
     <>
       {isMyTurn && (
-        <h2 className="fire" onClick={() => dispatch(discardCard(cardId))}>
+        <h2 className="fire" onClick={() => dispatch(discardCardMulti(cardId))}>
           <>🔥</>
         </h2>
       )}

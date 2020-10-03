@@ -33,7 +33,6 @@ const CardMulti = ({ card, index, isDiscarded, isMeld }) => {
       dispatch(add_selected_card(card.id));
     }
   };
-
   return (
     <div
       className={className}
@@ -52,7 +51,6 @@ const CardMulti = ({ card, index, isDiscarded, isMeld }) => {
           style={{ color: "green", opacity: "100%" }}
         />
       )}
-      {/* <Selection cardId={card.id} /> */}
       <DiscardMulti cardId={card.id} />
     </div>
   );

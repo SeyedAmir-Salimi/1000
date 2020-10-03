@@ -8,13 +8,13 @@ import io from "socket.io-client";
 
 import { getGameinfoCall, startToPlayMultiCall } from "../../redux/gameManager";
 
-function WaitToJoinAdmin({ setupSocket }) {
+function WaitToJoinAdmin() {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getGameinfoCall());
-  }, [dispatch, setupSocket]);
+  }, [dispatch]);
 
   const playersState = useSelector((state) => state.multiInfo.createdGame);
   const playerLength = useSelector(
@@ -72,7 +72,5 @@ function WaitToJoinAdmin({ setupSocket }) {
     </div>
   );
 }
-WaitToJoinAdmin.propTypes = {
-  setupSocket: PropTypes.object,
-};
+
 export default WaitToJoinAdmin;

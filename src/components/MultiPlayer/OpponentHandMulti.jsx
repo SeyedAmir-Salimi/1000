@@ -3,12 +3,17 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useSelector } from "react-redux";
 
+import { foundNewUserId } from "../../redux/gameManager";
 import ReversedCard from "../ReversedCard";
 
-const OpponentHand = React.memo(({ user, count }) => {
+const OpponentHand = React.memo(({ user, count, id }) => {
   const action = useSelector((state) => state.uiInfo);
-  const isDiscarded = action.user === user && action.type === "discard";
-  const isMeld = action.user === user && action.type.slice(0, 4) === "meld";
+  const gameInfo = useSelector((state) => state.gameInfo);
+
+  const rightUser = foundNewUserId(gameInfo, id);
+
+  const isDiscarded = action.user === rightUser && action.type === "discard";
+  const isMeld = action.user === rightUser && action.type.slice(0, 4) === "meld";
 
   let cards = [];
   for (let index = 0; index < count; index++) {
@@ -35,6 +40,7 @@ const OpponentHand = React.memo(({ user, count }) => {
 OpponentHand.propTypes = {
   user: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
+
 };
 
 export default OpponentHand;

@@ -5,6 +5,7 @@ import {
   CREATE_GAME,
   DELETE_SELECTED_CARD,
   SET_GAME_INFO,
+  SET_GAME_INFO_MULTI,
   TOGGLE_MY_TURN,
   TOGGLE_SELECTED_MELD,
 } from "../actions/actionTypes";
@@ -124,7 +125,39 @@ export default (state = initialState, action) => {
         isMyTurn: !state.isMyTurn,
       };
     }
-
+    case SET_GAME_INFO_MULTI: {
+      const {
+        gameId,
+        opponents,
+        round,
+        set,
+        hand,
+        topOfTheDeck,
+        deckCount,
+        topOfTheMeld,
+        points,
+        winner,
+        playerNames,
+      } = action.payload;
+      const prenNames = state.playerNames;
+      const newNames = playerNames ? playerNames : prenNames;
+      return {
+        ...state,
+        gameId,
+        round,
+        set,
+        opponents,
+        hand,
+        topOfTheDeck,
+        deckCount,
+        topOfTheMeld,
+        selectedCards: [],
+        selectedMeld: null,
+        points: points,
+        winner,
+        playerNames: newNames,
+      };
+    }
     default:
       return state;
   }

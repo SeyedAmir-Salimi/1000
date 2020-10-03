@@ -22,7 +22,7 @@ function Points() {
   const x1 = opponents ? opponents[Object.keys(opponents)[0]].points : 0;
   const x2 = opponents ? opponents[Object.keys(opponents)[1]].points : 0;
   const x3 = opponents ? opponents[Object.keys(opponents)[2]].points : 0;
-  const x4 = gameInfo.yourDat ? gameInfo.yourDat.points : 0;
+  const x4 = gameInfo.yourData ? gameInfo.yourData.points : 0;
   numbersArrey.push(x1, x2, x3, x4);
 
   let maxNumber = null;
@@ -39,34 +39,41 @@ function Points() {
     : "undefined";
   const User4 = gameInfo.yourData ? gameInfo.yourData.name : "undefined";
 
+  const user1Points = opponents
+    ? opponents[Object.keys(opponents)[0]].points
+    : 0;
+  const user1prevPoints = usePrevious(user1Points);
+
+  const user2Points = opponents
+    ? opponents[Object.keys(opponents)[1]].points
+    : 0;
+  const user2prevPoints = usePrevious(user2Points);
+
+  const user3Points = opponents
+    ? opponents[Object.keys(opponents)[2]].points
+    : 0;
+  const user3prevPoints = usePrevious(user3Points);
+
+  const user4Points = gameInfo.yourData.points ? gameInfo.yourData.points : 0;
+  const user4prevPoints = usePrevious(user4Points);
+
   const playerNamesUser1 =
-    points.User1 === maxNumber
+    user1Points === maxNumber
       ? "playerNamesUser1 highestNumber"
       : "playerNamesUser1";
   const playerNamesUser2 =
-    points.User2 === maxNumber
+    user2Points === maxNumber
       ? "playerNamesUser2 highestNumber"
       : "playerNamesUser2";
   const playerNamesUser3 =
-    points.User3 === maxNumber
+    user3Points === maxNumber
       ? "playerNamesUser3 highestNumber"
       : "playerNamesUser3";
   const playerNamesUser4 =
-    points.User4 === maxNumber
+    user4Points === maxNumber
       ? "playerNamesUser4 highestNumber"
       : "playerNamesUser4";
 
-  const user1Points = points.User1 ? points.User1 : 0;
-  const user1prevPoints = usePrevious(user1Points);
-
-  const user2Points = points.User2 ? points.User2 : 0;
-  const user2prevPoints = usePrevious(user2Points);
-
-  const user3Points = points.User3 ? points.User3 : 0;
-  const user3prevPoints = usePrevious(user3Points);
-
-  const user4Points = points.User4 ? points.User4 : 0;
-  const user4prevPoints = usePrevious(user4Points);
   const countDuration = 2.2;
   return (
     <>

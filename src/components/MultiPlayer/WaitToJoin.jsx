@@ -8,9 +8,8 @@ import io from "socket.io-client";
 
 import { getGameinfoCall } from "../../redux/gameManager";
 
-function WaitToJoin({ goToPlay }) {
+function WaitToJoin() {
   const dispatch = useDispatch();
-  console.log(goToPlay);
   useEffect(() => {
     dispatch(getGameinfoCall());
   }, [dispatch]);
@@ -19,11 +18,13 @@ function WaitToJoin({ goToPlay }) {
   const GoToLink = (link) => {
     history.push(link);
   };
-
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const socket = io("http://localhost:3000");
+  console.log(gameId);
   useEffect(() => {
+    console.log("hey");
     socket.on(gameId, (data) => {
+      console.log(data);
       if (data.message === "play") {
         console.log("true");
         GoToLink(`/multiPlayer/play/${gameId}`);

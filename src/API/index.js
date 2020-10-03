@@ -52,6 +52,7 @@ export const createMultiGame = async (username) => {
   const result = await Axios.post(`http://localhost:3000/multiPlayer/create`, {
     username,
   });
+  sessionStorage.setItem("Rummy_gameId", result.data.id);
   return result.data;
 };
 export const startToPlayMulti = async (gameId) => {
@@ -73,5 +74,23 @@ export const fetchGameStateMulti = async (gameId, user) => {
   const result = await Axios.get(
     `http://localhost:3000/multiPlayer/gamestate/${gameId}-${user}`
   );
+  return result.data;
+};
+
+export const discardMulti = async (cardId, gameId) => {
+  const result = await Axios.put(`http://localhost:3000/multiPlayer/discard`, {
+    id: cardId,
+    gameId,
+  });
+  return result.data;
+};
+
+export const createMeldMultiFromCards = async (ids, userId, meldId, gameId) => {
+  const result = await Axios.put(`http://localhost:3000/multiPlayer/meld`, {
+    cardIds: ids,
+    userId,
+    gameId,
+    selectedMeld: meldId,
+  });
   return result.data;
 };

@@ -1,7 +1,12 @@
 // import Cookies from "js-cookie";
+import io from "socket.io-client";
+
 import {
   createMeldFromCards,
+  createMeldMultiFromCards,
+  createMultiGame,
   discard,
+  discardMulti,
   fetchGameInfo,
   fetchGameRooms,
   fetchGameStateMulti,
@@ -15,6 +20,7 @@ import {
   created_multi_game,
   reset_ui_info,
   set_game_info,
+  set_game_info_multi,
   set_game_rooms,
   set_ui_info,
   toggle_my_turn,
@@ -122,9 +128,11 @@ export const getGameRooms = () => {
   };
 };
 export const createMultiGameCall = (result) => {
+  // const username = getUser();
   return async (dispatch) => {
+    // const result = await createMultiGame(username);
+    // setGameId(result.id);
     dispatch(created_multi_game(result));
-    setGameId(result.id);
     setUser("User1");
   };
 };
@@ -150,7 +158,6 @@ export const getGameStateMultiCall = () => {
   const user = getUser();
   return async (dispatch) => {
     const result = await fetchGameStateMulti(gameId, user);
-    console.log(result);
     dispatch(set_game_info(result));
   };
 };
@@ -160,17 +167,118 @@ export const startToPlayMultiCall = () => {
   return async (dispatch) => {
     const result = await startToPlayMulti(gameId);
     dispatch(set_game_info(result));
+    await sleep(8500);
   };
 };
 
-export const foundNewUserId = (gameInfo, actionUser) => {
-  if (gameInfo) {
+export const discardCardMulti = (cardId) => {
+  const gameId = getGameId();
+  return async (dispatch) => {
+    await discardMulti(cardId, gameId);
+    // dispatch(toggle_my_turn());
+    // await handleGameStatesMulti(gameStates, dispatch);
+    // sendResultToSocket(gameStates, "discard");
+    // dispatch(toggle_my_turn());
+  };
+};
+
+export const meldCardsMulti = (ids, meldId) => {
+  const gameId = getGameId();
+  const userId = getUser();
+  return async (dispatch) => {
+    await createMeldMultiFromCards(ids, userId, meldId, gameId);
+    // dispatch(toggle_my_turn());
+    // await handleGameStatesMulti(gameStates, dispatch);
+    // sendResultToSocket(gameStates, "meld");
+    // dispatch(toggle_my_turn());
+  };
+};
+
+export async function handleGameStatesMulti(gameStates, dispatch) {
+  for (const state of gameStates) {
+    dispatch(set_ui_info(state));
+    // delay between animations
+    if (state.action.type === "generateHands") {
+      // for change color of the cards before generatehands
+      dispatch(set_game_info_multi(state));
+      await sleep(8500);
+    } else {
+      await sleep(1400);
+      dispatch(set_game_info_multi(state));
+    }
+
+    dispatch(reset_ui_info());
+
+    // if (state === gameStates[gameStates.length - 1]) {
+    //   continue;
+    // }
+
+    // delay between each turn
+    // await sleep(2000);
+  }
+}
+
+const socket = io("http://localhost:3000");
+
+export function sendResultToSocket(data, action) {
+  const gameId = getGameId();
+  const username = getUser();
+  const message = { gameState: data, action };
+  socket.emit("chatMessage", { username, gameId, message });
+}
+
+// export const getResultFromSocket = (gameStates) => {
+//   if (gameStates) {
+//     return async (dispatch) => {
+//       dispatch(toggle_my_turn());
+//       await handleGameStatesMulti(gameStates, dispatch);
+//       dispatch(toggle_my_turn());
+//     };
+//   } else return null;
+// };
+
+export const getResultFromSocket = (gameStates) => {
+  return async (dispatch) => {
+    dispatch(toggle_my_turn());
+    await handleGameStatesMulti(gameStates, dispatch);
+    dispatch(toggle_my_turn());
+  };
+};
+
+// export const getResultFromSocket = () => {
+//   const gameId = getGameId();
+//   const newData = [];
+//   socket.on(gameId, (data) => {
+//     if (data) {
+//       console.log(data);
+//       newData.push(data.message.gameState);
+//     }
+//   });
+//   if (newData) {
+//     return async (dispatch) => {
+//       dispatch(toggle_my_turn());
+//       await handleGameStatesMulti(newData, dispatch);
+//       dispatch(toggle_my_turn());
+//     };
+//   } else return null;
+// };
+
+export const foundNewUserId = (gameInfo, id) => {
+  if (gameInfo.playerNames && id) {
     const orginalUsersId = gameInfo.playerNames
       ? gameInfo.playerNames
       : undefined;
 
+    const foundedId = orginalUsersId.find((x) => x.id === id);
+    const sendUser = foundedId ? foundedId.user : undefined;
+    return sendUser;
+  }
+};
+
+export const foundNewUserIdNew = (gameInfo, id) => {
+  if (gameInfo.opponents && gameInfo.yourData) {
     const newUserId =
-      gameInfo.opponents && gameInfo.yourData
+      gameInfo.opponents && gameInfo.yourData && id
         ? [
             {
               user: gameInfo.opponents[Object.keys(gameInfo.opponents)[0]],
@@ -189,9 +297,11 @@ export const foundNewUserId = (gameInfo, actionUser) => {
               userId: "User4",
             },
           ]
-        : "undefined";
+        : undefined;
 
-    const foundedId = orginalUsersId.find((x) => x.user === actionUser).id;
-    return newUserId.find((x) => x.user.id === foundedId).userId;
-  } else return null;
+    const foundedUser = newUserId
+      ? newUserId.find((x) => x.user.id === id).userId
+      : undefined;
+    return foundedUser;
+  }
 };
