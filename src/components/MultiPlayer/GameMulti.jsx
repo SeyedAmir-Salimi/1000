@@ -24,25 +24,36 @@ const GameMulti = () => {
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
-  const gameInfo = useSelector((state) => state.gameInfo);
+  const multiInfo = useSelector((state) => state.multiInfo);
+  const playerNames = useSelector((state) => state.gameInfo.playerNames);
 
-  const socket = io("http://localhost:3000");
+  const socket = io("http://localhost:3000", { forceNew: true });
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const userId = sessionStorage.getItem("Rummy_user");
   const gameIdUser = `${gameId}${userId}`;
 
+  const UserTurn =
+    multiInfo.turn && playerNames
+      ? playerNames.find((x) => x.user === multiInfo.turn).name
+      : undefined;
+
   useEffect(() => {
     socket.on(gameIdUser, (data) => {
-      console.log(data);
       if (data) {
         setSocketIo(data.state);
       }
     });
+    return () => {
+      socket.off(gameIdUser);
+    };
   });
 
   useEffect(() => {
     dispatch(getResultFromSocket(socketIo));
-  }, [dispatch, socketIo]);
+    return () => {
+      setSocketIo("");
+    };
+  }, [socketIo]);
 
   useEffect(() => {
     dispatch(getGameStateMultiCall());
@@ -81,6 +92,7 @@ const GameMulti = () => {
       <button className="FinishButton" onClick={() => GoToLink()}>
         Finish the game
       </button>
+      <h3 className="turn">{`${UserTurn}'s turn`}</h3>
       <button
         className="HelpButton"
         onClick={() => {

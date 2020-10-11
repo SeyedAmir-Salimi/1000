@@ -22,6 +22,7 @@ import {
   set_game_info,
   set_game_info_multi,
   set_game_rooms,
+  set_multi_turn,
   set_ui_info,
   toggle_my_turn,
 } from "./actions/actions";
@@ -141,7 +142,6 @@ export const joinToMultiGameCall = (gameId, username) => {
     setGameId(gameId);
     const result = await joinToMultiGame(gameId, username);
     dispatch(created_multi_game(result));
-    console.log(result);
     setUser(result.yourData.user);
   };
 };
@@ -159,6 +159,7 @@ export const getGameStateMultiCall = () => {
   return async (dispatch) => {
     const result = await fetchGameStateMulti(gameId, user);
     dispatch(set_game_info(result));
+    dispatch(set_multi_turn(result.turn));
   };
 };
 
@@ -167,13 +168,14 @@ export const startToPlayMultiCall = () => {
   return async (dispatch) => {
     const result = await startToPlayMulti(gameId);
     dispatch(set_game_info(result));
+    dispatch(set_multi_turn(result.turn));
     await sleep(8500);
   };
 };
 
 export const discardCardMulti = (cardId) => {
   const gameId = getGameId();
-  return async (dispatch) => {
+  return async () => {
     await discardMulti(cardId, gameId);
     // dispatch(toggle_my_turn());
     // await handleGameStatesMulti(gameStates, dispatch);
@@ -185,7 +187,7 @@ export const discardCardMulti = (cardId) => {
 export const meldCardsMulti = (ids, meldId) => {
   const gameId = getGameId();
   const userId = getUser();
-  return async (dispatch) => {
+  return async () => {
     await createMeldMultiFromCards(ids, userId, meldId, gameId);
     // dispatch(toggle_my_turn());
     // await handleGameStatesMulti(gameStates, dispatch);
@@ -197,6 +199,8 @@ export const meldCardsMulti = (ids, meldId) => {
 export async function handleGameStatesMulti(gameStates, dispatch) {
   for (const state of gameStates) {
     dispatch(set_ui_info(state));
+
+    dispatch(set_multi_turn(state.turn));
     // delay between animations
     if (state.action.type === "generateHands") {
       // for change color of the cards before generatehands
@@ -218,14 +222,14 @@ export async function handleGameStatesMulti(gameStates, dispatch) {
   }
 }
 
-const socket = io("http://localhost:3000");
+// const socket = io("http://localhost:3000");
 
-export function sendResultToSocket(data, action) {
-  const gameId = getGameId();
-  const username = getUser();
-  const message = { gameState: data, action };
-  socket.emit("chatMessage", { username, gameId, message });
-}
+// export function sendResultToSocket(data, action) {
+//   const gameId = getGameId();
+//   const username = getUser();
+//   const message = { gameState: data, action };
+//   socket.emit("chatMessage", { username, gameId, message });
+// }
 
 // export const getResultFromSocket = (gameStates) => {
 //   if (gameStates) {
@@ -276,7 +280,7 @@ export const foundNewUserId = (gameInfo, id) => {
 };
 
 export const foundNewUserIdNew = (gameInfo, id) => {
-  if (gameInfo.opponents && gameInfo.yourData) {
+  if (gameInfo.opponents && gameInfo.yourData && id) {
     const newUserId =
       gameInfo.opponents && gameInfo.yourData && id
         ? [
@@ -298,10 +302,10 @@ export const foundNewUserIdNew = (gameInfo, id) => {
             },
           ]
         : undefined;
-
     const foundedUser = newUserId
-      ? newUserId.find((x) => x.user.id === id).userId
+      ? newUserId.find((x) => x.user.id === id)
       : undefined;
-    return foundedUser;
+    const sendUser = foundedUser ? foundedUser.userId : undefined;
+    return sendUser;
   }
 };

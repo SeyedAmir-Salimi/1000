@@ -28,7 +28,16 @@
 	z-index: 10;
 }
 
-
+.turn{
+	float: left;
+	padding: 5px;
+	top: 5%;
+	position: absolute;
+	color: rgb(238, 255, 7);
+	margin: 1rem auto;
+	margin-left: 12px;
+	z-index: 10;
+}
 
 
 .HelpButton:focus{

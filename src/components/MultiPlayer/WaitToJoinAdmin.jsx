@@ -36,6 +36,9 @@ function WaitToJoinAdmin() {
         dispatch(getGameinfoCall());
       }
     });
+    return () => {
+      socket.off(gameId);
+    };
   });
 
   const startGame = () => {

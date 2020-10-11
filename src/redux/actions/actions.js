@@ -7,6 +7,7 @@ import {
   SET_GAME_INFO,
   SET_GAME_INFO_MULTI,
   SET_GAME_ROOMS,
+  SET_MULTI_TURN,
   SET_UI_INFO,
   TOGGLE_MY_TURN,
   TOGGLE_SELECTED_MELD,
@@ -69,5 +70,11 @@ export const set_game_info_multi = (cards) => {
   return {
     type: SET_GAME_INFO_MULTI,
     payload: cards,
+  };
+};
+export const set_multi_turn = (payload) => {
+  return {
+    type: SET_MULTI_TURN,
+    payload,
   };
 };

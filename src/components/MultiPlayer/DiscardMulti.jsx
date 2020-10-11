@@ -7,9 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { discardCardMulti } from "../../redux/gameManager";
 
 function DiscardMulti({ cardId }) {
-  const isMyTurn = useSelector((state) => state.gameInfo.isMyTurn);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  const userId = sessionStorage.getItem("Rummy_user");
+  const multiInfo = useSelector((state) => state.multiInfo.turn);
+  const isMyTurn = multiInfo === userId ? true : false;
   return (
     <>
       {isMyTurn && (

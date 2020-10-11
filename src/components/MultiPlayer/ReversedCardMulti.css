@@ -1,0 +1,24 @@
+.reversedCard{
+  width: 169px;
+  height: 244px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 2;
+  animation-duration: 1.6s;
+  box-shadow: 7px 7px 7px -6px rgba(0,0,0,0.75);
+}
+.playerNames_User1{
+  color: white;
+  position: absolute;
+  transform: translateX(160%) translateY(1050%)
+}
+.playerNames_User2{
+  color: white;
+  position: absolute;
+  transform: translateX(1793%) translateY(821%);
+}
+.playerNames_User3{
+  color: white;
+  position: absolute;
+  transform: translateX(2676%) translateY(1050%);
+}

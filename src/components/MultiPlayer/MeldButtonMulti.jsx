@@ -8,7 +8,11 @@ import { meldCardsMulti } from "../../redux/gameManager";
 export default function MeldButtonMulti() {
   const selectedCards = useSelector((state) => state.gameInfo.selectedCards);
   const selectedMeld = useSelector((state) => state.gameInfo.selectedMeld);
-  const isMyTurn = useSelector((state) => state.gameInfo.isMyTurn);
+
+  const userId = sessionStorage.getItem("Rummy_user");
+  const multiInfo = useSelector((state) => state.multiInfo.turn);
+  const isMyTurn = multiInfo === userId ? true : false;
+
   const dispatch = useDispatch();
   return (
     <div>

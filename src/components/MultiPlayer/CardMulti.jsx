@@ -64,4 +64,4 @@ CardMulti.propTypes = {
   meld: PropTypes.object,
 };
 
-export default React.memo(CardMulti);
+export default CardMulti;

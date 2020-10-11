@@ -20,16 +20,16 @@ function WaitToJoin() {
   };
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const socket = io("http://localhost:3000");
-  console.log(gameId);
+
   useEffect(() => {
-    console.log("hey");
     socket.on(gameId, (data) => {
-      console.log(data);
       if (data.message === "play") {
-        console.log("true");
         GoToLink(`/multiPlayer/play/${gameId}`);
       }
     });
+    return () => {
+      socket.off(gameId);
+    };
   });
 
   return (
