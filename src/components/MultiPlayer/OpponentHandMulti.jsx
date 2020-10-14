@@ -41,7 +41,7 @@ const OpponentHand = ({ user, count }) => {
 
 OpponentHand.propTypes = {
   user: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
+  count: PropTypes.number,
 };
 
 export default OpponentHand;

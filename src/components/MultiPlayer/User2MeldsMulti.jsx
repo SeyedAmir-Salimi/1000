@@ -22,8 +22,8 @@ function User2Melds({ className }) {
         </div>
       )}
       {/* {action.user2NextMeld &&
-        action.user !== actionUser &&
-        action.otherUser === actionUser && (
+        action.user !== "User2" &&
+        action.otherUser === "User2" && (
           <div className="User2_topOfTheMeld meldSecondCard">
             <Meld
               key={action.user2NextMeld.medlId}

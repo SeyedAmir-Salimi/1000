@@ -3,6 +3,7 @@ import {
   CREATE_GAME,
   CREATED_MULTI_GAME,
   DELETE_SELECTED_CARD,
+  RESET_MULTI_TURN,
   RESET_UI_INFO,
   SET_GAME_INFO,
   SET_GAME_INFO_MULTI,
@@ -78,3 +79,7 @@ export const set_multi_turn = (payload) => {
     payload,
   };
 };
+
+export const reset_multi_turn = () => ({
+  type: RESET_MULTI_TURN,
+});

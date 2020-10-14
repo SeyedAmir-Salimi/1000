@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { foundNewUserId } from "../../redux/gameManager";
 import Meld from "../Meld";
 
 function User1Melds({ className }) {
@@ -10,7 +9,6 @@ function User1Melds({ className }) {
   const opponents = useSelector((state) => state.gameInfo.opponents);
 
   const gameInfo = useSelector((state) => state.gameInfo);
-
 
   return (
     <>
@@ -23,8 +21,8 @@ function User1Melds({ className }) {
         </div>
       )}
       {/* {action.user1NextMeld &&
-        action.user !== actionUser &&
-        action.otherUser === actionUser && (
+        action.user !== "User1" &&
+        action.otherUser === "User1" && (
           <div className="User1_topOfTheMeld meldSecondCard">
             <Meld
               key={action.user1NextMeld.medlId}

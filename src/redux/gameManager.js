@@ -1,10 +1,6 @@
-// import Cookies from "js-cookie";
-import io from "socket.io-client";
-
 import {
   createMeldFromCards,
   createMeldMultiFromCards,
-  createMultiGame,
   discard,
   discardMulti,
   fetchGameInfo,
@@ -177,7 +173,6 @@ export const discardCardMulti = (cardId) => {
   const gameId = getGameId();
   return async () => {
     await discardMulti(cardId, gameId);
-    // dispatch(toggle_my_turn());
     // await handleGameStatesMulti(gameStates, dispatch);
     // sendResultToSocket(gameStates, "discard");
     // dispatch(toggle_my_turn());
@@ -187,9 +182,13 @@ export const discardCardMulti = (cardId) => {
 export const meldCardsMulti = (ids, meldId) => {
   const gameId = getGameId();
   const userId = getUser();
-  return async () => {
-    await createMeldMultiFromCards(ids, userId, meldId, gameId);
-    // dispatch(toggle_my_turn());
+  return async (dispatch) => {
+    try {
+      await createMeldMultiFromCards(ids, userId, meldId, gameId);
+    } catch (error) {
+      const user = getUser();
+      dispatch(set_multi_turn(user));
+    }
     // await handleGameStatesMulti(gameStates, dispatch);
     // sendResultToSocket(gameStates, "meld");
     // dispatch(toggle_my_turn());

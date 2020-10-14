@@ -30,7 +30,6 @@ const ReversedCard = ({ cardKey, user, index, isDiscarded, isMeld, meld }) => {
     ) {
       className = `reversedCard reversedCard_${user}_${max} ${user}_meld`;
     }
-    console.log(className);
   }
   return (
     <>

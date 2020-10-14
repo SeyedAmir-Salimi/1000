@@ -32,13 +32,13 @@ export default function Deck() {
         />
       )}
 
-      {/* {action.replaceTopofTheDeck && (
+      {action.replaceTopofTheDeck && (
         <DeckCard
           key={secondCard.id}
           card={secondCard}
           className={replaceClassName}
         />
-      )} */}
+      )}
     </>
   );
 }

@@ -1,5 +1,6 @@
 import {
   CREATED_MULTI_GAME,
+  RESET_MULTI_TURN,
   SET_GAME_ROOMS,
   SET_MULTI_TURN,
 } from "../actions/actionTypes";
@@ -20,6 +21,9 @@ export default (state = initialState, action) => {
     }
     case SET_MULTI_TURN: {
       return { ...state, turn: action.payload };
+    }
+    case RESET_MULTI_TURN: {
+      return { ...state, turn: "" };
     }
 
     default:

@@ -40,6 +40,7 @@ const GameMulti = () => {
   useEffect(() => {
     socket.on(gameIdUser, (data) => {
       if (data) {
+        console.log(data.state);
         setSocketIo(data.state);
       }
     });
@@ -92,7 +93,7 @@ const GameMulti = () => {
       <button className="FinishButton" onClick={() => GoToLink()}>
         Finish the game
       </button>
-      <h3 className="turn">{`${UserTurn}'s turn`}</h3>
+      {multiInfo.turn && <h3 className="turn">{`${UserTurn}'s turn`}</h3>}
       <button
         className="HelpButton"
         onClick={() => {
