@@ -26,14 +26,16 @@ function WaitToJoinAdmin() {
 
   const socket = io("http://localhost:3000");
   const gameId = sessionStorage.getItem("Rummy_gameId");
-  const username = sessionStorage.getItem("Rummy_multi_name");
-  const message = "play";
+  // const username = sessionStorage.getItem("Rummy_multi_name");
+  // const message = "play";
 
   useEffect(() => {
     socket.on(gameId, (data) => {
       if (data) {
-        console.log(data);
         dispatch(getGameinfoCall());
+      }
+      if (data.message === "play") {
+        GoToLink(`/multiPlayer/play/${gameId}`);
       }
     });
     return () => {
@@ -44,8 +46,7 @@ function WaitToJoinAdmin() {
   const startGame = () => {
     if (playerLength && playerLength.length === 4) {
       dispatch(startToPlayMultiCall());
-      socket.emit("chatMessage", { username, gameId, message });
-      GoToLink(`/multiPlayer/play/${gameId}`);
+      // GoToLink(`/multiPlayer/play/${gameId}`);
     } else {
       setError("The players shoud be 4");
       setTimeout(() => {

@@ -115,6 +115,9 @@ function getGameId() {
 function getUser() {
   return sessionStorage.getItem("Rummy_user");
 }
+function getUserName() {
+  return sessionStorage.getItem("Rummy_multi_name");
+}
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -166,7 +169,6 @@ export const getGameStateMultiCall = () => {
   const user = getUser();
   return async (dispatch) => {
     const result = await fetchGameStateMulti(gameId, user);
-    console.log("result", user, result);
     dispatch(set_game_info(result));
     dispatch(set_multi_turn(result.turn));
   };
@@ -174,8 +176,12 @@ export const getGameStateMultiCall = () => {
 
 export const startToPlayMultiCall = () => {
   const gameId = getGameId();
+  const socket = io("http://localhost:3000");
+  const message = "play";
+  const username = getUserName();
   return async (dispatch) => {
     const result = await startToPlayMulti(gameId);
+    socket.emit("chatMessage", { username, gameId, message });
     dispatch(set_game_info(result));
     dispatch(set_multi_turn(result.turn));
     await sleep(8500);
