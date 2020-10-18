@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import io from "socket.io-client";
 
 import { joinToMultiGameCall } from "../../redux/gameManager";
 
@@ -19,7 +18,6 @@ function SearchToJoin({ searchToJoin }) {
       onClick={() => setselectedRoomId(x.id)}
       style={{ color: selectedRoomId === x.id ? "yellow" : "white" }}
     >
-      {/* <h3>{x.id}</h3> */}
       <h3>{x.playerNumbers}</h3>
       <h3>{x.playerNames[0].name}</h3>
     </div>
@@ -33,18 +31,11 @@ function SearchToJoin({ searchToJoin }) {
     history.push(link);
   };
   const username = sessionStorage.getItem("Rummy_multi_name");
-  const message = "Join";
+
   const gameId = selectedRoomId;
 
-  const socket = io("http://localhost:3000");
-
-  const sendMessage = () => {
-    socket.emit("chatMessage", { username, gameId, message });
-  };
-
-  const joinGame = async () => {
+  const joinGame = () => {
     dispatch(joinToMultiGameCall(gameId, username));
-    sendMessage(username, gameId, message);
     GoToLink(`/multiPlayer/${gameId}`);
   };
   return (
@@ -54,13 +45,12 @@ function SearchToJoin({ searchToJoin }) {
           <form className="room_search_form">
             <input
               type="text"
-              placeholder="Search by code"
+              placeholder="Search by room code"
               value={searchInput}
               onChange={(e) => setsearchInput(e.target.value)}
             />
           </form>
           <div className="rooms_list_titel">
-            {/* <h3>Rooms Code</h3> */}
             <h3>Players N.</h3>
             <h3>Created By</h3>
           </div>
@@ -74,9 +64,8 @@ function SearchToJoin({ searchToJoin }) {
                 color: selectedRoomId === searchedRoom.id ? "yellow" : "white",
               }}
             >
-              {/* <h3>{searchedRoom.id}</h3> */}
               <h3>{searchedRoom.playerNumbers}</h3>
-              <h3>{searchedRoom.playerNames[0].id}</h3>
+              <h3>{searchedRoom.playerNames[0].name}</h3>
             </div>
           )}
 

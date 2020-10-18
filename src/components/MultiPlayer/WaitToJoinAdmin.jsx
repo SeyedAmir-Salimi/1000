@@ -1,6 +1,5 @@
 import "./MultiPlayer.css";
 
-import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -33,13 +32,14 @@ function WaitToJoinAdmin() {
   useEffect(() => {
     socket.on(gameId, (data) => {
       if (data) {
+        console.log(data);
         dispatch(getGameinfoCall());
       }
     });
     return () => {
       socket.off(gameId);
     };
-  });
+  }, [dispatch]);
 
   const startGame = () => {
     if (playerLength && playerLength.length === 4) {
@@ -52,6 +52,11 @@ function WaitToJoinAdmin() {
         setError("");
       }, 3000);
     }
+  };
+  const copyToClipBoard = () => {
+    navigator.clipboard.writeText(
+      `http://localhost:3001/multiPlayer/LinkToSend/${gameId}`
+    );
   };
 
   return (
@@ -71,6 +76,13 @@ function WaitToJoinAdmin() {
           Start the game
         </button>
       </div>
+      <h5>Send this link to your friend to join</h5>
+      <h5>
+        {`http://localhost:3001/multiPlayer/LinkToSend/${gameId}`}{" "}
+        <button className="button_copy" onClick={() => copyToClipBoard()}>
+          Click to copy link
+        </button>
+      </h5>
       <h4>{error}</h4>
     </div>
   );

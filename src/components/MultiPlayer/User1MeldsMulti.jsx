@@ -10,6 +10,13 @@ function User1Melds({ className }) {
 
   const gameInfo = useSelector((state) => state.gameInfo);
 
+  let actionUser = "";
+  if (opponents && gameInfo.playerNames) {
+    const userId = opponents[Object.keys(opponents)[0]].id;
+    const foundUser = gameInfo.playerNames.find((x) => x.id === userId);
+    actionUser = foundUser ? foundUser.user : "";
+  }
+
   return (
     <>
       {opponents && opponents[Object.keys(opponents)[0]].topOfTheMeld && (
@@ -20,16 +27,16 @@ function User1Melds({ className }) {
           />
         </div>
       )}
-      {/* {action.user1NextMeld &&
-        action.user !== "User1" &&
-        action.otherUser === "User1" && (
+      {action.user1NextMeld &&
+        action.user !== actionUser &&
+        action.otherUser === actionUser && (
           <div className="User1_topOfTheMeld meldSecondCard">
             <Meld
               key={action.user1NextMeld.medlId}
               card={action.user1NextMeld}
             />
           </div>
-        )} */}
+        )}
     </>
   );
 }

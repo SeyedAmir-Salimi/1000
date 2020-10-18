@@ -1,18 +1,17 @@
 import "./MultiPlayer.css";
 
-import PropTypes from "prop-types";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import io from "socket.io-client";
 
-import { getGameinfoCall } from "../../redux/gameManager";
+// import { getGameinfoCall } from "../../redux/gameManager";
 
 function WaitToJoin() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getGameinfoCall());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getGameinfoCall());
+  // }, [dispatch]);
 
   let history = useHistory();
   const GoToLink = (link) => {
@@ -40,7 +39,5 @@ function WaitToJoin() {
     </div>
   );
 }
-WaitToJoin.propTypes = {
-  goToPlay: PropTypes.bool,
-};
+
 export default WaitToJoin;

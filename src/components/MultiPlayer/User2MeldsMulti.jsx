@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { foundNewUserId } from "../../redux/gameManager";
 import Meld from "../Meld";
 
 function User2Melds({ className }) {
@@ -10,6 +9,13 @@ function User2Melds({ className }) {
   const opponents = useSelector((state) => state.gameInfo.opponents);
 
   const gameInfo = useSelector((state) => state.gameInfo);
+
+  let actionUser = "";
+  if (opponents && gameInfo.playerNames) {
+    const userId = opponents[Object.keys(opponents)[1]].id;
+    const foundUser = gameInfo.playerNames.find((x) => x.id === userId);
+    actionUser = foundUser ? foundUser.user : "";
+  }
 
   return (
     <>
@@ -21,16 +27,16 @@ function User2Melds({ className }) {
           />
         </div>
       )}
-      {/* {action.user2NextMeld &&
-        action.user !== "User2" &&
-        action.otherUser === "User2" && (
+      {action.user2NextMeld &&
+        action.user !== actionUser &&
+        action.otherUser === actionUser && (
           <div className="User2_topOfTheMeld meldSecondCard">
             <Meld
               key={action.user2NextMeld.medlId}
               card={action.user2NextMeld}
             />
           </div>
-        )} */}
+        )}
     </>
   );
 }

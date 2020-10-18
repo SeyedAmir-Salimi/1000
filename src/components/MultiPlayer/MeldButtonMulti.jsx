@@ -58,5 +58,5 @@ function shoudShow(selectedCards, selectedMeld, isMyTurn, cardsValue) {
 }
 
 function allEqual(arr) {
-  return new Set(arr).size == 1;
+  return new Set(arr).size === 1;
 }

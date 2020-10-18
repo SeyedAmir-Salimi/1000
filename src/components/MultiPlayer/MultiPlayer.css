@@ -59,3 +59,29 @@
 	justify-content: center;
 	color: rgb(240, 0, 0);
 }
+.wait_join_Wrapper h5{
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	color: rgb(255, 255, 255);
+}
+
+.linkToSend_form{
+	display: flex;
+	justify-content: center;
+	padding-top: 30px;
+}
+.button_copy{
+	margin-left: 10px;
+	border-radius: 8px;
+	background-color: yellow;
+	cursor: pointer;
+}
+.button_copy:hover{
+	background-color: blue;
+	color: white;
+}
+
+.button_copy:focus{
+	outline: none;
+}

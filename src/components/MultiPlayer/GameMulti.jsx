@@ -40,7 +40,6 @@ const GameMulti = () => {
   useEffect(() => {
     socket.on(gameIdUser, (data) => {
       if (data) {
-        console.log(data.state);
         setSocketIo(data.state);
       }
     });
@@ -54,7 +53,7 @@ const GameMulti = () => {
     return () => {
       setSocketIo("");
     };
-  }, [socketIo]);
+  }, [dispatch, socketIo]);
 
   useEffect(() => {
     dispatch(getGameStateMultiCall());

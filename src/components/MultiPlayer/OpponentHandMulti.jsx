@@ -10,8 +10,6 @@ const OpponentHand = ({ user, count }) => {
   const action = useSelector((state) => state.uiInfo);
   const gameInfo = useSelector((state) => state.gameInfo);
 
-  // const rightUser = foundNewUserId(gameInfo, id);
-
   const rightUser = foundNewUserIdNew(gameInfo, action.userId);
 
   const isDiscarded = user === rightUser && action.type === "discard";

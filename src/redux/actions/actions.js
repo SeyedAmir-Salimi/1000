@@ -10,6 +10,7 @@ import {
   SET_GAME_ROOMS,
   SET_MULTI_TURN,
   SET_UI_INFO,
+  SET_UI_INFO_MULTI,
   TOGGLE_MY_TURN,
   TOGGLE_SELECTED_MELD,
 } from "./actionTypes";
@@ -82,4 +83,9 @@ export const set_multi_turn = (payload) => {
 
 export const reset_multi_turn = () => ({
   type: RESET_MULTI_TURN,
+});
+
+export const set_ui_info_multi = (payload) => ({
+  type: SET_UI_INFO_MULTI,
+  payload,
 });

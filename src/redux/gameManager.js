@@ -1,3 +1,5 @@
+import io from "socket.io-client";
+
 import {
   createMeldFromCards,
   createMeldMultiFromCards,
@@ -20,6 +22,7 @@ import {
   set_game_rooms,
   set_multi_turn,
   set_ui_info,
+  set_ui_info_multi,
   toggle_my_turn,
 } from "./actions/actions";
 
@@ -134,16 +137,25 @@ export const createMultiGameCall = (result) => {
   };
 };
 export const joinToMultiGameCall = (gameId, username) => {
+  const socket = io("http://localhost:3000");
+  const message = "Join";
   return async (dispatch) => {
     setGameId(gameId);
     const result = await joinToMultiGame(gameId, username);
+    socket.emit("chatMessage", { username, gameId, message });
     dispatch(created_multi_game(result));
     setUser(result.yourData.user);
   };
 };
 
 export const getGameinfoCall = () => {
-  const gameId = getGameId();
+  const getId = getGameId();
+  let gameId = "";
+  if (getId !== null) {
+    gameId = getId;
+  } else {
+    gameId = window.location.pathname.split("/multiPlayer/")[1];
+  }
   return async (dispatch) => {
     const result = await getGameMultinfo(gameId);
     dispatch(created_multi_game(result));
@@ -154,6 +166,7 @@ export const getGameStateMultiCall = () => {
   const user = getUser();
   return async (dispatch) => {
     const result = await fetchGameStateMulti(gameId, user);
+    console.log("result", user, result);
     dispatch(set_game_info(result));
     dispatch(set_multi_turn(result.turn));
   };
@@ -197,7 +210,7 @@ export const meldCardsMulti = (ids, meldId) => {
 
 export async function handleGameStatesMulti(gameStates, dispatch) {
   for (const state of gameStates) {
-    dispatch(set_ui_info(state));
+    dispatch(set_ui_info_multi(state));
 
     dispatch(set_multi_turn(state.turn));
     // delay between animations
