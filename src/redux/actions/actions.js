@@ -3,6 +3,7 @@ import {
   CREATE_GAME,
   CREATED_MULTI_GAME,
   DELETE_SELECTED_CARD,
+  RESET_GAME_INFO,
   RESET_MULTI_TURN,
   RESET_UI_INFO,
   SET_GAME_INFO,
@@ -55,6 +56,10 @@ export const set_ui_info = (payload) => ({
 
 export const reset_ui_info = () => ({
   type: RESET_UI_INFO,
+});
+
+export const reset_game_info = () => ({
+  type: RESET_GAME_INFO,
 });
 
 // Multi

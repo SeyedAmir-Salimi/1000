@@ -571,32 +571,7 @@ posizion user4 = translateX(14px) translateY(208px) scale(0.42, 0.42) */
   top: 15.5%;
 }
 
-.HelpButton{
-	float: right;
-	position: absolute;
-	padding: 5px;
-	bottom: 0;
-	color: white;
-	margin: 1rem auto;
-	background: rgb(160, 5, 0);
-	font-size: 18px;
-	font-weight: bolder;
-	text-align: center;
-	font-style: normal;
-	width: 3rem;
-	border: 1px solid black;
-	border-width: 1px 1px 3px;
-	margin-bottom: 5px;
-	text-decoration: none;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-	border-radius: 0.5rem;
- 	font-weight: bolder;
-	cursor: pointer;
-	margin-left: 20px;
-	bottom: 20px;
-  right: 20px;
-  z-index: 10;
-}
+
 
 @media only screen and (max-width: 700px) {
   html , body {
@@ -610,11 +585,16 @@ posizion user4 = translateX(14px) translateY(208px) scale(0.42, 0.42) */
   width: 3rem;
   height: 2rem;
   }
+  .ChatButton{
+  top: 90px;
+  left: 0;
+  width: 3rem;
+  height: 2rem;
+  }
   .meldButtonWrapper{
     top: 130px;
     left: 10px;
     width: 3rem;
     height: 2rem;
   }
-
 }

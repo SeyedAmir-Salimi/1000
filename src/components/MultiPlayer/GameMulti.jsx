@@ -1,6 +1,7 @@
 import "../Game.css";
 
 import React, { useEffect, useState } from "react";
+import { AiFillWechat } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import io from "socket.io-client";
@@ -12,6 +13,7 @@ import {
 import GenerateHandsCards from "../GenerateHandsCards";
 import Rules from "../Rules";
 import AllMeldsMulti from "./AllMeldsMulti";
+import Chat from "./Chat";
 import DeckMulti from "./DeckMulti";
 import MeldButtonMulti from "./MeldButtonMulti";
 import OpponentHandMulti from "./OpponentHandMulti";
@@ -21,22 +23,17 @@ import UserHandMulti from "./UserHandMulti";
 const GameMulti = () => {
   const [rulesWindow, setRulesWindow] = useState(false);
   const [socketIo, setSocketIo] = useState("");
+  const [chatDisplay, setChatDisplay] = useState(true);
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
   const multiInfo = useSelector((state) => state.multiInfo);
   const playerNames = useSelector((state) => state.gameInfo.playerNames);
-
+  const action = useSelector((state) => state.uiInfo);
   const socket = io("http://localhost:3000", { forceNew: true });
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const userId = sessionStorage.getItem("Rummy_user");
   const gameIdUser = `${gameId}${userId}`;
-
-  const UserTurn =
-    multiInfo.turn && playerNames
-      ? playerNames.find((x) => x.user === multiInfo.turn).name
-      : undefined;
-
   useEffect(() => {
     socket.on(gameIdUser, (data) => {
       if (data) {
@@ -67,6 +64,11 @@ const GameMulti = () => {
   const setRullesToggle = () => {
     setRulesWindow(!rulesWindow);
   };
+
+  const UserTurn =
+    multiInfo.turn && playerNames.length > 0
+      ? playerNames.find((x) => x.user === multiInfo.turn).name
+      : undefined;
 
   const firstOpponent =
     opponents && Object.keys(opponents)[0] ? Object.keys(opponents)[0] : "";
@@ -101,13 +103,16 @@ const GameMulti = () => {
       >
         ?
       </button>
+      <button className="ChatButton" onClick={() => setChatDisplay(!chatDisplay)}>
+        <AiFillWechat />
+      </button>
       <div className="meldButtonWrapper">
         <MeldButtonMulti />
       </div>
       <div className="board">
         <PointsMulti />
         <GenerateHandsCards />
-        {opponents && firstOpponent && (
+        {opponents && firstOpponent && action.type !== "generateHands" && (
           <OpponentHandMulti
             user="User1"
             id={opponents[Object.keys(opponents)[0]].id}
@@ -115,7 +120,7 @@ const GameMulti = () => {
           />
         )}
 
-        {opponents && secondOpponent && (
+        {opponents && secondOpponent && action.type !== "generateHands" && (
           <OpponentHandMulti
             user="User2"
             id={opponents[Object.keys(opponents)[1]].id}
@@ -123,19 +128,19 @@ const GameMulti = () => {
           />
         )}
 
-        {opponents && thirdOpponent && (
+        {opponents && thirdOpponent && action.type !== "generateHands" && (
           <OpponentHandMulti
             user="User3"
             id={opponents[Object.keys(opponents)[2]].id}
             count={thirdOpponentCardCount}
           />
         )}
-
-        <DeckMulti />
+        {action.type !== "generateHands" && <DeckMulti />}
 
         <UserHandMulti cards={hand} />
         <AllMeldsMulti />
       </div>
+      <Chat chatDisplay={chatDisplay} />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import {
   ADD_SELECTED_CARD,
   CREATE_GAME,
   DELETE_SELECTED_CARD,
+  RESET_GAME_INFO,
   SET_GAME_INFO,
   SET_GAME_INFO_MULTI,
   TOGGLE_MY_TURN,
@@ -159,6 +160,9 @@ export default (state = initialState, action) => {
         playerNames: newNames,
         yourData,
       };
+    }
+    case RESET_GAME_INFO: {
+      return initialState;
     }
     default:
       return state;

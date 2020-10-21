@@ -41,7 +41,7 @@ function WaitToJoinAdmin() {
     return () => {
       socket.off(gameId);
     };
-  }, [dispatch]);
+  });
 
   const startGame = () => {
     if (playerLength && playerLength.length === 4) {

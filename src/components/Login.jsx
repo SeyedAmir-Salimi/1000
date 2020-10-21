@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { createGame } from "../API";
+import { reset_game_info } from "../redux/actions/actions";
 import { createNewGame } from "../redux/gameManager";
 
 function Login() {
@@ -25,6 +26,7 @@ function Login() {
       e.preventDefault();
       setError("");
       setUser("");
+      dispatch(reset_game_info());
       const result = await createGame(4, user);
       dispatch(createNewGame(result));
       const gameId = sessionStorage.getItem("Rummy_gameId");
@@ -41,6 +43,7 @@ function Login() {
       e.preventDefault();
       setError("");
       setUser("");
+      dispatch(reset_game_info());
       sessionStorage.setItem("Rummy_multi_name", user);
       GoToLink(`/multiPlayer`);
     } else {

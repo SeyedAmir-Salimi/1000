@@ -61,6 +61,8 @@ function Points() {
   const user4Points = points.User4 ? points.User4 : 0;
   const user4prevPoints = usePrevious(user4Points);
   const countDuration = 2.2;
+  console.log("user4prevPoints", user4prevPoints);
+  console.log("user4Points", user4Points);
   return (
     <>
       <h4 className={playerNamesUser1}>

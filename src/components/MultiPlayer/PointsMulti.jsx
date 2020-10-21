@@ -1,18 +1,23 @@
 import "../Points.css";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 import { useSelector } from "react-redux";
 
 function usePrevious(value) {
-  const ref = useRef();
+  const prevNumber = useRef();
   useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
+    prevNumber.current = value;
+  }, [value]);
+  return prevNumber.current;
 }
 
 function Points() {
+  const [first, setFirst] = useState(0);
+  const [second, setSecond] = useState(0);
+  const [third, setThird] = useState(0);
+  const [forth, setForth] = useState(0);
+
   const gameInfo = useSelector((state) => state.gameInfo);
 
   const opponents = useSelector((state) => state.gameInfo.opponents);
@@ -42,16 +47,30 @@ function Points() {
   let user2Points = 0;
   let user3Points = 0;
   let user4Points = 0;
+
   user1Points = opponents ? opponents[Object.keys(opponents)[0]].points : 0;
-  const user1prevPoints = usePrevious(user1Points);
+  const user1prevPoints = usePrevious(first);
+
   user2Points = opponents ? opponents[Object.keys(opponents)[1]].points : 0;
-  const user2prevPoints = usePrevious(user2Points);
+  const user2prevPoints = usePrevious(second);
 
   user3Points = opponents ? opponents[Object.keys(opponents)[2]].points : 0;
-  const user3prevPoints = usePrevious(user3Points);
+  const user3prevPoints = usePrevious(third);
 
   user4Points = gameInfo.yourData ? gameInfo.yourData.points : 0;
-  const user4prevPoints = usePrevious(user4Points);
+  const user4prevPoints = usePrevious(forth);
+  useEffect(() => {
+    setFirst(user1Points);
+    setSecond(user2Points);
+    setThird(user3Points);
+    setForth(user4Points);
+    return () => {
+      setFirst(0);
+      setSecond(0);
+      setThird(0);
+      setForth(0);
+    };
+  }, [user1Points, user2Points, user3Points, user4Points]);
 
   const playerNamesUser1 =
     user1Points === maxNumber
@@ -76,7 +95,7 @@ function Points() {
       <h4 className={playerNamesUser1}>
         <CountUp
           start={user1prevPoints}
-          end={user1Points}
+          end={first}
           duration={countDuration}
           prefix={`${User1}: `}
           separator=" "
@@ -85,7 +104,7 @@ function Points() {
       <h4 className={playerNamesUser2}>
         <CountUp
           start={user2prevPoints}
-          end={user2Points}
+          end={second}
           duration={countDuration}
           prefix={`${User2}: `}
           separator=" "
@@ -94,7 +113,7 @@ function Points() {
       <h4 className={playerNamesUser3}>
         <CountUp
           start={user3prevPoints}
-          end={user3Points}
+          end={third}
           duration={countDuration}
           prefix={`${User3}: `}
           separator=" "
@@ -103,7 +122,7 @@ function Points() {
       <h4 className={playerNamesUser4}>
         <CountUp
           start={user4prevPoints}
-          end={user4Points}
+          end={forth}
           duration={countDuration}
           prefix={`${User4}: `}
           separator=" "

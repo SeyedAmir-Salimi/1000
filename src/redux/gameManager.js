@@ -131,10 +131,7 @@ export const getGameRooms = () => {
   };
 };
 export const createMultiGameCall = (result) => {
-  // const username = getUser();
   return async (dispatch) => {
-    // const result = await createMultiGame(username);
-    // setGameId(result.id);
     dispatch(created_multi_game(result));
     setUser("User1");
   };
@@ -145,7 +142,7 @@ export const joinToMultiGameCall = (gameId, username) => {
   return async (dispatch) => {
     setGameId(gameId);
     const result = await joinToMultiGame(gameId, username);
-    socket.emit("chatMessage", { username, gameId, message });
+    socket.emit("gameInfo", { username, gameId, message });
     dispatch(created_multi_game(result));
     setUser(result.yourData.user);
   };
@@ -169,8 +166,15 @@ export const getGameStateMultiCall = () => {
   const user = getUser();
   return async (dispatch) => {
     const result = await fetchGameStateMulti(gameId, user);
-    dispatch(set_game_info(result));
+    dispatch(set_ui_info_multi(result));
+    dispatch(set_game_info_multi(result));
     dispatch(set_multi_turn(result.turn));
+    if (result.action.type === "generateHands") {
+      // for change color of the cards before generatehands
+      // dispatch(set_game_info_multi(result));
+      await sleep(generateHandAnimationDelay);
+      dispatch(reset_ui_info());
+    }
   };
 };
 
@@ -179,12 +183,11 @@ export const startToPlayMultiCall = () => {
   const socket = io("http://localhost:3000");
   const message = "play";
   const username = getUserName();
-  return async (dispatch) => {
-    const result = await startToPlayMulti(gameId);
-    socket.emit("chatMessage", { username, gameId, message });
-    dispatch(set_game_info(result));
-    dispatch(set_multi_turn(result.turn));
-    await sleep(8500);
+  return async () => {
+    await startToPlayMulti(gameId);
+    socket.emit("gameInfo", { username, gameId, message });
+    // dispatch(set_game_info(result));
+    // dispatch(set_multi_turn(result.turn));
   };
 };
 
@@ -192,9 +195,6 @@ export const discardCardMulti = (cardId) => {
   const gameId = getGameId();
   return async () => {
     await discardMulti(cardId, gameId);
-    // await handleGameStatesMulti(gameStates, dispatch);
-    // sendResultToSocket(gameStates, "discard");
-    // dispatch(toggle_my_turn());
   };
 };
 
@@ -208,82 +208,34 @@ export const meldCardsMulti = (ids, meldId) => {
       const user = getUser();
       dispatch(set_multi_turn(user));
     }
-    // await handleGameStatesMulti(gameStates, dispatch);
-    // sendResultToSocket(gameStates, "meld");
-    // dispatch(toggle_my_turn());
   };
 };
 
 export async function handleGameStatesMulti(gameStates, dispatch) {
+
   for (const state of gameStates) {
     dispatch(set_ui_info_multi(state));
-
     dispatch(set_multi_turn(state.turn));
-    // delay between animations
+
     if (state.action.type === "generateHands") {
-      // for change color of the cards before generatehands
       dispatch(set_game_info_multi(state));
       await sleep(8500);
     } else {
       await sleep(1400);
       dispatch(set_game_info_multi(state));
     }
-
     dispatch(reset_ui_info());
-
-    // if (state === gameStates[gameStates.length - 1]) {
-    //   continue;
-    // }
-
-    // delay between each turn
-    // await sleep(2000);
   }
 }
 
-// const socket = io("http://localhost:3000");
-
-// export function sendResultToSocket(data, action) {
-//   const gameId = getGameId();
-//   const username = getUser();
-//   const message = { gameState: data, action };
-//   socket.emit("chatMessage", { username, gameId, message });
-// }
-
-// export const getResultFromSocket = (gameStates) => {
-//   if (gameStates) {
-//     return async (dispatch) => {
-//       dispatch(toggle_my_turn());
-//       await handleGameStatesMulti(gameStates, dispatch);
-//       dispatch(toggle_my_turn());
-//     };
-//   } else return null;
-// };
-
 export const getResultFromSocket = (gameStates) => {
+
   return async (dispatch) => {
     dispatch(toggle_my_turn());
     await handleGameStatesMulti(gameStates, dispatch);
     dispatch(toggle_my_turn());
   };
 };
-
-// export const getResultFromSocket = () => {
-//   const gameId = getGameId();
-//   const newData = [];
-//   socket.on(gameId, (data) => {
-//     if (data) {
-//       console.log(data);
-//       newData.push(data.message.gameState);
-//     }
-//   });
-//   if (newData) {
-//     return async (dispatch) => {
-//       dispatch(toggle_my_turn());
-//       await handleGameStatesMulti(newData, dispatch);
-//       dispatch(toggle_my_turn());
-//     };
-//   } else return null;
-// };
 
 export const foundNewUserId = (gameInfo, id) => {
   if (gameInfo.playerNames && id) {

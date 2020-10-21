@@ -29,7 +29,6 @@ export default (state = initialState, action) => {
         userId,
         otherUserId,
       } = action.payload.action;
-
       return {
         ...state,
         type,
@@ -54,7 +53,6 @@ export default (state = initialState, action) => {
         userId,
         otherUserId,
       } = action.payload.action;
-
       const user1NM =
         action.payload.opponents[Object.keys(action.payload.opponents)[0]]
           .topOfTheMeld;

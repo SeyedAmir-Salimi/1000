@@ -32,7 +32,7 @@ function MultiPlayer() {
     const result = await createMultiGame(username);
     dispatch(createMultiGameCall(result));
     GoToLink(`/multiPlayer/admin/${sessionStorage.getItem("Rummy_gameId")}`);
-    socket.emit("chatMessage", { username, gameId, message });
+    socket.emit("gameInfo", { username, gameId, message });
   };
 
   return (
