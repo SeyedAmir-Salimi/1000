@@ -19,6 +19,7 @@ import MeldButtonMulti from "./MeldButtonMulti";
 import OpponentHandMulti from "./OpponentHandMulti";
 import PointsMulti from "./PointsMulti";
 import UserHandMulti from "./UserHandMulti";
+import WinnerMulti from "./WinnerMulti";
 
 const GameMulti = () => {
   const [rulesWindow, setRulesWindow] = useState(false);
@@ -29,6 +30,7 @@ const GameMulti = () => {
   const opponents = useSelector((state) => state.gameInfo.opponents);
   const multiInfo = useSelector((state) => state.multiInfo);
   const playerNames = useSelector((state) => state.gameInfo.playerNames);
+  const gameWinner = useSelector((state) => state.gameInfo.winner);
   const action = useSelector((state) => state.uiInfo);
   const socket = io("http://localhost:3000", { forceNew: true });
   const gameId = sessionStorage.getItem("Rummy_gameId");
@@ -91,6 +93,8 @@ const GameMulti = () => {
   return (
     <div>
       {rulesWindow && <Rules toggle={() => setRullesToggle()} />}
+      {gameWinner && <WinnerMulti gameWinner={gameWinner} />}
+
       <button className="FinishButton" onClick={() => GoToLink()}>
         Finish the game
       </button>
@@ -103,7 +107,10 @@ const GameMulti = () => {
       >
         ?
       </button>
-      <button className="ChatButton" onClick={() => setChatDisplay(!chatDisplay)}>
+      <button
+        className="ChatButton"
+        onClick={() => setChatDisplay(!chatDisplay)}
+      >
         <AiFillWechat />
       </button>
       <div className="meldButtonWrapper">

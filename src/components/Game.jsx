@@ -14,13 +14,14 @@ import OpponentHand from "./OpponentHand";
 import Points from "./Points";
 import Rules from "./Rules";
 import UserHand from "./UserHand";
+import WinnerSingel from "./WinnerSingel";
 
 const Game = () => {
   const [rulesWindow, setRulesWindow] = useState(false);
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
-
+  const gameWinner = useSelector((state) => state.gameInfo.winner);
   useEffect(() => {
     dispatch(getGame());
   }, [dispatch]);
@@ -37,6 +38,7 @@ const Game = () => {
   return (
     <div>
       {rulesWindow && <Rules toggle={() => setRullesToggle()} />}
+      {gameWinner && <WinnerSingel gameWinner={gameWinner} />}
       <button className="FinishButton" onClick={() => GoToLink()}>
         Finish the game
       </button>

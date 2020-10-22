@@ -166,6 +166,7 @@ export const getGameStateMultiCall = () => {
   const user = getUser();
   return async (dispatch) => {
     const result = await fetchGameStateMulti(gameId, user);
+    console.log(result);
     dispatch(set_ui_info_multi(result));
     dispatch(set_game_info_multi(result));
     dispatch(set_multi_turn(result.turn));

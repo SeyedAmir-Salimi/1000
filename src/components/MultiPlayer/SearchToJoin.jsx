@@ -9,7 +9,6 @@ import { joinToMultiGameCall } from "../../redux/gameManager";
 
 function SearchToJoin({ searchToJoin }) {
   const [selectedRoomId, setselectedRoomId] = useState("");
-  const [searchInput, setsearchInput] = useState("");
   const multiInfo = useSelector((state) => state.multiInfo);
   const rooms = multiInfo.gameRooms.map((x) => (
     <div
@@ -22,7 +21,6 @@ function SearchToJoin({ searchToJoin }) {
       <h3>{x.playerNames[0].name}</h3>
     </div>
   ));
-  const searchedRoom = multiInfo.gameRooms.find((x) => x.id === searchInput);
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -42,33 +40,11 @@ function SearchToJoin({ searchToJoin }) {
     <div>
       {searchToJoin && (
         <div>
-          <form className="room_search_form">
-            <input
-              type="text"
-              placeholder="Search by room code"
-              value={searchInput}
-              onChange={(e) => setsearchInput(e.target.value)}
-            />
-          </form>
           <div className="rooms_list_titel">
             <h3>Players N.</h3>
             <h3>Created By</h3>
           </div>
-          {searchInput.length < 1 ? rooms : ""}
-
-          {searchedRoom && (
-            <div
-              className="rooms_list_room"
-              onClick={() => setselectedRoomId(searchedRoom.id)}
-              style={{
-                color: selectedRoomId === searchedRoom.id ? "yellow" : "white",
-              }}
-            >
-              <h3>{searchedRoom.playerNumbers}</h3>
-              <h3>{searchedRoom.playerNames[0].name}</h3>
-            </div>
-          )}
-
+          {rooms}
           {selectedRoomId && (
             <div className="Button-Wrapper">
               <button className="button_Log" onClick={() => joinGame()}>

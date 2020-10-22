@@ -1,7 +1,5 @@
 .multi-LoginWrapper{
-    height: 45rem;
-	background-repeat: repeat-y;
-	background-size: cover;
+	min-height: 45rem;
 	background-image: url('../../assets/images/rummy-background-multi.jpg');
 }
 
