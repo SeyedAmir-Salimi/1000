@@ -56,7 +56,7 @@ function WaitToJoinAdmin() {
   };
   const copyToClipBoard = () => {
     navigator.clipboard.writeText(
-      `https://rummyapi.herokuapp.com/multiPlayer/LinkToSend/${gameId}`
+      `https://rummy-game.netlify.app/multiPlayer/LinkToSend/${gameId}`
     );
   };
 
