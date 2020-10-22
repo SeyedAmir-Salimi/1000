@@ -41,7 +41,7 @@ function LinkToSend() {
       </form>
       {nameInput && (
         <div className="Button-Wrapper">
-          <button className="button_Log" onClick={() => joinGame()}>
+          <button className="button_Log" onClick={(e) => joinGame(e)}>
             Join to room
           </button>
         </div>

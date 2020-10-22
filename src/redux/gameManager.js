@@ -137,7 +137,7 @@ export const createMultiGameCall = (result) => {
   };
 };
 export const joinToMultiGameCall = (gameId, username) => {
-  const socket = io("http://localhost:3000");
+  const socket = io("https://rummyapi.herokuapp.com");
   const message = "Join";
   return async (dispatch) => {
     setGameId(gameId);
@@ -166,7 +166,6 @@ export const getGameStateMultiCall = () => {
   const user = getUser();
   return async (dispatch) => {
     const result = await fetchGameStateMulti(gameId, user);
-    console.log(result);
     dispatch(set_ui_info_multi(result));
     dispatch(set_game_info_multi(result));
     dispatch(set_multi_turn(result.turn));
@@ -181,7 +180,7 @@ export const getGameStateMultiCall = () => {
 
 export const startToPlayMultiCall = () => {
   const gameId = getGameId();
-  const socket = io("http://localhost:3000");
+  const socket = io("https://rummyapi.herokuapp.com");
   const message = "play";
   const username = getUserName();
   return async () => {

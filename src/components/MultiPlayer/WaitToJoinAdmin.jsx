@@ -24,7 +24,7 @@ function WaitToJoinAdmin() {
     history.push(link);
   };
 
-  const socket = io("http://localhost:3000");
+  const socket = io("https://rummyapi.herokuapp.com");
   const gameId = sessionStorage.getItem("Rummy_gameId");
   // const username = sessionStorage.getItem("Rummy_multi_name");
   // const message = "play";
@@ -56,7 +56,7 @@ function WaitToJoinAdmin() {
   };
   const copyToClipBoard = () => {
     navigator.clipboard.writeText(
-      `http://localhost:3001/multiPlayer/LinkToSend/${gameId}`
+      `https://rummyapi.herokuapp.com/multiPlayer/LinkToSend/${gameId}`
     );
   };
 
@@ -79,7 +79,7 @@ function WaitToJoinAdmin() {
       </div>
       <h5>Send this link to your friend to join</h5>
       <h5>
-        {`http://localhost:3001/multiPlayer/LinkToSend/${gameId}`}{" "}
+        {`https://rummyapi.herokuapp.com/multiPlayer/LinkToSend/${gameId}`}{" "}
         <button className="button_copy" onClick={() => copyToClipBoard()}>
           Click to copy link
         </button>

@@ -8,7 +8,7 @@ function Chat({ chatDisplay }) {
   const [chatInput, setChatInput] = useState("");
   const [chatArchives, setchatArchives] = useState([]);
 
-  const socket = io("http://localhost:3000");
+  const socket = io("https://rummyapi.herokuapp.com");
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const username = sessionStorage.getItem("Rummy_multi_name");
   const sendMessage = (e) => {
