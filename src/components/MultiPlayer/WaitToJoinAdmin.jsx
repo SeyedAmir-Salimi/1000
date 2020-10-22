@@ -79,7 +79,7 @@ function WaitToJoinAdmin() {
       </div>
       <h5>Send this link to your friend to join</h5>
       <h5>
-        {`https://rummyapi.herokuapp.com/multiPlayer/LinkToSend/${gameId}`}{" "}
+        {`https://rummy-game.netlify.app/multiPlayer/LinkToSend/${gameId}`}{" "}
         <button className="button_copy" onClick={() => copyToClipBoard()}>
           Click to copy link
         </button>
