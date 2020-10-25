@@ -11,6 +11,7 @@ import SearchToJoin from "./SearchToJoin";
 
 function MultiPlayer() {
   const [searchToJoin, setsearchToJoin] = useState(false);
+  const [createButton, setcreateButton] = useState(true);
   let history = useHistory();
   const dispatch = useDispatch();
 
@@ -29,6 +30,7 @@ function MultiPlayer() {
   };
 
   const creatGame = async () => {
+    setcreateButton(false);
     const result = await createMultiGame(username);
     dispatch(createMultiGameCall(result));
     GoToLink(`/multiPlayer/admin/${sessionStorage.getItem("Rummy_gameId")}`);
@@ -38,7 +40,11 @@ function MultiPlayer() {
   return (
     <div className="multi-LoginWrapper">
       <div className="Button-Wrapper">
-        <button className="button_Log" onClick={() => creatGame()}>
+        <button
+          className="button_Log"
+          onClick={() => creatGame()}
+          disabled={!createButton}
+        >
           Create Game
         </button>
         <button
