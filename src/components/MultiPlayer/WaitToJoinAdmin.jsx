@@ -73,6 +73,7 @@ function WaitToJoinAdmin() {
 
   const startGame = async () => {
     if (playerLength && playerLength.length === 4) {
+      // setcreateButton(false);
       await startToPlayMulti(gameId);
       const message = "play";
       const data = {
@@ -120,7 +121,11 @@ function WaitToJoinAdmin() {
           ))
         : ""}
       <div className="Button-Wrapper">
-        <button className="button_Log" onClick={() => startGame()}>
+        <button
+          className="button_Log"
+          onClick={() => startGame()}
+          // disabled={!createButton}
+        >
           Start the game
         </button>
       </div>

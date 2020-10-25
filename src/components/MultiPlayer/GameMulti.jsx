@@ -24,7 +24,7 @@ import WinnerMulti from "./WinnerMulti";
 const GameMulti = () => {
   const [rulesWindow, setRulesWindow] = useState(false);
   const [socketIo, setSocketIo] = useState("");
-  const [chatDisplay, setChatDisplay] = useState(true);
+  const [chatDisplay, setChatDisplay] = useState(false);
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
@@ -51,11 +51,10 @@ const GameMulti = () => {
       // console.log("userId", data);
       setSocketIo(data.state);
     });
-    // return () => {
-    //   socket.off("message");
-    // };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    return () => {
+      socket.off(`${userId}`);
+    };
+  });
   const name = sessionStorage.getItem("Rummy_multi_name");
   useEffect(() => {
     socket.emit("join", { name, gameId, userId }, (error) => {
