@@ -108,6 +108,9 @@ function setGameId(gameId) {
 function setUser(user) {
   sessionStorage.setItem("Rummy_user", user);
 }
+function setUserUniqId(id) {
+  sessionStorage.setItem("Rummy_UserUniqId", id);
+}
 
 function getGameId() {
   return sessionStorage.getItem("Rummy_gameId");
@@ -137,14 +140,22 @@ export const createMultiGameCall = (result) => {
   };
 };
 export const joinToMultiGameCall = (gameId, username) => {
-  const socket = io("https://rummyapi.herokuapp.com");
-  const message = "Join";
+
+  // const socket = io("https://rummyapi.herokuapp.com");
+  // const message = "join";
   return async (dispatch) => {
     setGameId(gameId);
+    // const data = {
+    //   username,
+    //   gameId,
+    //   message,
+    // };
     const result = await joinToMultiGame(gameId, username);
-    socket.emit("gameInfo", { username, gameId, message });
+    // socket.emit("gameInfo", { username, gameId, message });
+    // socket.emit("sendMessage", data);
     dispatch(created_multi_game(result));
     setUser(result.yourData.user);
+    setUserUniqId(result.yourData.id);
   };
 };
 
@@ -183,9 +194,21 @@ export const startToPlayMultiCall = () => {
   const socket = io("https://rummyapi.herokuapp.com");
   const message = "play";
   const username = getUserName();
+  // const data = {
+  //   username,
+  //   gameId,
+  //   message,
+  // };
+
   return async () => {
     await startToPlayMulti(gameId);
-    socket.emit("gameInfo", { username, gameId, message });
+    const message = new Date();
+    const data = {
+      gameId,
+      message,
+    };
+    socket.emit("sendMessage", data);
+    // socket.emit("gameInfo", { username, gameId, message });
     // dispatch(set_game_info(result));
     // dispatch(set_multi_turn(result.turn));
   };
@@ -212,7 +235,6 @@ export const meldCardsMulti = (ids, meldId) => {
 };
 
 export async function handleGameStatesMulti(gameStates, dispatch) {
-
   for (const state of gameStates) {
     dispatch(set_ui_info_multi(state));
     dispatch(set_multi_turn(state.turn));
@@ -229,7 +251,6 @@ export async function handleGameStatesMulti(gameStates, dispatch) {
 }
 
 export const getResultFromSocket = (gameStates) => {
-
   return async (dispatch) => {
     dispatch(toggle_my_turn());
     await handleGameStatesMulti(gameStates, dispatch);
