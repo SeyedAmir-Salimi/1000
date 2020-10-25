@@ -25,7 +25,7 @@ function WaitToJoinAdmin() {
     history.push(link);
   };
 
-  const socket = io("http://localhost:3000");
+  const socket = io("https://rummyapi.herokuapp.com");
   const gameId = sessionStorage.getItem("Rummy_gameId");
   // const username = sessionStorage.getItem("Rummy_multi_name");
   // const message = "play";
@@ -89,13 +89,12 @@ function WaitToJoinAdmin() {
   };
   const copyToClipBoard = () => {
     navigator.clipboard.writeText(
-      `http://localhost:3001/multiPlayer/LinkToSend/${gameId}`
+      `https://rummy-game.netlify.app/multiPlayer/LinkToSend/${gameId}`
     );
   };
 
   useEffect(() => {
     socket.on("message", (data) => {
-      console.log(data);
       dispatch(getGameinfoCall());
 
       if (data.message.message === "play") {

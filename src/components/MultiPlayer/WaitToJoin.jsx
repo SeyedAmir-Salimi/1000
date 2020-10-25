@@ -18,7 +18,7 @@ function WaitToJoin() {
     history.push(link);
   };
   const gameId = sessionStorage.getItem("Rummy_gameId");
-  const socket = io("http://localhost:3000");
+  const socket = io("https://rummyapi.herokuapp.com");
 
   // useEffect(() => {
   //   socket.on(gameId, (data) => {
@@ -42,7 +42,6 @@ function WaitToJoin() {
   });
   useEffect(() => {
     socket.on("message", (data) => {
-      console.log("message", data);
       if (data.message.message === "play") {
         GoToLink(`/multiPlayer/play/${gameId}`);
       }

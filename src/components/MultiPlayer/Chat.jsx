@@ -8,7 +8,7 @@ function Chat({ chatDisplay }) {
   const [chatInput, setChatInput] = useState("");
   const [chatArchives, setchatArchives] = useState([]);
 
-  const socket = io("http://localhost:3000");
+  const socket = io("https://rummyapi.herokuapp.com");
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const username = sessionStorage.getItem("Rummy_multi_name");
   const sendMessage = (e) => {
@@ -37,7 +37,6 @@ function Chat({ chatDisplay }) {
   useEffect(() => {
     scrollToBottom();
     socket.on("chatMessage", (data) => {
-      console.log("chatMessage", data);
       // setchatArchives([...chatArchives, data.message.text]);
       setchatArchives((chatArchives) => [...chatArchives, data.message.text]);
       scrollToBottom();
