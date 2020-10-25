@@ -35,17 +35,8 @@ const GameMulti = () => {
   const socket = io("https://rummyapi.herokuapp.com", { forceNew: true });
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const userId = sessionStorage.getItem("Rummy_user");
-  const gameIdUser = `${gameId}${userId}`;
-  // useEffect(() => {
-  //   socket.on(gameIdUser, (data) => {
-  //     if (data) {
-  //       setSocketIo(data.state);
-  //     }
-  //   });
-  //   return () => {
-  //     socket.off(gameIdUser);
-  //   };
-  // });
+
+  
   useEffect(() => {
     socket.on(`${userId}`, (data) => {
       // console.log("userId", data);
