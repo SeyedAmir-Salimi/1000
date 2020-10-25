@@ -36,6 +36,7 @@ const GameMulti = () => {
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const userId = sessionStorage.getItem("Rummy_user");
   const gameIdUser = `${gameId}${userId}`;
+
   useEffect(() => {
     socket.on(gameIdUser, (data) => {
       if (data) {
