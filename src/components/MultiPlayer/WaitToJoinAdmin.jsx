@@ -104,6 +104,7 @@ function WaitToJoinAdmin() {
     // return () => {
     //   socket.off("message");
     // };
+   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, gameId, socket]);
 
   return (

@@ -44,6 +44,7 @@ function Chat({ chatDisplay }) {
     // return () => {
     //   socket.off("chatMessage");
     // };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const inputOnChange = (e) => {

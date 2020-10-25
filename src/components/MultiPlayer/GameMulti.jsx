@@ -36,7 +36,6 @@ const GameMulti = () => {
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const userId = sessionStorage.getItem("Rummy_user");
 
-  
   useEffect(() => {
     socket.on(`${userId}`, (data) => {
       // console.log("userId", data);
@@ -45,6 +44,7 @@ const GameMulti = () => {
     // return () => {
     //   socket.off("message");
     // };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const name = sessionStorage.getItem("Rummy_multi_name");
   useEffect(() => {

@@ -118,9 +118,9 @@ function getGameId() {
 function getUser() {
   return sessionStorage.getItem("Rummy_user");
 }
-function getUserName() {
-  return sessionStorage.getItem("Rummy_multi_name");
-}
+// function getUserName() {
+//   return sessionStorage.getItem("Rummy_multi_name");
+// }
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -140,7 +140,6 @@ export const createMultiGameCall = (result) => {
   };
 };
 export const joinToMultiGameCall = (gameId, username) => {
-
   // const socket = io("https://rummyapi.herokuapp.com");
   // const message = "join";
   return async (dispatch) => {
@@ -192,8 +191,7 @@ export const getGameStateMultiCall = () => {
 export const startToPlayMultiCall = () => {
   const gameId = getGameId();
   const socket = io("https://rummyapi.herokuapp.com");
-  const message = "play";
-  const username = getUserName();
+
   // const data = {
   //   username,
   //   gameId,
