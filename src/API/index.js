@@ -53,6 +53,7 @@ export const createMultiGame = async (username) => {
     username,
   });
   sessionStorage.setItem("Rummy_gameId", result.data.id);
+  sessionStorage.setItem("Rummy_UserUniqId", result.data.playerNames[0].id);
   return result.data;
 };
 export const startToPlayMulti = async (gameId) => {

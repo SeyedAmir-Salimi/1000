@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import io from "socket.io-client";
 
-import { getGameinfoCall, startToPlayMultiCall } from "../../redux/gameManager";
+import { startToPlayMulti } from "../../API/index";
+import { getGameinfoCall } from "../../redux/gameManager";
 
 function WaitToJoinAdmin() {
   const [error, setError] = useState("");
@@ -29,24 +30,56 @@ function WaitToJoinAdmin() {
   // const username = sessionStorage.getItem("Rummy_multi_name");
   // const message = "play";
 
+  // useEffect(() => {
+  //   socket.on(gameId, (data) => {
+  //     if (data) {
+  //       dispatch(getGameinfoCall());
+  //     }
+  //     if (data.message === "play") {
+  //       GoToLink(`/multiPlayer/play/${gameId}`);
+  //     }
+  //   });
+  //   return () => {
+  //     socket.off(gameId);
+  //   };
+  // });
+  const name = sessionStorage.getItem("Rummy_multi_name");
+  const userId = sessionStorage.getItem("Rummy_UserUniqId");
   useEffect(() => {
-    socket.on(gameId, (data) => {
-      if (data) {
-        dispatch(getGameinfoCall());
-      }
-      if (data.message === "play") {
-        GoToLink(`/multiPlayer/play/${gameId}`);
+    socket.emit("join", { name, gameId, userId }, (error) => {
+      if (error) {
+        alert(error);
       }
     });
-    return () => {
-      socket.off(gameId);
-    };
   });
 
-  const startGame = () => {
+  // const startGame = () => {
+  //   if (playerLength && playerLength.length === 4) {
+  //     dispatch(startToPlayMultiCall());
+  //     // GoToLink(`/multiPlayer/play/${gameId}`);
+  //     const message = new Date();
+  //     const data = {
+  //       gameId,
+  //       message,
+  //     };
+  //     socket.emit("sendMessage", data);
+  //   } else {
+  //     setError("The players shoud be 4");
+  //     setTimeout(() => {
+  //       setError("");
+  //     }, 3000);
+  //   }
+  // };
+
+  const startGame = async () => {
     if (playerLength && playerLength.length === 4) {
-      dispatch(startToPlayMultiCall());
-      // GoToLink(`/multiPlayer/play/${gameId}`);
+      await startToPlayMulti(gameId);
+      const message = "play";
+      const data = {
+        gameId,
+        message,
+      };
+      socket.emit("sendMessage", data);
     } else {
       setError("The players shoud be 4");
       setTimeout(() => {
@@ -59,6 +92,20 @@ function WaitToJoinAdmin() {
       `http://localhost:3001/multiPlayer/LinkToSend/${gameId}`
     );
   };
+
+  useEffect(() => {
+    socket.on("message", (data) => {
+      console.log(data);
+      dispatch(getGameinfoCall());
+
+      if (data.message.message === "play") {
+        GoToLink(`/multiPlayer/play/${gameId}`);
+      }
+    });
+    // return () => {
+    //   socket.off("message");
+    // };
+  }, [dispatch, gameId, socket]);
 
   return (
     <div className="wait_join_Wrapper">
@@ -79,7 +126,7 @@ function WaitToJoinAdmin() {
       </div>
       <h5>Send this link to your friend to join</h5>
       <h5>
-        {`http://localhost:3001/multiPlayer/LinkToSend/${gameId}`}{" "}
+        {`https://rummy-game.netlify.app/multiPlayer/LinkToSend/${gameId}`}{" "}
         <button className="button_copy" onClick={() => copyToClipBoard()}>
           Click to copy link
         </button>

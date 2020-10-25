@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import io from "socket.io-client";
 
 import { joinToMultiGameCall } from "../../redux/gameManager";
 
@@ -32,8 +33,26 @@ function SearchToJoin({ searchToJoin }) {
 
   const gameId = selectedRoomId;
 
-  const joinGame = () => {
+  const socket = io("https://rummyapi.herokuapp.com");
+  const name = sessionStorage.getItem("Rummy_multi_name");
+  const userId = sessionStorage.getItem("Rummy_UserUniqId");
+
+  const message = "join";
+  const data = {
+    gameId,
+    message,
+  };
+
+  const joinGame = (e) => {
+    e.preventDefault();
+    sessionStorage.setItem("Rummy_multi_name", username);
     dispatch(joinToMultiGameCall(gameId, username));
+    socket.emit("join", { name, gameId, userId }, (error) => {
+      if (error) {
+        alert(error);
+      }
+    });
+    socket.emit("sendMessage", data);
     GoToLink(`/multiPlayer/${gameId}`);
   };
   return (
@@ -47,7 +66,7 @@ function SearchToJoin({ searchToJoin }) {
           {rooms}
           {selectedRoomId && (
             <div className="Button-Wrapper">
-              <button className="button_Log" onClick={() => joinGame()}>
+              <button className="button_Log" onClick={(e) => joinGame(e)}>
                 Join to room
               </button>
             </div>

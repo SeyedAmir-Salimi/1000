@@ -13,15 +13,40 @@ function Chat({ chatDisplay }) {
   const username = sessionStorage.getItem("Rummy_multi_name");
   const sendMessage = (e) => {
     e.preventDefault();
-    socket.emit("gameInfo", {
+    socket.emit("chat", {
       username,
       gameId,
       message: "chat",
       text: { name: username, message: chatInput },
     });
-    setchatArchives([...chatArchives, { name: "You", message: chatInput }]);
+    // setchatArchives([...chatArchives, { name: "You", message: chatInput }]);
     setChatInput("");
   };
+  const name = sessionStorage.getItem("Rummy_multi_name");
+  const userId = sessionStorage.getItem("Rummy_UserUniqId");
+  useEffect(() => {
+    socket.emit("join", { name, gameId, userId }, (error) => {
+      if (error) {
+        alert(error);
+      }
+    });
+    return () => {
+      socket.off("join");
+    };
+  });
+  useEffect(() => {
+    scrollToBottom();
+    socket.on("chatMessage", (data) => {
+      console.log("chatMessage", data);
+      // setchatArchives([...chatArchives, data.message.text]);
+      setchatArchives((chatArchives) => [...chatArchives, data.message.text]);
+      scrollToBottom();
+    });
+    // return () => {
+    //   socket.off("chatMessage");
+    // };
+  }, []);
+
   const inputOnChange = (e) => {
     setChatInput(e.target.value);
   };

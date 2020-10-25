@@ -36,17 +36,36 @@ const GameMulti = () => {
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const userId = sessionStorage.getItem("Rummy_user");
   const gameIdUser = `${gameId}${userId}`;
+  // useEffect(() => {
+  //   socket.on(gameIdUser, (data) => {
+  //     if (data) {
+  //       setSocketIo(data.state);
+  //     }
+  //   });
+  //   return () => {
+  //     socket.off(gameIdUser);
+  //   };
+  // });
   useEffect(() => {
-    socket.on(gameIdUser, (data) => {
-      if (data) {
-        setSocketIo(data.state);
+    socket.on(`${userId}`, (data) => {
+      // console.log("userId", data);
+      setSocketIo(data.state);
+    });
+    // return () => {
+    //   socket.off("message");
+    // };
+  }, []);
+  const name = sessionStorage.getItem("Rummy_multi_name");
+  useEffect(() => {
+    socket.emit("join", { name, gameId, userId }, (error) => {
+      if (error) {
+        alert(error);
       }
     });
     return () => {
-      socket.off(gameIdUser);
+      socket.off("join");
     };
   });
-
   useEffect(() => {
     dispatch(getResultFromSocket(socketIo));
     return () => {
