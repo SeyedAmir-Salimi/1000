@@ -54,7 +54,8 @@ const GameMulti = () => {
     return () => {
       socket.off(`${userId}`);
     };
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const name = sessionStorage.getItem("Rummy_multi_name");
   useEffect(() => {
     socket.emit("join", { name, gameId, userId }, (error) => {
