@@ -4,48 +4,55 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-function Chat({ chatDisplay }) {
+function Chat({ chatDisplay, chatArchives }) {
   const [chatInput, setChatInput] = useState("");
-  const [chatArchives, setchatArchives] = useState([]);
-
-  const socket = io("https://rummyapi.herokuapp.com");
+  // const [chatArchives, setchatArchives] = useState([]);
+  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const username = sessionStorage.getItem("Rummy_multi_name");
   const sendMessage = (e) => {
     e.preventDefault();
-    socket.emit("chat", {
-      username,
-      gameId,
-      message: "chat",
-      text: { name: username, message: chatInput },
-    });
+    socket.emit(
+      "chat",
+      {
+        username,
+        gameId,
+        message: "chat",
+        text: { name: username, message: chatInput },
+      },
+      (error) => {
+        if (error) {
+          alert(error);
+        }
+      }
+    );
     // setchatArchives([...chatArchives, { name: "You", message: chatInput }]);
     setChatInput("");
   };
-  const name = sessionStorage.getItem("Rummy_multi_name");
-  const userId = sessionStorage.getItem("Rummy_UserUniqId");
-  useEffect(() => {
-    socket.emit("join", { name, gameId, userId }, (error) => {
-      if (error) {
-        alert(error);
-      }
-    });
-    return () => {
-      socket.off("join");
-    };
-  });
-  useEffect(() => {
-    scrollToBottom();
-    socket.on("chatMessage", (data) => {
-      // setchatArchives([...chatArchives, data.message.text]);
-      setchatArchives((chatArchives) => [...chatArchives, data.message.text]);
-      scrollToBottom();
-    });
-    // return () => {
-    //   socket.off("chatMessage");
-    // };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // const name = sessionStorage.getItem("Rummy_multi_name");
+  // const userId = sessionStorage.getItem("Rummy_UserUniqId");
+  // useEffect(() => {
+  //   socket.emit("join", { name, gameId, userId }, (error) => {
+  //     if (error) {
+  //       alert(error);
+  //     }
+  //   });
+  //   return () => {
+  //     socket.off("join");
+  //   };
+  // });
+  // useEffect(() => {
+  //   scrollToBottom();
+  //   socket.on("chatMessage", (data) => {
+  //     // setchatArchives([...chatArchives, data.message.text]);
+  //     setchatArchives((chatArchives) => [...chatArchives, data.message.text]);
+  //     scrollToBottom();
+  //   });
+  //   // return () => {
+  //   //   socket.off("chatMessage");
+  //   // };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const inputOnChange = (e) => {
     setChatInput(e.target.value);
@@ -58,22 +65,25 @@ function Chat({ chatDisplay }) {
       </p>
     </div>
   ));
-  useEffect(() => {
-    scrollToBottom();
-    socket.on(gameId, (data) => {
-      if (data.message === "chat") {
-        setchatArchives([...chatArchives, data.text]);
-        scrollToBottom();
-      }
-    });
-    return () => {
-      socket.off(gameId);
-    };
-  });
+  // useEffect(() => {
+  //   scrollToBottom();
+  //   socket.on(gameId, (data) => {
+  //     if (data.message === "chat") {
+  //       setchatArchives([...chatArchives, data.text]);
+  //       scrollToBottom();
+  //     }
+  //   });
+  //   return () => {
+  //     socket.off(gameId);
+  //   };
+  // });
   const scrollToBottom = () => {
     var div = document.getElementById("style-3");
     div.scrollTop = div.scrollHeight - div.clientHeight;
   };
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatArchives]);
   return (
     <div className={chatWrapperClassname}>
       <div className="chat_Wrapper" id="style-3">
@@ -95,6 +105,7 @@ function Chat({ chatDisplay }) {
 }
 Chat.propTypes = {
   chatDisplay: PropTypes.bool,
+  chatArchives: PropTypes.array,
 };
 
 export default Chat;

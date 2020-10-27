@@ -118,6 +118,9 @@ function getGameId() {
 function getUser() {
   return sessionStorage.getItem("Rummy_user");
 }
+// function getUserUniqId() {
+//   return sessionStorage.getItem("Rummy_UserUniqId");
+// }
 // function getUserName() {
 //   return sessionStorage.getItem("Rummy_multi_name");
 // }
@@ -140,8 +143,10 @@ export const createMultiGameCall = (result) => {
   };
 };
 export const joinToMultiGameCall = (gameId, username) => {
-  // const socket = io("https://rummyapi.herokuapp.com");
-  // const message = "join";
+  // eslint-disable-next-line no-unused-vars
+  let newError;
+  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
+  const message = "join";
   return async (dispatch) => {
     setGameId(gameId);
     // const data = {
@@ -152,9 +157,18 @@ export const joinToMultiGameCall = (gameId, username) => {
     const result = await joinToMultiGame(gameId, username);
     // socket.emit("gameInfo", { username, gameId, message });
     // socket.emit("sendMessage", data);
-    dispatch(created_multi_game(result));
-    setUser(result.yourData.user);
     setUserUniqId(result.yourData.id);
+    setUser(result.yourData.user);
+    dispatch(created_multi_game(result));
+    socket.emit(
+      "sendMessage",
+      { gameId, message, userId: result.yourData.id },
+      (error) => {
+        if (error) {
+          newError = error;
+        }
+      }
+    );
   };
 };
 
@@ -189,26 +203,18 @@ export const getGameStateMultiCall = () => {
 };
 
 export const startToPlayMultiCall = () => {
+  // eslint-disable-next-line no-unused-vars
+  let newError;
   const gameId = getGameId();
-  const socket = io("https://rummyapi.herokuapp.com");
-
-  // const data = {
-  //   username,
-  //   gameId,
-  //   message,
-  // };
-
+  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
   return async () => {
     await startToPlayMulti(gameId);
-    const message = new Date();
-    const data = {
-      gameId,
-      message,
-    };
-    socket.emit("sendMessage", data);
-    // socket.emit("gameInfo", { username, gameId, message });
-    // dispatch(set_game_info(result));
-    // dispatch(set_multi_turn(result.turn));
+    const message = "play";
+    socket.emit("sendMessage", { gameId, message }, (error) => {
+      if (error) {
+        newError = error;
+      }
+    });
   };
 };
 

@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import io from "socket.io-client";
 
-import { startToPlayMulti } from "../../API/index";
-import { getGameinfoCall } from "../../redux/gameManager";
-
+// import { startToPlayMulti } from "../../API/index";
+import { getGameinfoCall, startToPlayMultiCall } from "../../redux/gameManager";
+// eslint-disable-next-line no-unused-vars
+let newError;
 function WaitToJoinAdmin() {
   const [error, setError] = useState("");
+  const [startButton, setstartButton] = useState(true);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getGameinfoCall());
   }, [dispatch]);
@@ -25,62 +26,37 @@ function WaitToJoinAdmin() {
     history.push(link);
   };
 
-  const socket = io("https://rummyapi.herokuapp.com");
+  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
   const gameId = sessionStorage.getItem("Rummy_gameId");
-  // const username = sessionStorage.getItem("Rummy_multi_name");
-  // const message = "play";
-
-  // useEffect(() => {
-  //   socket.on(gameId, (data) => {
-  //     if (data) {
-  //       dispatch(getGameinfoCall());
-  //     }
-  //     if (data.message === "play") {
-  //       GoToLink(`/multiPlayer/play/${gameId}`);
-  //     }
-  //   });
-  //   return () => {
-  //     socket.off(gameId);
-  //   };
-  // });
   const name = sessionStorage.getItem("Rummy_multi_name");
   const userId = sessionStorage.getItem("Rummy_UserUniqId");
   useEffect(() => {
     socket.emit("join", { name, gameId, userId }, (error) => {
       if (error) {
-        alert(error);
+        newError = error;
       }
     });
   });
 
-  // const startGame = () => {
-  //   if (playerLength && playerLength.length === 4) {
-  //     dispatch(startToPlayMultiCall());
-  //     // GoToLink(`/multiPlayer/play/${gameId}`);
-  //     const message = new Date();
-  //     const data = {
-  //       gameId,
-  //       message,
-  //     };
-  //     socket.emit("sendMessage", data);
-  //   } else {
-  //     setError("The players shoud be 4");
-  //     setTimeout(() => {
-  //       setError("");
-  //     }, 3000);
-  //   }
+  const disabelButton = () => {
+    if (playerLength && playerLength.length === 4) {
+      setstartButton(false);
+    }
+  };
+
+  // const emitPlay = () => {
+  //   const message = "play";
+  //   socket.emit("sendMessage", { gameId, message }, (error) => {
+  //     if (error) {
+  //       newError = error;
+  //     }
+  //   });
   // };
 
-  const startGame = async () => {
+  const startGame = () => {
     if (playerLength && playerLength.length === 4) {
-      // setcreateButton(false);
-      await startToPlayMulti(gameId);
-      const message = "play";
-      const data = {
-        gameId,
-        message,
-      };
-      socket.emit("sendMessage", data);
+      dispatch(startToPlayMultiCall());
+      disabelButton();
     } else {
       setError("The players shoud be 4");
       setTimeout(() => {
@@ -88,6 +64,18 @@ function WaitToJoinAdmin() {
       }, 3000);
     }
   };
+
+  // const startGame = async () => {
+  //   if (playerLength && playerLength.length === 4) {
+  //     await startToPlayMulti(gameId);
+  //     emitPlay();
+  //   } else {
+  //     setError("The players shoud be 4");
+  //     setTimeout(() => {
+  //       setError("");
+  //     }, 3000);
+  //   }
+  // };
   const copyToClipBoard = () => {
     navigator.clipboard.writeText(
       `https://rummy-game.netlify.app/multiPlayer/LinkToSend/${gameId}`
@@ -97,9 +85,10 @@ function WaitToJoinAdmin() {
   useEffect(() => {
     socket.on("message", (data) => {
       dispatch(getGameinfoCall());
-
+      console.log(data.message);
       if (data.message.message === "play") {
         GoToLink(`/multiPlayer/play/${gameId}`);
+        window.location.reload();
       }
     });
     // return () => {
@@ -120,11 +109,12 @@ function WaitToJoinAdmin() {
             </div>
           ))
         : ""}
+
       <div className="Button-Wrapper">
         <button
           className="button_Log"
           onClick={() => startGame()}
-          // disabled={!createButton}
+          disabled={!startButton}
         >
           Start the game
         </button>
@@ -136,6 +126,7 @@ function WaitToJoinAdmin() {
           Click to copy link
         </button>
       </h5>
+
       <h4>{error}</h4>
     </div>
   );

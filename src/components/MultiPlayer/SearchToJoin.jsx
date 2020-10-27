@@ -7,7 +7,8 @@ import { useHistory } from "react-router-dom";
 import io from "socket.io-client";
 
 import { joinToMultiGameCall } from "../../redux/gameManager";
-
+// eslint-disable-next-line no-unused-vars
+let newError;
 function SearchToJoin({ searchToJoin }) {
   const [selectedRoomId, setselectedRoomId] = useState("");
   const multiInfo = useSelector((state) => state.multiInfo);
@@ -33,15 +34,9 @@ function SearchToJoin({ searchToJoin }) {
 
   const gameId = selectedRoomId;
 
-  const socket = io("https://rummyapi.herokuapp.com");
+  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
   const name = sessionStorage.getItem("Rummy_multi_name");
   const userId = sessionStorage.getItem("Rummy_UserUniqId");
-
-  const message = "join";
-  const data = {
-    gameId,
-    message,
-  };
 
   const joinGame = (e) => {
     e.preventDefault();
@@ -49,10 +44,14 @@ function SearchToJoin({ searchToJoin }) {
     dispatch(joinToMultiGameCall(gameId, username));
     socket.emit("join", { name, gameId, userId }, (error) => {
       if (error) {
-        alert(error);
+        newError = error;
       }
     });
-    socket.emit("sendMessage", data);
+    // socket.emit("sendMessage", { gameId, message, userId }, (error) => {
+    //   if (error) {
+    //     newError = error;
+    //   }
+    // });
     GoToLink(`/multiPlayer/${gameId}`);
   };
   return (

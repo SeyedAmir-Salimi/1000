@@ -18,7 +18,7 @@ function WaitToJoin() {
     history.push(link);
   };
   const gameId = sessionStorage.getItem("Rummy_gameId");
-  const socket = io("https://rummyapi.herokuapp.com");
+  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
 
   // useEffect(() => {
   //   socket.on(gameId, (data) => {
@@ -44,6 +44,7 @@ function WaitToJoin() {
     socket.on("message", (data) => {
       if (data.message.message === "play") {
         GoToLink(`/multiPlayer/play/${gameId}`);
+        window.location.reload();
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

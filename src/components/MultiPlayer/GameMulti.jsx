@@ -21,10 +21,13 @@ import PointsMulti from "./PointsMulti";
 import UserHandMulti from "./UserHandMulti";
 import WinnerMulti from "./WinnerMulti";
 
+// eslint-disable-next-line no-unused-vars
+let newError;
 const GameMulti = () => {
   const [rulesWindow, setRulesWindow] = useState(false);
   const [socketIo, setSocketIo] = useState("");
   const [chatDisplay, setChatDisplay] = useState(false);
+  const [chatArchives, setchatArchives] = useState([]);
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
@@ -32,41 +35,28 @@ const GameMulti = () => {
   const playerNames = useSelector((state) => state.gameInfo.playerNames);
   const gameWinner = useSelector((state) => state.gameInfo.winner);
   const action = useSelector((state) => state.uiInfo);
-  const socket = io("https://rummyapi.herokuapp.com", { forceNew: true });
+  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const userId = sessionStorage.getItem("Rummy_user");
-  // const gameIdUser = `${gameId}${userId}`;
-  // useEffect(() => {
-  //   socket.on(gameIdUser, (data) => {
-  //     if (data) {
-  //       setSocketIo(data.state);
-  //     }
-  //   });
-  //   return () => {
-  //     socket.off(gameIdUser);
-  //   };
-  // });
-  useEffect(() => {
-    socket.on(`${userId}`, (data) => {
-      // console.log("userId", data);
-      setSocketIo(data.state);
-    });
-    return () => {
-      socket.off(`${userId}`);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const userUniqId = sessionStorage.getItem("Rummy_UserUniqId");
   const name = sessionStorage.getItem("Rummy_multi_name");
+
   useEffect(() => {
-    socket.emit("join", { name, gameId, userId }, (error) => {
+    socket.emit("join", { name, gameId, userId: userUniqId }, (error) => {
       if (error) {
-        alert(error);
+        newError = error;
       }
     });
-    return () => {
-      socket.off("join");
-    };
-  });
+  }, [gameId, name, socket, userUniqId]);
+  useEffect(() => {
+    socket.on(`${userId}`, (data) => {
+      setSocketIo(data.state);
+    });
+    socket.on("chatMessage", (data) => {
+      setchatArchives((chatArchives) => [...chatArchives, data.message.text]);
+    });
+  }, [socket, userId]);
+
   useEffect(() => {
     dispatch(getResultFromSocket(socketIo));
     return () => {
@@ -82,6 +72,9 @@ const GameMulti = () => {
   const GoToLink = () => {
     history.push("/");
     sessionStorage.removeItem("Rummy_gameId");
+    sessionStorage.removeItem("Rummy_multi_name");
+    sessionStorage.removeItem("Rummy_user");
+    sessionStorage.removeItem("Rummy_UserUniqId");
   };
   const setRullesToggle = () => {
     setRulesWindow(!rulesWindow);
@@ -167,7 +160,7 @@ const GameMulti = () => {
         <UserHandMulti cards={hand} />
         <AllMeldsMulti />
       </div>
-      <Chat chatDisplay={chatDisplay} />
+      <Chat chatDisplay={chatDisplay} chatArchives={chatArchives} />
     </div>
   );
 };
