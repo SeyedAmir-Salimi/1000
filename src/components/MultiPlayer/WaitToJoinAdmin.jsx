@@ -85,7 +85,6 @@ function WaitToJoinAdmin() {
   useEffect(() => {
     socket.on("message", (data) => {
       dispatch(getGameinfoCall());
-      console.log(data.message);
       if (data.message.message === "play") {
         GoToLink(`/multiPlayer/play/${gameId}`);
         window.location.reload();

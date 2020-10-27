@@ -11,6 +11,7 @@ import {
   generateHands,
   getGameMultinfo,
   joinToMultiGame,
+  sendMessagesMulti,
   startToPlayMulti,
 } from "../API";
 import {
@@ -121,9 +122,9 @@ function getUser() {
 // function getUserUniqId() {
 //   return sessionStorage.getItem("Rummy_UserUniqId");
 // }
-// function getUserName() {
-//   return sessionStorage.getItem("Rummy_multi_name");
-// }
+function getUserName() {
+  return sessionStorage.getItem("Rummy_multi_name");
+}
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -235,6 +236,14 @@ export const meldCardsMulti = (ids, meldId) => {
       const user = getUser();
       dispatch(set_multi_turn(user));
     }
+  };
+};
+
+export const sendMessagesMultiCall = (message) => {
+  const gameId = getGameId();
+  const name = getUserName();
+  return async () => {
+    await sendMessagesMulti(name, message, gameId);
   };
 };
 

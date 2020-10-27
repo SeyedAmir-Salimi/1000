@@ -53,7 +53,7 @@ const GameMulti = () => {
       setSocketIo(data.state);
     });
     socket.on("chatMessage", (data) => {
-      setchatArchives((chatArchives) => [...chatArchives, data.message.text]);
+      setchatArchives((chatArchives) => [...chatArchives, data]);
     });
   }, [socket, userId]);
 
