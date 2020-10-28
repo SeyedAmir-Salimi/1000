@@ -35,7 +35,7 @@ const GameMulti = () => {
   const playerNames = useSelector((state) => state.gameInfo.playerNames);
   const gameWinner = useSelector((state) => state.gameInfo.winner);
   const action = useSelector((state) => state.uiInfo);
-  const socket = io("https://rummy-game.netlify.app", { transports: ["websocket"] });
+  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const userId = sessionStorage.getItem("Rummy_user");
   const userUniqId = sessionStorage.getItem("Rummy_UserUniqId");

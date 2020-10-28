@@ -18,7 +18,7 @@ function MultiPlayer() {
     history.push(link);
   };
 
-  const socket = io("https://rummy-game.netlify.app");
+  const socket = io("https://rummyapi.herokuapp.com");
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const username = sessionStorage.getItem("Rummy_multi_name");
   const message = "Join";

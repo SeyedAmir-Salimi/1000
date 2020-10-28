@@ -34,7 +34,7 @@ function SearchToJoin({ searchToJoin }) {
 
   const gameId = selectedRoomId;
 
-  const socket = io("https://rummy-game.netlify.app", { transports: ["websocket"] });
+  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
 
   const joinGame = async (e) => {
     // eslint-disable-next-line no-unused-vars

@@ -148,7 +148,7 @@ export const createMultiGameCall = (result) => {
 // export const joinToMultiGameCall = (gameId, username) => {
 //   // eslint-disable-next-line no-unused-vars
 //   let newError;
-//   const socket = io("https://rummy-game.netlify.app", { transports: ["websocket"] });
+//   const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
 //   const message = "join";
 //   return async (dispatch) => {
 //     setGameId(gameId);
@@ -201,7 +201,7 @@ export const startToPlayMultiCall = () => {
   // eslint-disable-next-line no-unused-vars
   let newError;
   const gameId = getGameId();
-  const socket = io("https://rummy-game.netlify.app", { transports: ["websocket"] });
+  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
   return async () => {
     await startToPlayMulti(gameId);
     const message = "play";
