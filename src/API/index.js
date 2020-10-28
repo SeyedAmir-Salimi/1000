@@ -2,14 +2,14 @@ import Axios from "axios";
 
 export const fetchGameInfo = async (gameId) => {
   const result = await Axios.get(
-    `https://rummyapi.herokuapp.com/game/${gameId}`
+    `https://rummy-game.netlify.app/game/${gameId}`
   );
   return result.data;
 };
 
 export const generateHands = async (gameId) => {
   const result = await Axios.post(
-    `https://rummyapi.herokuapp.com/cards/generateHands`,
+    `https://rummy-game.netlify.app/cards/generateHands`,
     {
       gameId,
     }
@@ -18,7 +18,7 @@ export const generateHands = async (gameId) => {
 };
 
 export const createGame = async (PN, username) => {
-  const result = await Axios.post("https://rummyapi.herokuapp.com/game/start", {
+  const result = await Axios.post("https://rummy-game.netlify.app/game/start", {
     playerNumbers: PN,
     username,
   });
@@ -27,7 +27,7 @@ export const createGame = async (PN, username) => {
 
 export const discard = async (cardId, gameId) => {
   const result = await Axios.put(
-    `https://rummyapi.herokuapp.com/actions/discard`,
+    `https://rummy-game.netlify.app/actions/discard`,
     {
       id: cardId,
       gameId,
@@ -38,7 +38,7 @@ export const discard = async (cardId, gameId) => {
 
 export const createMeldFromCards = async (ids, meldId, gameId) => {
   const result = await Axios.put(
-    `https://rummyapi.herokuapp.com/actions/meld`,
+    `https://rummy-game.netlify.app/actions/meld`,
     {
       cardIds: ids,
       userId: "User4",
@@ -51,19 +51,19 @@ export const createMeldFromCards = async (ids, meldId, gameId) => {
 
 // multiPlayer
 export const fetchGameRooms = async () => {
-  const result = await Axios.get(`https://rummyapi.herokuapp.com/multiPlayer`);
+  const result = await Axios.get(`https://rummy-game.netlify.app/multiPlayer`);
   return result.data;
 };
 export const getGameMultinfo = async (gameId) => {
   const result = await Axios.get(
-    `https://rummyapi.herokuapp.com/multiPlayer/${gameId}`
+    `https://rummy-game.netlify.app/multiPlayer/${gameId}`
   );
   return result.data;
 };
 
 export const createMultiGame = async (username) => {
   const result = await Axios.post(
-    `https://rummyapi.herokuapp.com/multiPlayer/create`,
+    `https://rummy-game.netlify.app/multiPlayer/create`,
     {
       username,
     }
@@ -74,7 +74,7 @@ export const createMultiGame = async (username) => {
 };
 export const startToPlayMulti = async (gameId) => {
   const result = await Axios.post(
-    `https://rummyapi.herokuapp.com/multiPlayer/play`,
+    `https://rummy-game.netlify.app/multiPlayer/play`,
     {
       gameId,
     }
@@ -84,7 +84,7 @@ export const startToPlayMulti = async (gameId) => {
 
 export const joinToMultiGame = async (gameId, username) => {
   const result = await Axios.patch(
-    `https://rummyapi.herokuapp.com/multiPlayer/join`,
+    `https://rummy-game.netlify.app/multiPlayer/join`,
     {
       gameId,
       username,
@@ -95,14 +95,14 @@ export const joinToMultiGame = async (gameId, username) => {
 
 export const fetchGameStateMulti = async (gameId, user) => {
   const result = await Axios.get(
-    `https://rummyapi.herokuapp.com/multiPlayer/gamestate/${gameId}-${user}`
+    `https://rummy-game.netlify.app/multiPlayer/gamestate/${gameId}-${user}`
   );
   return result.data;
 };
 
 export const discardMulti = async (cardId, gameId) => {
   const result = await Axios.put(
-    `https://rummyapi.herokuapp.com/multiPlayer/discard`,
+    `https://rummy-game.netlify.app/multiPlayer/discard`,
     {
       id: cardId,
       gameId,
@@ -113,7 +113,7 @@ export const discardMulti = async (cardId, gameId) => {
 
 export const createMeldMultiFromCards = async (ids, userId, meldId, gameId) => {
   const result = await Axios.put(
-    `https://rummyapi.herokuapp.com/multiPlayer/meld`,
+    `https://rummy-game.netlify.app/multiPlayer/meld`,
     {
       cardIds: ids,
       userId,
@@ -126,7 +126,7 @@ export const createMeldMultiFromCards = async (ids, userId, meldId, gameId) => {
 
 export const sendMessagesMulti = async (name, message, gameId) => {
   const result = await Axios.post(
-    `https://rummyapi.herokuapp.com/multiPlayer/messages`,
+    `https://rummy-game.netlify.app/multiPlayer/messages`,
     {
       name,
       message,

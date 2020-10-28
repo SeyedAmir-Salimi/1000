@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import io from "socket.io-client";
 
-import { joinToMultiGameCall } from "../../redux/gameManager";
-// eslint-disable-next-line no-unused-vars
-let newError;
+import { joinToMultiGame } from "../../API/index";
+import { created_multi_game } from "../../redux/actions/actions";
+
 function SearchToJoin({ searchToJoin }) {
   const [selectedRoomId, setselectedRoomId] = useState("");
   const multiInfo = useSelector((state) => state.multiInfo);
@@ -34,25 +34,28 @@ function SearchToJoin({ searchToJoin }) {
 
   const gameId = selectedRoomId;
 
-  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
-  const name = sessionStorage.getItem("Rummy_multi_name");
-  const userId = sessionStorage.getItem("Rummy_UserUniqId");
+  const socket = io("https://rummy-game.netlify.app", { transports: ["websocket"] });
 
-  const joinGame = (e) => {
+  const joinGame = async (e) => {
+    // eslint-disable-next-line no-unused-vars
+    let newError;
     e.preventDefault();
-    sessionStorage.setItem("Rummy_multi_name", username);
-    dispatch(joinToMultiGameCall(gameId, username));
-    socket.emit("join", { name, gameId, userId }, (error) => {
-      if (error) {
-        newError = error;
+    const result = await joinToMultiGame(gameId, username);
+    sessionStorage.setItem("Rummy_gameId", gameId);
+    sessionStorage.setItem("Rummy_UserUniqId", result.yourData.id);
+    sessionStorage.setItem("Rummy_user", result.yourData.user);
+    sessionStorage.setItem("Rummy_multi_name", result.yourData.name);
+    dispatch(created_multi_game(result));
+    socket.emit(
+      "sendMessage",
+      { gameId, message: "join", userId: result.yourData.id },
+      (error) => {
+        if (error) {
+          alert(error);
+        }
       }
-    });
-    // socket.emit("sendMessage", { gameId, message, userId }, (error) => {
-    //   if (error) {
-    //     newError = error;
-    //   }
-    // });
-    GoToLink(`/multiPlayer/${gameId}`);
+    );
+    GoToLink(`/multiPlayer/${gameId}-${result.yourData.name}`);
   };
   return (
     <div>

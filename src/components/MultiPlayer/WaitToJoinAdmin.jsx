@@ -26,7 +26,7 @@ function WaitToJoinAdmin() {
     history.push(link);
   };
 
-  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
+  const socket = io("https://rummy-game.netlify.app", { transports: ["websocket"] });
   const gameId = sessionStorage.getItem("Rummy_gameId");
   const name = sessionStorage.getItem("Rummy_multi_name");
   const userId = sessionStorage.getItem("Rummy_UserUniqId");

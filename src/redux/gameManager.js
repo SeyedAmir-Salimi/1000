@@ -125,6 +125,9 @@ function getUser() {
 function getUserName() {
   return sessionStorage.getItem("Rummy_multi_name");
 }
+function setUserName(user) {
+  sessionStorage.setItem("Rummy_multi_name", user);
+}
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -143,35 +146,29 @@ export const createMultiGameCall = (result) => {
     setUser("User1");
   };
 };
-export const joinToMultiGameCall = (gameId, username) => {
-  // eslint-disable-next-line no-unused-vars
-  let newError;
-  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
-  const message = "join";
-  return async (dispatch) => {
-    setGameId(gameId);
-    // const data = {
-    //   username,
-    //   gameId,
-    //   message,
-    // };
-    const result = await joinToMultiGame(gameId, username);
-    // socket.emit("gameInfo", { username, gameId, message });
-    // socket.emit("sendMessage", data);
-    setUserUniqId(result.yourData.id);
-    setUser(result.yourData.user);
-    dispatch(created_multi_game(result));
-    socket.emit(
-      "sendMessage",
-      { gameId, message, userId: result.yourData.id },
-      (error) => {
-        if (error) {
-          newError = error;
-        }
-      }
-    );
-  };
-};
+// export const joinToMultiGameCall = (gameId, username) => {
+//   // eslint-disable-next-line no-unused-vars
+//   let newError;
+//   const socket = io("https://rummy-game.netlify.app", { transports: ["websocket"] });
+//   const message = "join";
+//   return async (dispatch) => {
+//     setGameId(gameId);
+//     const result = await joinToMultiGame(gameId, username);
+//     setUserUniqId(result.yourData.id);
+//     setUser(result.yourData.user);
+//     setUserName(result.yourData.name);
+//     dispatch(created_multi_game(result));
+//     socket.emit(
+//       "sendMessage",
+//       { gameId, message, userId: result.yourData.id },
+//       (error) => {
+//         if (error) {
+//           newError = error;
+//         }
+//       }
+//     );
+//   };
+// };
 
 export const getGameinfoCall = () => {
   const getId = getGameId();
@@ -195,8 +192,6 @@ export const getGameStateMultiCall = () => {
     dispatch(set_game_info_multi(result));
     dispatch(set_multi_turn(result.turn));
     if (result.action.type === "generateHands") {
-      // for change color of the cards before generatehands
-      // dispatch(set_game_info_multi(result));
       await sleep(generateHandAnimationDelay);
       dispatch(reset_ui_info());
     }
@@ -207,7 +202,7 @@ export const startToPlayMultiCall = () => {
   // eslint-disable-next-line no-unused-vars
   let newError;
   const gameId = getGameId();
-  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
+  const socket = io("https://rummy-game.netlify.app", { transports: ["websocket"] });
   return async () => {
     await startToPlayMulti(gameId);
     const message = "play";

@@ -18,21 +18,10 @@ function WaitToJoin() {
     history.push(link);
   };
   const gameId = sessionStorage.getItem("Rummy_gameId");
-  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
-
-  // useEffect(() => {
-  //   socket.on(gameId, (data) => {
-  //     if (data.message === "play") {
-  //       GoToLink(`/multiPlayer/play/${gameId}`);
-  //     }
-  //   });
-  //   return () => {
-  //     socket.off(gameId);
-  //   };
-  // });
+  const socket = io("https://rummy-game.netlify.app", { transports: ["websocket"] });
   const name = sessionStorage.getItem("Rummy_multi_name");
   const userId = sessionStorage.getItem("Rummy_UserUniqId");
-
+  console.log("name", name);
   useEffect(() => {
     socket.emit("join", { name, gameId, userId }, (error) => {
       if (error) {
