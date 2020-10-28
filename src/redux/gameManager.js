@@ -10,7 +10,6 @@ import {
   fetchGameStateMulti,
   generateHands,
   getGameMultinfo,
-  joinToMultiGame,
   sendMessagesMulti,
   startToPlayMulti,
 } from "../API";
@@ -109,9 +108,9 @@ function setGameId(gameId) {
 function setUser(user) {
   sessionStorage.setItem("Rummy_user", user);
 }
-function setUserUniqId(id) {
-  sessionStorage.setItem("Rummy_UserUniqId", id);
-}
+// function setUserUniqId(id) {
+//   sessionStorage.setItem("Rummy_UserUniqId", id);
+// }
 
 function getGameId() {
   return sessionStorage.getItem("Rummy_gameId");
@@ -125,9 +124,9 @@ function getUser() {
 function getUserName() {
   return sessionStorage.getItem("Rummy_multi_name");
 }
-function setUserName(user) {
-  sessionStorage.setItem("Rummy_multi_name", user);
-}
+// function setUserName(user) {
+//   sessionStorage.setItem("Rummy_multi_name", user);
+// }
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
