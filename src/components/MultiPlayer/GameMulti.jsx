@@ -28,6 +28,7 @@ const GameMulti = () => {
   const [socketIo, setSocketIo] = useState("");
   const [chatDisplay, setChatDisplay] = useState(false);
   const [chatArchives, setchatArchives] = useState([]);
+  const [chatButtonAnimation, setchatButtonAnimation] = useState(false);
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
@@ -48,14 +49,23 @@ const GameMulti = () => {
       }
     });
   }, [gameId, name, socket, userUniqId]);
+
+  const changechatButoonClassName = () => {
+    setchatButtonAnimation(true);
+    setTimeout(() => {
+      setchatButtonAnimation(false);
+    }, 5000);
+  };
+
   useEffect(() => {
     socket.on(`${userId}`, (data) => {
       setSocketIo(data.state);
     });
     socket.on("chatMessage", (data) => {
       setchatArchives((chatArchives) => [...chatArchives, data]);
+      if (data.name !== name) changechatButoonClassName();
     });
-  }, [socket, userId]);
+  }, [name, socket, userId]);
 
   useEffect(() => {
     dispatch(getResultFromSocket(socketIo));
@@ -121,7 +131,7 @@ const GameMulti = () => {
         ?
       </button>
       <button
-        className="ChatButton"
+        className={chatButtonAnimation ? "ChatButton hvr-pulse" : "ChatButton"}
         onClick={() => setChatDisplay(!chatDisplay)}
       >
         <AiFillWechat />

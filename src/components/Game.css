@@ -200,3 +200,40 @@
 	margin-top: 330px;
 	color: yellow;
 }
+
+@-webkit-keyframes hvr-pulse {
+	25% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+		background-color: red;
+	}
+	75% {
+		-webkit-transform: scale(0.9);
+		transform: scale(0.9);
+		background-color: orange;
+	}
+}
+@keyframes hvr-pulse {
+	25% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+		background-color: red;
+	}
+	75% {
+		-webkit-transform: scale(0.9);
+		transform: scale(0.9);
+		background-color: orange;
+	}
+}
+
+.hvr-pulse{
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	animation-name: hvr-pulse;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
