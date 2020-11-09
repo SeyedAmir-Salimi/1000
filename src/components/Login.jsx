@@ -32,7 +32,7 @@ function Login() {
       const gameId = sessionStorage.getItem("Rummy_gameId");
       GoToLink(`/${gameId}`);
     } else {
-      setError("Please write your name");
+      setError("Write your name please");
     }
   };
   const singelChangeHandler = (e) => {
@@ -47,7 +47,7 @@ function Login() {
       sessionStorage.setItem("Rummy_multi_name", user);
       GoToLink(`/multiPlayer`);
     } else {
-      setError("Please write your name");
+      setError("Write your name please");
     }
   };
   return (
@@ -62,16 +62,22 @@ function Login() {
             onChange={singelChangeHandler}
             value={user}
             ref={nameRef}
+            data-testid="nameInput"
           />
           <br />
         </span>
         <span>
-          <button className="button_Log" onClick={(e) => createMultiplayer(e)}>
+          <button
+            className="button_Log"
+            data-testid="MultiPlayer"
+            onClick={(e) => createMultiplayer(e)}
+          >
             Multi Player
           </button>
           <button
             className="button_Log"
             onClick={(e) => createSingelGameCall(e)}
+            data-testid="SingelPlayer"
           >
             Singel Player
           </button>
