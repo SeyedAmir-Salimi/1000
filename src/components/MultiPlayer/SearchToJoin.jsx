@@ -12,17 +12,19 @@ import { created_multi_game } from "../../redux/actions/actions";
 function SearchToJoin({ searchToJoin }) {
   const [selectedRoomId, setselectedRoomId] = useState("");
   const multiInfo = useSelector((state) => state.multiInfo);
-  const rooms = multiInfo.gameRooms.map((x) => (
-    <div
-      key={x.id}
-      className="rooms_list_room"
-      onClick={() => setselectedRoomId(x.id)}
-      style={{ color: selectedRoomId === x.id ? "yellow" : "white" }}
-    >
-      <h3>{x.playerNumbers}</h3>
-      <h3>{x.playerNames[0].name}</h3>
-    </div>
-  ));
+  const rooms = multiInfo
+    ? multiInfo.gameRooms.map((x) => (
+        <div
+          key={x.id}
+          className="rooms_list_room"
+          onClick={() => setselectedRoomId(x.id)}
+          style={{ color: selectedRoomId === x.id ? "yellow" : "white" }}
+        >
+          <h3>{x.playerNumbers}</h3>
+          <h3>{x.playerNames[0].name}</h3>
+        </div>
+      ))
+    : null;
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -34,7 +36,9 @@ function SearchToJoin({ searchToJoin }) {
 
   const gameId = selectedRoomId;
 
-  const socket = io("https://rummyapi.herokuapp.com", { transports: ["websocket"] });
+  const socket = io("https://rummyapi.herokuapp.com", {
+    transports: ["websocket"],
+  });
 
   const joinGame = async (e) => {
     // eslint-disable-next-line no-unused-vars

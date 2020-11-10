@@ -38,7 +38,11 @@ function MultiPlayer() {
   return (
     <div className="multi-LoginWrapper">
       <div className="Button-Wrapper">
-        <button className="button_Log" onClick={() => creatGame()}>
+        <button
+          className="button_Log"
+          data-testid="CreateGameButton"
+          onClick={() => creatGame()}
+        >
           Create Game
         </button>
         <button
@@ -46,11 +50,12 @@ function MultiPlayer() {
           onClick={() => {
             searchTojoin();
           }}
+          data-testid="SearchtojoinButton"
         >
           Search to join
         </button>
       </div>
-      <SearchToJoin searchToJoin={searchToJoin} />
+      {searchToJoin && <SearchToJoin searchToJoin={searchToJoin} />}
     </div>
   );
 }
