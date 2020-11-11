@@ -17,6 +17,7 @@ function SearchToJoin({ searchToJoin }) {
         <div
           key={x.id}
           className="rooms_list_room"
+          data-testid={`gameRoom-div${x.id}`}
           onClick={() => setselectedRoomId(x.id)}
           style={{ color: selectedRoomId === x.id ? "yellow" : "white" }}
         >
@@ -70,12 +71,18 @@ function SearchToJoin({ searchToJoin }) {
             <h3>Created By</h3>
           </div>
           {rooms}
-          {selectedRoomId && (
+          {selectedRoomId !== "" ? (
             <div className="Button-Wrapper">
-              <button className="button_Log" onClick={(e) => joinGame(e)}>
+              <button
+                className="button_Log"
+                data-testid="joinGameBUtton"
+                onClick={(e) => joinGame(e)}
+              >
                 Join to room
               </button>
             </div>
+          ) : (
+            ""
           )}
         </div>
       )}
