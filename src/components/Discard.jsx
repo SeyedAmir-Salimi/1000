@@ -22,7 +22,7 @@ function Discard({ cardId }) {
 }
 
 Discard.propTypes = {
-  cardId: PropTypes.string,
+  cardId: PropTypes.number,
 };
 
 export default Discard;

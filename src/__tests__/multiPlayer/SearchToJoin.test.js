@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import React from "react";
+import { act } from "react-dom/test-utils";
 import { Provider, useSelector } from "react-redux";
 import { createStore } from "redux";
 
@@ -24,7 +25,7 @@ function reducer(state = startingState, action) {
       return state;
   }
 }
-
+// act()
 function renderWithRedux(
   component,
   { initialState, store = createStore(reducer, initialState) } = {}
@@ -33,7 +34,7 @@ function renderWithRedux(
     ...render(<Provider store={store}>{component}</Provider>),
   };
 }
-describe("Login", () => {
+describe("SearchToJoin", () => {
   jest.mock("../../components/MultiPlayer/SearchToJoin");
   jest.mock("react-redux", () => ({
     ...jest.requireActual("react-redux"),

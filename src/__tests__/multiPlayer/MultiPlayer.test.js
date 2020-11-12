@@ -23,7 +23,7 @@ function renderWithRedux(
     ...render(<Provider store={store}>{component}</Provider>),
   };
 }
-describe("Login", () => {
+describe("MultiPlayer", () => {
   afterEach(cleanup);
   jest.mock("../../components/MultiPlayer/MultiPlayer");
   const { getByTestId } = renderWithRedux(<MultiPlayer />);

@@ -38,6 +38,7 @@ const Card = ({ card, index, isDiscarded, isMeld }) => {
     <div
       className={className}
       style={{ backgroundImage: `url(${imageFile})` }}
+      data-testid="card-div"
       onClick={() => toggleSelection()}
     >
       {isSelected && (
