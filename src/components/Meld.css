@@ -5,7 +5,8 @@
   transition: all;
   animation-duration: 1.6s;
   transform: scale(0.42, 0.42);
-  
+  box-shadow: 0px 2px 20px 8px rgba(18,43,0,1);
+  cursor: pointer;
 }
 
 .meldButtonWrapper {
@@ -13,12 +14,15 @@
   bottom: 5%;
   right: 20%;
 }
-
+.HelpButton{
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
 
 .User4_topOfTheMeld{
   position: absolute;
-  bottom: 0%;
-  left: 0%;
+  transform: translateX(14px) translateY(208px);
   transition: all;
   animation-duration: 1.6s;
   z-index: 1;
@@ -26,8 +30,7 @@
 
 .User3_topOfTheMeld{
   position: absolute;
-  bottom: 0%;
-  right: 0%;
+  transform: translateX(512px) translateY(214px);
   transition: all;
   animation-duration: 1.6s;
   z-index: 1;
@@ -35,17 +38,16 @@
 
 .User2_topOfTheMeld{
   position: absolute;
-  top:  2.6%;
-  right: 20%;
+  transform: translateX(501px) translateY(-114px);
   transition: all;
   animation-duration: 1.6s;
   z-index: 1;
 }
 
 .User1_topOfTheMeld{
+  box-shadow: black;
   position: absolute;
-  top: 2.6%;
-  left: 0;
+  transform: translateX(14px) translateY(-114px);
   transition: all;
   animation-duration: 1.6s;
   z-index: 1;

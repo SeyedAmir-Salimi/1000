@@ -26,7 +26,11 @@ const OpponentHand = React.memo(({ user, count }) => {
     );
   }
 
-  return <div className={`opponent${user} `}>{cards}</div>;
+  return (
+    <>
+      <div>{cards}</div>
+    </>
+  );
 });
 
 OpponentHand.propTypes = {

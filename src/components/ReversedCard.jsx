@@ -16,17 +16,18 @@ const ReversedCard = React.memo(
     const backNumber = getBackgroundImage(round);
     const imageFile = require(`../assets/images/${backNumber}.png`);
 
-    let className = `reversedCard reversedCard${index}`;
+    let className = `reversedCard reversedCard_${user}_${index}`;
 
     if (isDiscarded) {
-      className = `reversedCard reversedCard${index} ${user}_discarding`;
+      className = `reversedCard reversedCard_${user}_${index} ${user}_discarding`;
     } else if (isMeld) {
       if (
         meld.type === "meldFromDeck" ||
         meld.type === "meldFromHand" ||
+        meld.type === "meldAllofTheDeck" ||
         (meld.type === "meldByOtherUserMeld" && meld.user === user)
       ) {
-        className = `reversedCard reversedCard${index} ${user}_meld`;
+        className = `reversedCard reversedCard_${user}_${index} ${user}_meld`;
       }
     }
 

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import { MdRadioButtonUnchecked } from "react-icons/md"
+import { MdRadioButtonUnchecked } from "react-icons/md";
 import { useDispatch } from "react-redux";
 
 import {

@@ -1,18 +1,22 @@
 import "./Game.css";
 
-import React, { useEffect } from "react";
+import Cookies from "js-cookie";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import { createNewGame, getGame, getHands } from "../redux/gameManager";
+import { getGame } from "../redux/gameManager";
 import AllMelds from "./AllMelds";
 import Deck from "./Deck";
 import GenerateHandsCards from "./GenerateHandsCards";
 import MeldButtun from "./MeldButton";
 import OpponentHand from "./OpponentHand";
 import Points from "./Points";
+import Rules from "./Rules";
 import UserHand from "./UserHand";
 
 const Game = () => {
+  const [rulesWindow, setRulesWindow] = useState(false);
   const dispatch = useDispatch();
   const hand = useSelector((state) => state.gameInfo.hand);
   const opponents = useSelector((state) => state.gameInfo.opponents);
@@ -21,42 +25,50 @@ const Game = () => {
     dispatch(getGame());
   }, [dispatch]);
 
-  const createGameCall = () => {
-    dispatch(createNewGame());
+  let history = useHistory();
+  const GoToLink = () => {
+    history.push("/");
+    Cookies.remove("Rummy_gameId");
   };
 
-  const generateHandsCall = () => {
-    dispatch(getHands());
+  const setRullesToggle = () => {
+    setRulesWindow(!rulesWindow);
+    console.log(rulesWindow);
   };
 
   return (
-    <>
-      <button onClick={() => createGameCall()}>create game</button>
-      <button onClick={() => generateHandsCall()}>generate hands</button>
+    <div>
+      {rulesWindow && <Rules toggle={() => setRullesToggle()} />}
+      <div className="board">
+        <Points />
+        <GenerateHandsCards />
+        {opponents && opponents.User1 && (
+          <OpponentHand user="User1" count={opponents.User1.cardCount} />
+        )}
+
+        {opponents && opponents.User2 && (
+          <OpponentHand user="User2" count={opponents.User2.cardCount} />
+        )}
+
+        {opponents && opponents.User3 && (
+          <OpponentHand user="User3" count={opponents.User3.cardCount} />
+        )}
+
+        <Deck />
+
+        <UserHand cards={hand} />
+        <AllMelds />
+      </div>
+      <button className="FinishButton" onClick={() => GoToLink()}>
+        Finish the game
+      </button>
       <div className="meldButtonWrapper">
         <MeldButtun />
       </div>
-      <div className="pointsWrapper">
-        <Points />
-      </div>
-      <GenerateHandsCards />
-      {opponents && opponents.User1 && (
-        <OpponentHand user="User1" count={opponents.User1.cardCount} />
-      )}
-
-      {opponents && opponents.User2 && (
-        <OpponentHand user="User2" count={opponents.User2.cardCount} />
-      )}
-
-      {opponents && opponents.User3 && (
-        <OpponentHand user="User3" count={opponents.User3.cardCount} />
-      )}
-
-      <Deck />
-
-      <UserHand cards={hand} />
-      <AllMelds />
-    </>
+      <button className="HelpButton" onClick={() => setRullesToggle()}>
+        ?
+      </button>
+    </div>
   );
 };
 

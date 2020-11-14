@@ -14,11 +14,16 @@ function User4Melds({ className }) {
           <Meld key={topOfTheMeld.medlId} card={topOfTheMeld} />
         </div>
       )}
-      {action.user4NextMeld && action.otherUser === "User4" && (
-        <div className="User4_topOfTheMeld meldSecondCard">
-          <Meld key={action.user4NextMeld.medlId} card={action.user4NextMeld} />
-        </div>
-      )}
+      {action.user4NextMeld &&
+        action.user !== "User4" &&
+        action.otherUser === "User4" && (
+          <div className="User4_topOfTheMeld meldSecondCard">
+            <Meld
+              key={action.user4NextMeld.medlId}
+              card={action.user4NextMeld}
+            />
+          </div>
+        )}
     </>
   );
 }

@@ -1,7 +1,6 @@
 import Cookies from "js-cookie";
 
 import {
-  createGame,
   createMeldFromCards,
   discard,
   fetchGameInfo,
@@ -20,7 +19,9 @@ const generateHandAnimationDelay = 8500;
 export const getGame = () => {
   const gameId = getGameId();
   return async (dispatch) => {
+    if (gameId === undefined) return;
     const result = await fetchGameInfo(gameId);
+
     dispatch(set_game_info(result));
   };
 };
@@ -33,14 +34,13 @@ export const getHands = () => {
   };
 };
 
-export const createNewGame = () => {
+export const createNewGame = (newGame) => {
   return async (dispatch) => {
-    const result = await createGame(4);
-    setGameId(result);
-    dispatch(create_game(result));
-    dispatch(set_game_info(result));
-    dispatch(set_ui_info(result));
+    setGameId(newGame.gameId);
 
+    dispatch(create_game(newGame));
+
+    dispatch(set_ui_info(newGame));
     await sleep(generateHandAnimationDelay);
     dispatch(reset_ui_info());
   };
@@ -69,7 +69,6 @@ export const meldCards = (ids, meldId) => {
 async function handleGameStates(gameStates, dispatch) {
   for (const state of gameStates) {
     dispatch(set_ui_info(state));
-
     // delay between animations
     if (state.action.type === "generateHands") {
       // for change color of the cards before generatehands
@@ -91,9 +90,10 @@ async function handleGameStates(gameStates, dispatch) {
   }
 }
 
-function setGameId(result) {
-  Cookies.set("Rummy_gameId", result.gameId);
+function setGameId(gameId) {
+  Cookies.set("Rummy_gameId", gameId);
 }
+
 function getGameId() {
   return Cookies.get("Rummy_gameId");
 }

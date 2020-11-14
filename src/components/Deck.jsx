@@ -7,11 +7,12 @@ import DeckCard from "./DeckCard";
 
 export default function Deck() {
   const topOfTheDeck = useSelector((state) => state.gameInfo.topOfTheDeck);
+
   const action = useSelector((state) => state.uiInfo);
   const secondCard = action.replaceTopofTheDeck;
 
   let deckclassName = "deckCard";
-  if (action.type === "meldFromDeck")
+  if (action.type === "meldFromDeck" || action.type === "meldAllofTheDeck")
     deckclassName = `deckCard ${action.user}_MeldDeck`;
 
   let replaceClassName = "deckCardReplace";
@@ -28,7 +29,7 @@ export default function Deck() {
         />
       )}
 
-      {(action.type === "meldFromDeck" || action.replaceTopofTheDeck) && (
+      {action.replaceTopofTheDeck && (
         <DeckCard
           key={secondCard.id}
           card={secondCard}

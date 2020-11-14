@@ -8,7 +8,6 @@
 }
 
 .deckCard{
-  transform: scale(0.7, 0.7);
   border-radius: 8px;
   width: 169px;
   height: 244px;
@@ -16,11 +15,11 @@
   padding: 2rem;
   position: absolute;
   cursor: pointer;
-  left: 42%;
-  top:36%;
+  transform: translateX(245px) translateY(65px) scale(0.5, 0.5);
   transition: all;
   animation-duration: 1.6s;
   z-index: 2;
+  box-shadow: 8px 8px 5px -3px rgba(0,0,0,0.75);
 }
 
 .deckCard:hover .Selected_Card {
@@ -38,7 +37,6 @@
 }
 
 .deckCardReplace{
-  transform: scale(0.7, 0.7);
   border-radius: 8px;
   width: 169px;
   height: 244px;
@@ -46,6 +44,6 @@
   padding: 2rem;
   position: absolute;
   cursor: pointer;
-  left: 42%;
-  top:36%;
+  transform: translateX(245px) translateY(65px) scale(0.5, 0.5);
+  box-shadow: 8px 8px 5px -3px rgba(0,0,0,0.75);
 }

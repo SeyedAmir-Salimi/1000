@@ -1,0 +1,22 @@
+
+      .playerNamesUser1{
+        color: white;
+        transform: translateX(68px) translateY(267px)
+      }
+      
+      .playerNamesUser2{
+        color: white;
+        transform: translateX(312px) translateY(-24px);
+      }
+      
+      .playerNamesUser3{
+        color: white;
+        transform:translateX(550px) translateY(190px)
+      }
+      .playerNamesUser4{
+        color: white;
+        transform: translateX(311px) translateY(498px);
+      }
+  .highestNumber{
+    color: gold;
+  }

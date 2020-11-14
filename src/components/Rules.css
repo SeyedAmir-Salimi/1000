@@ -1,0 +1,45 @@
+.rules{
+    z-index: 9999 ;
+    position: fixed;
+    background-color: rgba(37, 37, 37, 0.8);
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    align-items: center;
+    transition: all;
+    transition-duration: 1s;
+}
+.rules span:not(.discard){
+    margin: 10px auto;
+    width: 80%;
+    padding: 5px;
+    line-height: 1.5rem;
+    
+}
+.rules li{
+    text-decoration: none;
+    list-style-type: none;
+    line-height: 30px;
+}
+.rules h4{
+    color: rgb(230, 248, 148);
+}
+.closeX{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 30px;
+    cursor: pointer;
+    color: red;
+    font-size: 1.5rem;
+}
+.discard{
+    margin: 0 auto;
+
+}
