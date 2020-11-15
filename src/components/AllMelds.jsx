@@ -32,12 +32,12 @@ function AllMelds() {
       ? `${action.user}MeldFromUser4`
       : "User4_topOfTheMeld";
   return (
-    <>
+    <div>
       <User4Melds className={User4MeldClassName} />
       <User1Melds className={User1MeldClassName} />
       <User2Melds className={User2MeldClassName} />
       <User3Melds className={User3MeldClassName} />
-    </>
+    </div>
   );
 }
 

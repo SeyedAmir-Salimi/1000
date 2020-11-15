@@ -53,7 +53,6 @@ const Card = ({ card, index, isDiscarded, isMeld }) => {
           style={{ color: "green", opacity: "100%" }}
         />
       )}
-      {/* <Selection cardId={card.id} /> */}
       <Discard cardId={card.id} />
     </div>
   );

@@ -34,6 +34,7 @@ const DeckCard = ({ card, className }) => {
     <>
       <div
         key={card.cardId}
+        data-testid={className}
         className={className}
         style={{
           backgroundImage: `url(${imageFile})`,

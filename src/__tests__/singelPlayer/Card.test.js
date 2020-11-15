@@ -1,4 +1,5 @@
-import { cleanup, render, screen } from "@testing-library/react";
+
+import { cleanup, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import React from "react";
 import { Provider } from "react-redux";
@@ -65,5 +66,4 @@ describe("card", () => {
     const cardDiv = getByTestId("card-div");
     expect(cardDiv.className).toEqual("card card0 user4_Meld");
   });
-
 });
