@@ -44,16 +44,17 @@ const DeckCard = ({ card, className }) => {
         {isSelected && (
           <IoMdCheckmarkCircleOutline
             className="Selected_Card"
+            data-testid="IoMdCheckmarkCircleOutline"
             style={{ color: "green", opacity: "100%" }}
           />
         )}
         {!isSelected && (
           <MdRadioButtonUnchecked
             className="Selected_Card"
+            data-testid="MdRadioButtonUnchecked"
             style={{ color: "green", opacity: "100%" }}
           />
         )}
-        {/* <Selection cardId={card.id} /> */}
       </div>
     </>
   );

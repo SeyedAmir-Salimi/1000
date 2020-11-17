@@ -3,7 +3,7 @@ import { cleanup, render, screen } from "@testing-library/react";
 import React from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-
+const { card1, card2, card3 } = require("../testVariables");
 import Deck from "../../components/Deck";
 
 const startingState = {
@@ -18,12 +18,6 @@ const startingState = {
 };
 function reducer(state = startingState, action) {
   switch (action.type) {
-    case "SET_UIINFO": {
-      return { ...state, uiInfo: action.payload };
-    }
-    case "SET_GAMEINFO": {
-      return { ...state, gameInfo: action.payload };
-    }
     default:
       return state;
   }
@@ -45,13 +39,13 @@ describe("Deck", () => {
     useDispatch: jest.fn(),
     useSelector: jest.fn(),
   }));
-  it("should not render topOfTheDeck", async () => {
+  it("should not render topOfTheDeck", () => {
     renderWithRedux(<Deck />);
     expect(screen.queryByTestId("deckCard")).not.toBeInTheDocument();
     expect(screen.queryByTestId("deckCardReplace")).not.toBeInTheDocument();
   });
   it("should render topOfTheDeck", () => {
-    startingState.gameInfo.topOfTheDeck = { cardId: "4-hearts", id: 1 };
+    startingState.gameInfo.topOfTheDeck = card1;
     const { getByTestId } = renderWithRedux(<Deck />);
     expect(getByTestId("deckCard")).toBeInTheDocument();
   });
@@ -59,9 +53,9 @@ describe("Deck", () => {
     startingState.uiInfo = {
       type: "meldFromDeck",
       user: "User3",
-      replaceTopofTheDeck: { cardId: "Q-diamonds", id: 1 },
+      replaceTopofTheDeck: card2,
     };
-    startingState.gameInfo.topOfTheDeck = { cardId: "4-hearts", id: 1 };
+    startingState.gameInfo.topOfTheDeck = card3;
 
     const { getByTestId } = renderWithRedux(<Deck />);
     expect(getByTestId("deckCard User3_MeldDeck")).toBeInTheDocument();

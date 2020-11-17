@@ -13,7 +13,11 @@ function Discard({ cardId }) {
   return (
     <>
       {isMyTurn && (
-        <h2 className="fire" onClick={() => dispatch(discardCard(cardId))}>
+        <h2
+          className="fire"
+          data-testid="Discard"
+          onClick={() => dispatch(discardCard(cardId))}
+        >
           <>🔥</>
         </h2>
       )}

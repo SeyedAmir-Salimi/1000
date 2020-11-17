@@ -10,7 +10,7 @@ function User1Melds({ className }) {
   return (
     <>
       {opponents && opponents.User1.topOfTheMeld && (
-        <div className={className}>
+        <div className={className} data-testid="User1Melds">
           <Meld
             key={opponents.User1.topOfTheMeld.medlId}
             card={opponents.User1.topOfTheMeld}
@@ -20,7 +20,10 @@ function User1Melds({ className }) {
       {action.user1NextMeld &&
         action.user !== "User1" &&
         action.otherUser === "User1" && (
-          <div className="User1_topOfTheMeld meldSecondCard">
+          <div
+            className="User1_topOfTheMeld meldSecondCard"
+            data-testid={"user1NextMeld"}
+          >
             <Meld
               key={action.user1NextMeld.medlId}
               card={action.user1NextMeld}
